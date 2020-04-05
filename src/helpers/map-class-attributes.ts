@@ -1,5 +1,6 @@
 import type { SchemaClass, SchemaAttributes } from "../services/schema";
 import { writeLog } from "fast-node-logger";
+import { stringifyProp, arrayifyProp, ldapBooleanToJsBoolean } from "./utils";
 
 interface MapClassAttributesFnInput {
   classObj: Partial<SchemaClass>;
@@ -20,29 +21,8 @@ interface SchemaClassWithAttributes {
     adminDescription: string;
     isRequired: boolean;
     isSingleValued: boolean;
+    lDAPDisplayName: string;
   }>;
-}
-
-function stringifyProp(input?: string | string[]): string {
-  writeLog(`stringifyProp()`);
-  if (!input) {
-    throw new Error(`Field not exist`);
-  }
-  if (Array.isArray(input)) {
-    return input.join();
-  }
-  return input;
-}
-
-function arrayifyProp(input?: string | string[]): string[] {
-  writeLog(`arraifyProp()`);
-  if (!input) {
-    throw new Error(`Field not exist to arrayify`);
-  }
-  if (typeof input === "string") {
-    return [input];
-  }
-  return input;
 }
 
 export function mapClassAttributes({
@@ -55,21 +35,66 @@ export function mapClassAttributes({
     ldapName: stringifyProp(classObj.lDAPDisplayName),
     parentClass: stringifyProp(classObj.subClassOf),
     originalClassFields: { ...classObj },
+    originalAttributes: [],
+    attributes: [],
   };
 
-  /** look at mustContain, systemMustContain, mayContain, and systemMayContain */
+  /** combine mustContain, systemMustContain, mayContain, and systemMayContain items to do search operation just one time */
+  const combinedRawAttributes: Array<{
+    isRequired: boolean;
+    attributeToFind: string;
+  }> = [];
+
+  /**combine mustContain as required field*/
   if (classObj.mustContain) {
-    arrayifyProp(classObj.mustContain).forEach((attributeToFind) => {
-      /** search in attributes */
-      const foundAttribute = attributes.find(
-        (attributeItem) => attributeItem.lDAPDisplayName === attributeToFind,
-      );
-      if (!foundAttribute) {
-        throw new Error(`Attribute ${attributeToFind} not found!`);
-      }
-      /**add found attribute to  */
-    });
+    arrayifyProp(classObj.mustContain).forEach((attributeToFind) =>
+      combinedRawAttributes.push({ isRequired: true, attributeToFind }),
+    );
   }
+  /**combine systemMustContain as required field*/
+  if (classObj.systemMustContain) {
+    arrayifyProp(classObj.systemMustContain).forEach((attributeToFind) =>
+      combinedRawAttributes.push({ isRequired: true, attributeToFind }),
+    );
+  }
+  /**combine mayContain as non required field*/
+  if (classObj.mayContain) {
+    arrayifyProp(classObj.mayContain).forEach((attributeToFind) =>
+      combinedRawAttributes.push({ isRequired: false, attributeToFind }),
+    );
+  }
+  /**combine systemMayContain as non required field*/
+  if (classObj.systemMayContain) {
+    arrayifyProp(classObj.systemMayContain).forEach((attributeToFind) =>
+      combinedRawAttributes.push({ isRequired: false, attributeToFind }),
+    );
+  }
+
+  combinedRawAttributes.forEach(({ attributeToFind, isRequired }) => {
+    /** search in attributes */
+    //TODO: this is an expensive operation there should be better way to improve it
+    const foundAttribute = attributes.find(
+      (attributeItem) => attributeItem.lDAPDisplayName === attributeToFind,
+    );
+    if (!foundAttribute) {
+      throw new Error(`Attribute ${attributeToFind} not found!`);
+    }
+
+    /**push found attribute */
+    result.originalAttributes?.push(foundAttribute);
+    result.attributes?.push({
+      dn: stringifyProp(foundAttribute.dn),
+      attributeID: stringifyProp(foundAttribute.attributeID),
+      cn: stringifyProp(foundAttribute.cn),
+      adminDisplayName: stringifyProp(foundAttribute.adminDisplayName),
+      adminDescription: stringifyProp(foundAttribute.adminDescription),
+      isRequired,
+      isSingleValued: ldapBooleanToJsBoolean(
+        stringifyProp(foundAttribute.isSingleValued),
+      ),
+      lDAPDisplayName: stringifyProp(foundAttribute.lDAPDisplayName),
+    });
+  });
 
   return result;
 }

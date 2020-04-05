@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import { createLogger } from "fast-node-logger";
-import { typeMapper } from "./helpers/type-map";
-import { getSchemaAttributes } from "./services/schema";
+import { getSchemaAttributes, getSchemaClasses } from "./services/schema";
+import { mapClassAttributes } from "./helpers/map-class-attributes";
 config();
 
 /**
@@ -13,12 +13,27 @@ config();
  * 5-
  */
 
+const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
+
 async function main() {
   const logger = await createLogger({ level: "trace" });
 
-  const objectAttributes = await getSchemaAttributes({ logger });
+  const objectAttributes = await getSchemaAttributes({ schemaDn, logger });
 
-  objectAttributes.forEach((el) => typeMapper(el?.attributeSyntax as string));
+  const objectClasses = await getSchemaClasses({ schemaDn, logger });
+
+  const classWithAtts = mapClassAttributes({
+    attributes: objectAttributes,
+    classObj: objectClasses[0],
+  });
+
+  /** now we have everything we need
+   * it's time to generate typescript types:
+   * 1- create handlebar template
+   * 2- generate type for each attribute
+   * 3- generate type for each class
+   * 4- maybe create a class for class object and pre-define CRUD operation like ORM
+   */
 }
 main().catch((err) => {
   console.log(`File: app.ts,`, `Line: 48 => `, err);

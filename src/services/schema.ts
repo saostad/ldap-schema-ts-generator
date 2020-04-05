@@ -1,10 +1,9 @@
 import { AdClient } from "node-ad-ldap";
 import { Logger } from "../typings/general/types";
-import { defaultSchemaDn } from "../variables/default-schemaDn";
 import { SearchEntryObject } from "ldapjs";
 
 interface GetSchemaClassesFnInput {
-  schemaDn?: string;
+  schemaDn: string;
   logger?: Logger;
 }
 export interface SchemaClass extends SearchEntryObject {
@@ -42,7 +41,7 @@ export async function getSchemaClasses({
     bindDN: process.env.AD_USER ?? "",
     secret: process.env.AD_Pass ?? "",
     url: process.env.AD_URI ?? "",
-    baseDN: schemaDn ?? defaultSchemaDn,
+    baseDN: schemaDn,
     logger,
   });
 
@@ -84,7 +83,7 @@ export async function getSchemaClasses({
 }
 
 interface GetSchemaAttributesFnInput {
-  schemaDn?: string;
+  schemaDn: string;
   logger?: Logger;
 }
 export interface SchemaAttributes extends SearchEntryObject {
@@ -111,7 +110,7 @@ export async function getSchemaAttributes({
     bindDN: process.env.AD_USER ?? "",
     secret: process.env.AD_Pass ?? "",
     url: process.env.AD_URI ?? "",
-    baseDN: schemaDn ?? defaultSchemaDn,
+    baseDN: schemaDn,
     logger,
   });
 
