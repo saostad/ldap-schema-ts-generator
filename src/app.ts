@@ -6,9 +6,9 @@ config();
 
 /**
  * 1- get list of objectClass=classSchema
- * 2-1 look at mustContain, systemMustContain, mayContain, and systemMayContain
- * 2-2 get list of objectClass=attributeSchema
- * 3- map attributes with class object
+ * 2 get list of objectClass=attributeSchema
+ * 3-1 look at mustContain, systemMustContain, mayContain, and systemMayContain
+ * 3-2 map attributes with class object
  */
 
 const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
