@@ -1,10 +1,10 @@
 {
-  "name": "create-ts-starter",
-  "version": "2.0.10",
-  "description": "Typescript Opinionated Starter/Boilerplate",
+  "name": "ldap-schema-ts-generator",
+  "version": "0.0.1",
+  "description": "Ldap Active Directory Schema Typescript Generator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saostad/node-typescript-starter.git"
+    "url": "https://github.com/saostad/ldap-schema-ts-generator.git"
   },
   "main": "dist/app.js",
   "types": "dist/app.d.ts",
@@ -22,10 +22,13 @@
     "start": "npm-run-all -p dev tsc:watch"
   },
   "keywords": [
-    "node",
+    "ldap",
+    "schema",
     "typescript",
-    "boilerplate",
-    "starter"
+    "generator",
+    "type",
+    "active",
+    "directory"
   ],
   "author": "Saeid Ostad",
   "license": "MIT",

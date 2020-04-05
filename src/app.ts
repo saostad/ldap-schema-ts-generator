@@ -8,9 +8,7 @@ config();
  * 1- get list of objectClass=classSchema
  * 2-1 look at mustContain, systemMustContain, mayContain, and systemMayContain
  * 2-2 get list of objectClass=attributeSchema
- * 3- foreach 2-1
- * 4- create type for each attribute using type mapper fn
- * 5-
+ * 3- map attributes with class object
  */
 
 const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
