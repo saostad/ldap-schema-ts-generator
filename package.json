@@ -1,6 +1,6 @@
 {
   "name": "ldap-schema-ts-generator",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Ldap Active Directory Schema Typescript Generator",
   "repository": {
     "type": "git",
