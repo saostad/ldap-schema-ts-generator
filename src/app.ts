@@ -20,14 +20,14 @@ const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
 async function main() {
   const logger = await createLogger({ level: "trace" });
 
-  // const objectAttributes = await getSchemaAttributes({ schemaDn, logger });
+  const objectAttributes = await getSchemaAttributes({ schemaDn, logger });
 
-  // const objectClasses = await getSchemaClasses({ schemaDn, logger });
+  const objectClasses = await getSchemaClasses({ schemaDn, logger });
 
-  // const classWithAtts = mapClassAttributes({
-  //   attributes: objectAttributes,
-  //   classObj: objectClasses[0],
-  // });
+  const classWithAttributes = mapClassAttributes({
+    attributes: objectAttributes,
+    classObj: objectClasses[0],
+  });
 
   /** now we have everything we need
    * it's time to generate typescript types:
@@ -37,8 +37,7 @@ async function main() {
    * 4- maybe create a class for class object and pre-define CRUD operation like ORM
    */
 
-  const interfaceName = "AttributeName";
-  const rawOutput = generate({ interfaceName });
+  const rawOutput = generate({ data: classWithAttributes });
 
   /** run prettier at output before write to file */
   const output = prettier.format(rawOutput, { parser: "typescript" });

@@ -7,7 +7,7 @@ interface MapClassAttributesFnInput {
   attributes: Partial<SchemaAttributes>[];
 }
 
-interface SchemaClassWithAttributes {
+export interface SchemaClassWithAttributes {
   className: string;
   ldapName: string;
   parentClass: string;
@@ -16,6 +16,7 @@ interface SchemaClassWithAttributes {
   attributes?: Array<{
     dn: string;
     attributeID: string;
+    attributeSyntax: string;
     cn: string;
     adminDisplayName: string;
     adminDescription: string;
@@ -84,15 +85,16 @@ export function mapClassAttributes({
     result.originalAttributes?.push(foundAttribute);
     result.attributes?.push({
       dn: stringifyProp(foundAttribute.dn),
-      attributeID: stringifyProp(foundAttribute.attributeID),
       cn: stringifyProp(foundAttribute.cn),
+      lDAPDisplayName: stringifyProp(foundAttribute.lDAPDisplayName),
+      attributeSyntax: stringifyProp(foundAttribute.attributeSyntax),
+      attributeID: stringifyProp(foundAttribute.attributeID),
       adminDisplayName: stringifyProp(foundAttribute.adminDisplayName),
       adminDescription: stringifyProp(foundAttribute.adminDescription),
       isRequired,
       isSingleValued: ldapBooleanToJsBoolean(
         stringifyProp(foundAttribute.isSingleValued),
       ),
-      lDAPDisplayName: stringifyProp(foundAttribute.lDAPDisplayName),
     });
   });
 
