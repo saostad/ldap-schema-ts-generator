@@ -1,13 +1,7 @@
 import { SchemaClassWithAttributes } from "./map-class-attributes";
 import { typeMapper } from "./type-map";
 import { pascalCase } from "pascal-case";
-
-function arrayToLines(data?: string[]): string {
-  if (!data) {
-    throw new Error("data input required");
-  }
-  return data.join("\n");
-}
+import { arrayToLines } from "./utils";
 
 interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;

@@ -30,3 +30,11 @@ export function ldapBooleanToJsBoolean(input: string): boolean {
   }
   return false;
 }
+
+/** convert array of strings to one string and add line break between each */
+export function arrayToLines(data?: string[]): string {
+  if (!data) {
+    throw new Error(`data input required. but provided: ${data}`);
+  }
+  return data.join("\n");
+}
