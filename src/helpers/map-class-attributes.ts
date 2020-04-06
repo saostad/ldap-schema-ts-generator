@@ -7,23 +7,25 @@ interface MapClassAttributesFnInput {
   attributes: Partial<SchemaAttributes>[];
 }
 
+interface AttributeFields {
+  dn: string;
+  attributeID: string;
+  attributeSyntax: string;
+  cn: string;
+  lDAPDisplayName: string;
+  isRequired: boolean;
+  isSingleValued: boolean;
+  systemOnly?: boolean;
+  adminDisplayName?: string;
+  adminDescription?: string;
+}
 export interface SchemaClassWithAttributes {
   className: string;
   ldapName: string;
   parentClass: string;
   originalClassFields: Partial<SchemaClass>;
   originalAttributes?: Partial<SchemaAttributes>[];
-  attributes?: Array<{
-    dn: string;
-    attributeID: string;
-    attributeSyntax: string;
-    cn: string;
-    adminDisplayName: string;
-    adminDescription: string;
-    isRequired: boolean;
-    isSingleValued: boolean;
-    lDAPDisplayName: string;
-  }>;
+  attributes?: AttributeFields[];
 }
 
 export function mapClassAttributes({
@@ -32,15 +34,18 @@ export function mapClassAttributes({
 }: MapClassAttributesFnInput): SchemaClassWithAttributes {
   writeLog(`mapClassAttributes()`);
   const result: SchemaClassWithAttributes = {
-    className: stringifyProp(classObj.name),
-    ldapName: stringifyProp(classObj.lDAPDisplayName),
-    parentClass: stringifyProp(classObj.subClassOf),
+    className: stringifyProp(classObj.name as string),
+    ldapName: stringifyProp(classObj.lDAPDisplayName as string),
+    parentClass: stringifyProp(classObj.subClassOf as string),
     originalClassFields: { ...classObj },
     originalAttributes: [],
     attributes: [],
   };
 
-  /** combine mustContain, systemMustContain, mayContain, and systemMayContain items to do search operation just one time */
+  /** combines
+   * mustContain, systemMustContain,
+   * mayContain, and systemMayContain
+   * items to do search operation just one time */
   const combinedRawAttributes: Array<{
     isRequired: boolean;
     attributeToFind: string;
@@ -77,25 +82,48 @@ export function mapClassAttributes({
     const foundAttribute = attributes.find(
       (attributeItem) => attributeItem.lDAPDisplayName === attributeToFind,
     );
+
     if (!foundAttribute) {
       throw new Error(`Attribute ${attributeToFind} not found!`);
     }
 
     /**push found attribute */
     result.originalAttributes?.push(foundAttribute);
-    result.attributes?.push({
-      dn: stringifyProp(foundAttribute.dn),
-      cn: stringifyProp(foundAttribute.cn),
-      lDAPDisplayName: stringifyProp(foundAttribute.lDAPDisplayName),
-      attributeSyntax: stringifyProp(foundAttribute.attributeSyntax),
-      attributeID: stringifyProp(foundAttribute.attributeID),
-      adminDisplayName: stringifyProp(foundAttribute.adminDisplayName),
-      adminDescription: stringifyProp(foundAttribute.adminDescription),
+
+    const classAttributes: AttributeFields = {
+      dn: stringifyProp(foundAttribute.dn as string),
+      cn: stringifyProp(foundAttribute.cn as string),
+      lDAPDisplayName: stringifyProp(foundAttribute.lDAPDisplayName as string),
+      attributeSyntax: stringifyProp(foundAttribute.attributeSyntax as string),
+      attributeID: stringifyProp(foundAttribute.attributeID as string),
       isRequired,
       isSingleValued: ldapBooleanToJsBoolean(
-        stringifyProp(foundAttribute.isSingleValued),
+        stringifyProp(foundAttribute.isSingleValued as string),
       ),
-    });
+    };
+
+    /** this field can be empty */
+    if (foundAttribute.adminDisplayName) {
+      classAttributes.adminDisplayName = stringifyProp(
+        foundAttribute.adminDisplayName as string,
+      );
+    }
+
+    /** this field can be empty */
+    if (foundAttribute.adminDescription) {
+      classAttributes.adminDescription = stringifyProp(
+        foundAttribute.adminDescription as string,
+      );
+    }
+
+    /** this field can be empty */
+    if (foundAttribute.systemOnly) {
+      classAttributes.systemOnly = ldapBooleanToJsBoolean(
+        stringifyProp(foundAttribute.systemOnly as string),
+      );
+    }
+
+    result.attributes?.push(classAttributes);
   });
 
   return result;

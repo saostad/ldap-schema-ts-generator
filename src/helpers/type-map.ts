@@ -1,5 +1,10 @@
 import { writeLog } from "fast-node-logger";
 
+/** for more info look at links below:
+ * - https://social.technet.microsoft.com/wiki/contents/articles/52570.active-directory-syntaxes-of-attributes.aspx
+ * - https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7cda533e-d7a4-4aec-a517-91d02ff4a1aa?redirectedfrom=MSDN
+ */
+
 const typeMap = {
   string: [
     "2.5.5.12",
@@ -15,10 +20,9 @@ const typeMap = {
     "2.5.5.13",
   ],
   boolean: ["2.5.5.8"],
-  number: ["2.5.5.16"],
+  number: ["2.5.5.16", "2.5.5.9"],
   Date: ["2.5.5.11"],
   object: ["2.5.5.1"],
-  Enum: ["2.5.5.9"],
 };
 
 /** get ldap attributeSyntax and return js equivalent type */

@@ -2,10 +2,9 @@ import { config } from "dotenv";
 import { createLogger } from "fast-node-logger";
 import { getSchemaAttributes, getSchemaClasses } from "./services/schema";
 import { mapClassAttributes } from "./helpers/map-class-attributes";
-import fs from "fs";
 import path from "path";
-import { generate } from "./helpers/generateText";
-import prettier from "prettier";
+import { generateClassInterface } from "./helpers/generateText";
+import { writeTsFile } from "./helpers/write-ts-file";
 config();
 
 /**
@@ -24,31 +23,29 @@ async function main() {
 
   const objectClasses = await getSchemaClasses({ schemaDn, logger });
 
-  const classWithAttributes = mapClassAttributes({
-    attributes: objectAttributes,
-    classObj: objectClasses[0],
-  });
-
   /** now we have everything we need
    * it's time to generate typescript types:
-   * 1- create handlebar template
-   * 2- generate type for each attribute
-   * 3- generate type for each class
-   * 4- maybe create a class for class object and pre-define CRUD operation like ORM
+   * 1- create string template
+   * 2- generate type for each class
+   * 3- type-map each attribute
+   * 4-1 generate separate file for each class
+   * 4-2 maybe create a class for class object and pre-define CRUD operation like ORM
    */
 
-  const rawOutput = generate({ data: classWithAttributes });
+  const promises: Promise<any>[] = [];
 
-  /** run prettier at output before write to file */
-  const output = prettier.format(rawOutput, { parser: "typescript" });
+  objectClasses.forEach((classObj) => {
+    const classWithAttributes = mapClassAttributes({
+      attributes: objectAttributes,
+      classObj,
+    });
+    const rawOutput = generateClassInterface({ data: classWithAttributes });
+    const outFile = path.join(process.cwd(), "generated", `${classObj.cn}.ts`);
 
-  /** write to file.
-   * over write if exist
-   */
-  fs.writeFileSync(path.join(process.cwd(), "generated", "out.ts"), output, {
-    encoding: "utf8",
-    flag: "w",
+    promises.push(writeTsFile(rawOutput, { outFile }));
   });
+
+  Promise.all(promises);
 }
 main().catch((err) => {
   console.log(`File: app.ts,`, `Line: 48 => `, err);

@@ -1,27 +1,33 @@
 import { SchemaClassWithAttributes } from "./map-class-attributes";
 import { typeMapper } from "./type-map";
+import { pascalCase } from "pascal-case";
 
 function arrayToLines(data?: string[]): string {
   if (!data) {
     throw new Error("data input required");
   }
-  return data.map((el) => `${el}\n`).join("");
+  return data.join("\n");
 }
 
-interface GenerateFnInput {
+interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;
 }
 
-export function generate({ data }: GenerateFnInput): string {
+export function generateClassInterface({
+  data,
+}: GenerateClassInterfaceFnInput): string {
   const result = `
-  /** object class ${data.ldapName}
-  * child of class ${data.parentClass}
+  /** object class: ${data.ldapName}
+   * 
+  * child of class: ${data.parentClass}
+  * 
+  * dn: ${data.originalClassFields.dn}
   */
-  interface ${data.className} {
+  interface ${pascalCase(data.className)} {
     ${arrayToLines(
       data.attributes &&
         data.attributes.map((el) => {
-          return `"${el.lDAPDisplayName}" ${
+          return `${el.systemOnly ? "readonly" : ""} "${el.lDAPDisplayName}" ${
             el.isRequired ? "" : "?"
           }: ${typeMapper(el.attributeSyntax)} ${
             el.isSingleValued ? "" : "[]"

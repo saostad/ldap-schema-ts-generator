@@ -1,9 +1,10 @@
 import { writeLog } from "fast-node-logger";
 
-export function stringifyProp(input?: string | string[]): string {
+/** make sure output is string */
+export function stringifyProp(input: string | string[]): string {
   writeLog(`stringifyProp()`);
   if (!input) {
-    throw new Error(`Field not exist`);
+    throw new Error(`Field required to stringify! but provided: ${input} `);
   }
   if (Array.isArray(input)) {
     return input.join();
@@ -11,10 +12,11 @@ export function stringifyProp(input?: string | string[]): string {
   return input;
 }
 
-export function arrayifyProp(input?: string | string[]): string[] {
+/** make sure output is array of strings */
+export function arrayifyProp(input: string | string[]): string[] {
   writeLog(`arrayifyProp()`);
   if (!input) {
-    throw new Error(`Field not exist to arrayify`);
+    throw new Error(`Field required to arrayify`);
   }
   if (typeof input === "string") {
     return [input];
