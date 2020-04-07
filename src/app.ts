@@ -5,6 +5,7 @@ import { mapClassAttributes } from "./helpers/map-class-attributes";
 import path from "path";
 import { generateClassInterface } from "./helpers/generate-class-interface";
 import { writeTsFile } from "./helpers/write-ts-file";
+import { pascalCase } from "pascal-case";
 config();
 
 /**
@@ -40,7 +41,11 @@ async function main() {
       classObj,
     });
     const rawOutput = generateClassInterface({ data: classWithAttributes });
-    const outFile = path.join(process.cwd(), "generated", `${classObj.cn}.ts`);
+    const outFile = path.join(
+      process.cwd(),
+      "generated",
+      `${pascalCase(classObj.lDAPDisplayName as string)}.ts`,
+    );
 
     promises.push(writeTsFile(rawOutput, { outFile }));
   });

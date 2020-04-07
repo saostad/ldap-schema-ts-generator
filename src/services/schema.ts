@@ -6,28 +6,36 @@ interface GetSchemaClassesFnInput {
   schemaDn: string;
   logger?: Logger;
 }
-export interface SchemaClass extends SearchEntryObject {
+export interface SchemaClass
+  extends Pick<SearchEntryObject, "dn" | "controls"> {
   objectClass: string | string[];
-  cn: string | string[];
+  cn: string;
   instanceType: string | string[];
-  subClassOf: string | string[];
+  subClassOf: string;
+  auxiliaryClass: string | string[];
   governsID: string | string[];
   rDNAttID: string | string[];
-  showInAdvancedViewOnly: string | string[];
-  adminDisplayName: string | string[];
-  adminDescription: string | string[];
+  /** string value of TRUE / FALSE */
+  showInAdvancedViewOnly: string;
+  adminDisplayName: string;
+  adminDescription: string;
   objectClassCategory: string | string[];
-  lDAPDisplayName: string | string[];
-  name: string | string[];
-  systemOnly: string | string[];
+  lDAPDisplayName: string;
+  name: string;
+  /** string value of TRUE / FALSE */
+  systemOnly: string;
   systemPossSuperiors: string | string[];
+  /** list of direct optional and readonly properties */
   systemMayContain: string | string[];
+  /** list of direct required and readonly properties */
   systemMustContain: string | string[];
   systemFlags: string | string[];
   defaultHidingValue: string | string[];
   objectCategory: string | string[];
   defaultObjectCategory: string | string[];
+  /** list of direct required and editable properties */
   mustContain: string | string[];
+  /** list of direct optional and editable properties */
   mayContain: string | string[];
   possSuperiors: string | string[];
 }
@@ -56,6 +64,7 @@ export async function getSchemaClasses({
         "cn",
         "instanceType",
         "subClassOf",
+        "auxiliaryClass",
         "governsID",
         "rDNAttID",
         "showInAdvancedViewOnly",
@@ -86,17 +95,20 @@ interface GetSchemaAttributesFnInput {
   schemaDn: string;
   logger?: Logger;
 }
-export interface SchemaAttributes extends SearchEntryObject {
-  cn: string | string[];
-  attributeID: string | string[];
-  attributeSyntax: string | string[];
-  isSingleValued: string | string[];
-  showInAdvancedViewOnly: string | string[];
-  adminDisplayName: string | string[];
-  adminDescription: string | string[];
+export interface SchemaAttributes
+  extends Pick<SearchEntryObject, "dn" | "controls"> {
+  cn: string;
+  attributeID: string;
+  attributeSyntax: string;
+  /** string value of TRUE / FALSE */
+  isSingleValued: string;
+  /** string value of TRUE / FALSE */
+  showInAdvancedViewOnly: string;
+  adminDisplayName: string;
+  adminDescription: string;
   oMSyntax: string | string[];
-  lDAPDisplayName: string | string[];
-  systemOnly: string | string[];
+  lDAPDisplayName: string;
+  systemOnly: string;
   systemFlags: string | string[];
   objectCategory: string | string[];
 }
