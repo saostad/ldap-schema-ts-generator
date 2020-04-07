@@ -22,6 +22,7 @@ const typeMap = {
   boolean: ["2.5.5.8"],
   number: ["2.5.5.16", "2.5.5.9"],
   Date: ["2.5.5.11"],
+  /** ref: https://docs.microsoft.com/en-us/windows/win32/adschema/s-object-ds-dn */
   object: ["2.5.5.1"],
 };
 
