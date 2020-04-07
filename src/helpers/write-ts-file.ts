@@ -1,24 +1,26 @@
 import { promises } from "fs";
 import { format } from "prettier";
 
-// TODO: add option to enable prettier and eslint fto apply on raw output
 interface Options {
   outFile: string;
+  usePrettier?: boolean;
 }
 
 export async function writeTsFile(
-  rawOutput: string,
-  { outFile }: Options,
+  rawText: string,
+  { outFile, usePrettier }: Options,
 ): Promise<void> {
-  /** run prettier at output before write to file */
-  const prettifiedOutput = format(rawOutput, { parser: "typescript" });
+  let textToWriteToFile: string = rawText;
 
-  /** // TODO: run eslint on output */
+  if (usePrettier !== false) {
+    /** run prettier at output before write to file */
+    textToWriteToFile = format(rawText, { parser: "typescript" });
+  }
 
   /** write to file.
-   * over write if exist
+   * over-write if file exist
    */
-  promises.writeFile(outFile, prettifiedOutput, {
+  promises.writeFile(outFile, textToWriteToFile, {
     encoding: "utf8",
     flag: "w",
   });

@@ -1,10 +1,10 @@
-import type { SchemaClass, SchemaAttributes } from "../services/schema";
+import type { SchemaClass, SchemaAttribute } from "../services/schema";
 import { writeLog } from "fast-node-logger";
 import { stringifyProp, arrayifyProp, ldapBooleanToJsBoolean } from "./utils";
 
 interface MapClassAttributesFnInput {
   classObj: Partial<SchemaClass>;
-  attributes: Partial<SchemaAttributes>[];
+  attributes: Partial<SchemaAttribute>[];
 }
 
 interface AttributeFields {
@@ -26,8 +26,9 @@ export interface SchemaClassWithAttributes {
   subClassOf: string;
   /** ldap name of classes that this class inherits from */
   auxiliaryClass?: string[];
+  systemAuxiliaryClass?: string[];
   originalClassFields: Partial<SchemaClass>;
-  originalAttributes?: Partial<SchemaAttributes>[];
+  originalAttributes?: Partial<SchemaAttribute>[];
   attributes?: AttributeFields[];
 }
 
@@ -50,6 +51,13 @@ export function mapClassAttributes({
    */
   if (classObj.auxiliaryClass) {
     result.auxiliaryClass = arrayifyProp(classObj.auxiliaryClass);
+  }
+
+  /** add ldap name of systemAuxiliary classes
+   * this field will define class interface should extends(inherits) from which class
+   */
+  if (classObj.systemAuxiliaryClass) {
+    result.systemAuxiliaryClass = arrayifyProp(classObj.systemAuxiliaryClass);
   }
 
   /** place holder to keep combined

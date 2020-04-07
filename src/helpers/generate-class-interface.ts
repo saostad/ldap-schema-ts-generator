@@ -8,7 +8,7 @@ interface GenerateClassInterfaceFnInput {
 }
 
 /** Generate test of Class Interface to be written in file 
- -  // TODO: respect auxiliaryClass and systemAuxiliaryClass inheritance by extends interface 
+ -  respect auxiliaryClass and systemAuxiliaryClass inheritance by extends interface 
 * ref: 
 *  - https://docs.microsoft.com/en-us/windows/win32/ad/structural-abstract-and-auxiliary-classes
 *  - https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/06f3acb8-8cff-49e9-94ad-6737fa0a9503
@@ -22,6 +22,13 @@ export function generateClassInterface({
 
   if (data.auxiliaryClass) {
     data.auxiliaryClass.forEach((el) => {
+      /** push all auxiliary classes as parent class to make inheritance via interface extends possible */
+      parentClasses.push(el);
+    });
+  }
+
+  if (data.systemAuxiliaryClass) {
+    data.systemAuxiliaryClass.forEach((el) => {
       /** push all auxiliary classes as parent class to make inheritance via interface extends possible */
       parentClasses.push(el);
     });

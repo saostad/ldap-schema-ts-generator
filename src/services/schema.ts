@@ -4,7 +4,12 @@ import { SearchEntryObject } from "ldapjs";
 
 interface GetSchemaClassesFnInput {
   schemaDn: string;
-  logger?: Logger;
+  options: {
+    user: string;
+    pass: string;
+    ldapServerUrl: string;
+    logger?: Logger;
+  };
 }
 export interface SchemaClass
   extends Pick<SearchEntryObject, "dn" | "controls"> {
@@ -12,7 +17,8 @@ export interface SchemaClass
   cn: string;
   instanceType: string | string[];
   subClassOf: string;
-  auxiliaryClass: string | string[];
+  auxiliaryClass?: string | string[];
+  systemAuxiliaryClass?: string | string[];
   governsID: string | string[];
   rDNAttID: string | string[];
   /** string value of TRUE / FALSE */
@@ -40,17 +46,18 @@ export interface SchemaClass
   possSuperiors: string | string[];
 }
 
+export type GetSchemaClassesFnOutput = Promise<Partial<SchemaClass>[]>;
 export async function getSchemaClasses({
   schemaDn,
-  logger,
-}: GetSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
-  logger?.trace("getSchemaClasses()");
+  options,
+}: GetSchemaClassesFnInput): GetSchemaClassesFnOutput {
+  options.logger?.trace("getSchemaClasses()");
   const adClient = new AdClient({
-    bindDN: process.env.AD_USER ?? "",
-    secret: process.env.AD_Pass ?? "",
-    url: process.env.AD_URI ?? "",
+    bindDN: options.user,
+    secret: options.pass,
+    url: options.ldapServerUrl,
     baseDN: schemaDn,
-    logger,
+    logger: options.logger,
   });
 
   const objectClasses = await adClient.queryAttributes({
@@ -65,6 +72,7 @@ export async function getSchemaClasses({
         "instanceType",
         "subClassOf",
         "auxiliaryClass",
+        "systemAuxiliaryClass",
         "governsID",
         "rDNAttID",
         "showInAdvancedViewOnly",
@@ -93,9 +101,14 @@ export async function getSchemaClasses({
 
 interface GetSchemaAttributesFnInput {
   schemaDn: string;
-  logger?: Logger;
+  options: {
+    user: string;
+    pass: string;
+    ldapServerUrl: string;
+    logger?: Logger;
+  };
 }
-export interface SchemaAttributes
+export interface SchemaAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
   cn: string;
   attributeID: string;
@@ -113,17 +126,18 @@ export interface SchemaAttributes
   objectCategory: string | string[];
 }
 
+export type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
 export async function getSchemaAttributes({
-  logger,
   schemaDn,
-}: GetSchemaAttributesFnInput): Promise<Partial<SchemaAttributes>[]> {
-  logger?.trace("getSchemaAttributes()");
+  options,
+}: GetSchemaAttributesFnInput): GetSchemaAttributesFnOutput {
+  options.logger?.trace("getSchemaAttributes()");
   const adClient = new AdClient({
-    bindDN: process.env.AD_USER ?? "",
-    secret: process.env.AD_Pass ?? "",
-    url: process.env.AD_URI ?? "",
+    bindDN: options.user,
+    secret: options.pass,
+    url: options.ldapServerUrl,
     baseDN: schemaDn,
-    logger,
+    logger: options.logger,
   });
 
   const objectAttributes = await adClient.queryAttributes({

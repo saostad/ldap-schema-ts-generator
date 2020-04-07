@@ -1,56 +1,28 @@
 import { config } from "dotenv";
-import { createLogger } from "fast-node-logger";
-import { getSchemaAttributes, getSchemaClasses } from "./services/schema";
-import { mapClassAttributes } from "./helpers/map-class-attributes";
-import path from "path";
-import { generateClassInterface } from "./helpers/generate-class-interface";
-import { writeTsFile } from "./helpers/write-ts-file";
-import { pascalCase } from "pascal-case";
 config();
-
-/**
- * 1- get list of objectClass=classSchema
- * 2 get list of objectClass=attributeSchema
- * 3-1 look at mustContain, systemMustContain, mayContain, and systemMayContain
- * 3-2 map attributes with class object
- */
-
-const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
+import { createLogger } from "fast-node-logger";
+import {
+  getSchemaAttributes,
+  getSchemaClasses,
+  generateInterfaceFiles,
+} from "./index";
 
 async function main() {
   const logger = await createLogger({ level: "trace" });
 
-  const objectAttributes = await getSchemaAttributes({ schemaDn, logger });
+  const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
+  const options = {
+    user: process.env.AD_USER ?? "",
+    pass: process.env.AD_Pass ?? "",
+    ldapServerUrl: process.env.AD_URI ?? "",
+    logger,
+  };
 
-  const objectClasses = await getSchemaClasses({ schemaDn, logger });
+  const objectAttributes = await getSchemaAttributes({ schemaDn, options });
 
-  /** now we have everything we need
-   * it's time to generate typescript types:
-   * 1- create string template
-   * 2- generate type for each class
-   * 3- type-map each attribute
-   * 4-1 generate separate file for each class
-   * 4-2 maybe create a class for class object and pre-define CRUD operation like ORM
-   */
+  const objectClasses = await getSchemaClasses({ schemaDn, options });
 
-  const promises: Promise<any>[] = [];
-
-  objectClasses.forEach((classObj) => {
-    const classWithAttributes = mapClassAttributes({
-      attributes: objectAttributes,
-      classObj,
-    });
-    const rawOutput = generateClassInterface({ data: classWithAttributes });
-    const outFile = path.join(
-      process.cwd(),
-      "generated",
-      `${pascalCase(classObj.lDAPDisplayName as string)}.ts`,
-    );
-
-    promises.push(writeTsFile(rawOutput, { outFile }));
-  });
-
-  Promise.all(promises);
+  await generateInterfaceFiles({ objectAttributes, objectClasses });
 }
 main().catch((err) => {
   console.log(`File: app.ts,`, `Line: 48 => `, err);
