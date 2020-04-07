@@ -3,7 +3,7 @@ import { createLogger } from "fast-node-logger";
 import { getSchemaAttributes, getSchemaClasses } from "./services/schema";
 import { mapClassAttributes } from "./helpers/map-class-attributes";
 import path from "path";
-import { generateClassInterface } from "./helpers/generateText";
+import { generateClassInterface } from "./helpers/generate-class-interface";
 import { writeTsFile } from "./helpers/write-ts-file";
 config();
 

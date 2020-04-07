@@ -7,6 +7,8 @@ interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;
 }
 
+// TODO: add auxiliaryClass fields (https://docs.microsoft.com/en-us/windows/win32/ad/structural-abstract-and-auxiliary-classes)
+
 export function generateClassInterface({
   data,
 }: GenerateClassInterfaceFnInput): string {
