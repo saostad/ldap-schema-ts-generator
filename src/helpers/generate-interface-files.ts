@@ -5,6 +5,7 @@ import path from "path";
 import { pascalCase } from "pascal-case";
 import { writeTsFile } from "./write-ts-file";
 import { writeLog } from "fast-node-logger";
+import { defaultInterfacesDir } from "./variables";
 
 export interface GenerateInterfaceFilesFnInput {
   objectClasses: Partial<SchemaClass>[];
@@ -20,7 +21,6 @@ export interface GenerateInterfaceFilesFnInput {
 }
 
 /** generate separate file for each class
- * // TODO: create index file for output folder
  */
 export async function generateInterfaceFiles({
   objectClasses,
@@ -29,7 +29,7 @@ export async function generateInterfaceFiles({
 }: GenerateInterfaceFilesFnInput): Promise<void> {
   writeLog(`generateInterfaceFiles()`, { level: "trace" });
   /** place holder for output directory */
-  let outDir = path.join(process.cwd(), "generated");
+  let outDir = defaultInterfacesDir;
   if (options && options.outputFolder) {
     outDir = options.outputFolder;
   }
@@ -53,15 +53,16 @@ export async function generateInterfaceFiles({
     });
     const rawOutput = generateClassInterface({ data: classWithAttributes });
 
-    const outFile = path.join(
+    const filePath = path.join(
       outDir,
       `${pascalCase(classObj.lDAPDisplayName as string)}.ts`,
     );
 
-    promises.push(writeTsFile(rawOutput, { outFile, usePrettier }));
+    promises.push(writeTsFile(rawOutput, { filePath, usePrettier }));
   });
 
   await Promise.all(promises);
+  writeLog(`interfaces has been created in dir ${outDir}`, { stdout: true });
 
   /** create index file for output directory */
   if (indexFile) {
@@ -73,7 +74,7 @@ export async function generateInterfaceFiles({
       .join("")}`;
 
     await writeTsFile(indexFileContent, {
-      outFile: path.join(outDir, "index.ts"),
+      filePath: path.join(outDir, "index.ts"),
     });
   }
 }

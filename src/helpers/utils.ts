@@ -1,4 +1,7 @@
 import { writeLog } from "fast-node-logger";
+import { promisify } from "util";
+import path from "path";
+import fs from "fs";
 
 /** make sure output is string */
 export function stringifyProp(input: string | string[]): string {
@@ -39,4 +42,8 @@ export function arrayToLines(data?: string[]): string {
     throw new Error(`data input required. but provided: ${data}`);
   }
   return data.join("\n");
+}
+
+export async function dirPathExist(targetPath: string) {
+  return promisify(fs.exists)(path.dirname(targetPath));
 }

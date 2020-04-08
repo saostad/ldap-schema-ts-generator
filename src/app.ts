@@ -5,6 +5,8 @@ import {
   getSchemaAttributes,
   getSchemaClasses,
   generateInterfaceFiles,
+  generateControlsFile,
+  getSchemaControls,
 } from "./index";
 
 export async function main() {
@@ -17,6 +19,9 @@ export async function main() {
     ldapServerUrl: process.env.AD_URI ?? "",
     logger,
   };
+
+  const controls = await getSchemaControls({ options });
+  await generateControlsFile({ controls });
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
 

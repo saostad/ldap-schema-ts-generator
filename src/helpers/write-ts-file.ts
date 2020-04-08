@@ -1,15 +1,17 @@
 import { promises } from "fs";
 import { format } from "prettier";
 import { writeLog } from "fast-node-logger";
+import { dirPathExist } from "./utils";
+import path from "path";
 
 interface Options {
-  outFile: string;
+  filePath: string;
   usePrettier?: boolean;
 }
 
 export async function writeTsFile(
   rawText: string,
-  { outFile, usePrettier }: Options,
+  { filePath, usePrettier }: Options,
 ): Promise<void> {
   writeLog(`writeTsFile()`, { level: "trace" });
   let textToWriteToFile: string = rawText;
@@ -19,10 +21,20 @@ export async function writeTsFile(
     textToWriteToFile = format(rawText, { parser: "typescript" });
   }
 
+  /** make sure target directory exist */
+  const isExist = await dirPathExist(filePath);
+  if (!isExist) {
+    throw new Error(
+      `destination folder ${path.dirname(
+        filePath,
+      )} not exist. please create it first.`,
+    );
+  }
+
   /** write to file.
    * over-write if file exist
    */
-  promises.writeFile(outFile, textToWriteToFile, {
+  promises.writeFile(filePath, textToWriteToFile, {
     encoding: "utf8",
     flag: "w",
   });
