@@ -1,0 +1,36 @@
+import { Logger } from "../typings/general/types";
+import { AdClient } from "node-ad-ldap";
+
+interface GetSchemaCapabilitiesFnInput {
+  options: {
+    user: string;
+    pass: string;
+    ldapServerUrl: string;
+    logger?: Logger;
+  };
+}
+
+export type GetSchemaCapabilitiesFnOutput = Promise<string[]>;
+
+export async function getSchemaCapabilities({
+  options,
+}: GetSchemaCapabilitiesFnInput): GetSchemaCapabilitiesFnOutput {
+  options.logger?.trace("getSchemaCapabilities()");
+  const adClient = new AdClient({
+    bindDN: options.user,
+    secret: options.pass,
+    url: options.ldapServerUrl,
+    baseDN: "",
+    logger: options.logger,
+  });
+
+  const data = await adClient.queryAttributes({
+    options: {
+      filter: "&(objectClass=*)",
+      scope: "base",
+      attributes: ["supportedCapabilities"],
+    },
+  });
+  adClient.unbind();
+  return data[0].supportedCapabilities as string[];
+}

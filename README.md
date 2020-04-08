@@ -141,6 +141,10 @@ options?: {
 
 - [ ] handle relations (forwardLink/BackLink) via linkID field
 - [ ] change relation filed type from object to something more relevant
+- [ ] generate ldap controls supported by server
+- [ ] generate ldap capabilities supported by server
+- [ ] generate ldap extensions supported by server
+- [ ] generate ldap policies supported by server
 
 ### Know Issues
 

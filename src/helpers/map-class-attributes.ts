@@ -1,4 +1,4 @@
-import type { SchemaClass, SchemaAttribute } from "../services/schema";
+import type { SchemaClass, SchemaAttribute } from "../services";
 import { writeLog } from "fast-node-logger";
 import { stringifyProp, arrayifyProp, ldapBooleanToJsBoolean } from "./utils";
 

@@ -1,4 +1,4 @@
-import { SchemaClass, SchemaAttribute } from "../services/schema";
+import { SchemaClass, SchemaAttribute } from "../services";
 import { mapClassAttributes } from "./map-class-attributes";
 import { generateClassInterface } from "./generate-class-interface";
 import path from "path";

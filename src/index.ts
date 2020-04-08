@@ -1,4 +1,5 @@
-import { getSchemaAttributes, getSchemaClasses } from "./services/schema";
+export * from "./services";
+
 import { generateInterfaceFiles } from "./helpers/generate-interface-files";
 
-export { getSchemaAttributes, getSchemaClasses, generateInterfaceFiles };
+export { generateInterfaceFiles };
