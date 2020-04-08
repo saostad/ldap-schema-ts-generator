@@ -4,6 +4,7 @@ import { generateClassInterface } from "./generate-class-interface";
 import path from "path";
 import { pascalCase } from "pascal-case";
 import { writeTsFile } from "./write-ts-file";
+import { writeLog } from "fast-node-logger";
 
 export interface GenerateInterfaceFilesFnInput {
   objectClasses: Partial<SchemaClass>[];
@@ -26,6 +27,7 @@ export async function generateInterfaceFiles({
   objectAttributes,
   options,
 }: GenerateInterfaceFilesFnInput): Promise<void> {
+  writeLog(`generateInterfaceFiles()`, { level: "trace" });
   /** place holder for output directory */
   let outDir = path.join(process.cwd(), "generated");
   if (options && options.outputFolder) {

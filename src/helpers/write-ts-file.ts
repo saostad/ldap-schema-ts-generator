@@ -1,5 +1,6 @@
 import { promises } from "fs";
 import { format } from "prettier";
+import { writeLog } from "fast-node-logger";
 
 interface Options {
   outFile: string;
@@ -10,6 +11,7 @@ export async function writeTsFile(
   rawText: string,
   { outFile, usePrettier }: Options,
 ): Promise<void> {
+  writeLog(`writeTsFile()`, { level: "trace" });
   let textToWriteToFile: string = rawText;
 
   if (usePrettier !== false) {

@@ -2,7 +2,7 @@ import { writeLog } from "fast-node-logger";
 
 /** make sure output is string */
 export function stringifyProp(input: string | string[]): string {
-  writeLog(`stringifyProp()`);
+  writeLog(`stringifyProp()`, { level: "trace" });
   if (!input) {
     throw new Error(`Field required to stringify! but provided: ${input} `);
   }
@@ -14,7 +14,7 @@ export function stringifyProp(input: string | string[]): string {
 
 /** make sure output is array of strings */
 export function arrayifyProp(input: string | string[]): string[] {
-  writeLog(`arrayifyProp()`);
+  writeLog(`arrayifyProp()`, { level: "trace" });
   if (!input) {
     throw new Error(`Field required to arrayify`);
   }
@@ -25,6 +25,7 @@ export function arrayifyProp(input: string | string[]): string[] {
 }
 
 export function ldapBooleanToJsBoolean(input: string): boolean {
+  writeLog(`ldapBooleanToJsBoolean()`, { level: "trace" });
   if (input === "TRUE") {
     return true;
   }
@@ -33,6 +34,7 @@ export function ldapBooleanToJsBoolean(input: string): boolean {
 
 /** convert array of strings to one string and add line break between each */
 export function arrayToLines(data?: string[]): string {
+  writeLog(`arrayToLines()`, { level: "trace" });
   if (!data) {
     throw new Error(`data input required. but provided: ${data}`);
   }

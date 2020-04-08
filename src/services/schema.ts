@@ -46,7 +46,9 @@ export interface SchemaClass
   possSuperiors: string | string[];
 }
 
+// TODO: remove Partial after we make sure we know which fields are always available
 export type GetSchemaClassesFnOutput = Promise<Partial<SchemaClass>[]>;
+
 export async function getSchemaClasses({
   schemaDn,
   options,
@@ -126,7 +128,9 @@ export interface SchemaAttribute
   objectCategory: string | string[];
 }
 
+// TODO: remove Partial after we make sure we know which fields are always available
 export type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
+
 export async function getSchemaAttributes({
   schemaDn,
   options,

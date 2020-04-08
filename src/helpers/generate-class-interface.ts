@@ -2,6 +2,7 @@ import { SchemaClassWithAttributes } from "./map-class-attributes";
 import { typeMapper } from "./type-map";
 import { pascalCase } from "pascal-case";
 import { arrayToLines } from "./utils";
+import { writeLog } from "fast-node-logger";
 
 interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;
@@ -18,6 +19,7 @@ interface GenerateClassInterfaceFnInput {
 export function generateClassInterface({
   data,
 }: GenerateClassInterfaceFnInput): string {
+  writeLog(`generateClassInterface()`, { level: "trace" });
   const parentClasses: string[] = [data.subClassOf];
 
   if (data.auxiliaryClass) {

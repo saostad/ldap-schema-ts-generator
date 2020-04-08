@@ -36,7 +36,7 @@ export function mapClassAttributes({
   classObj,
   attributes,
 }: MapClassAttributesFnInput): SchemaClassWithAttributes {
-  writeLog(`mapClassAttributes()`);
+  writeLog(`mapClassAttributes()`, { level: "trace" });
   const result: SchemaClassWithAttributes = {
     className: stringifyProp(classObj.name as string),
     ldapName: stringifyProp(classObj.lDAPDisplayName as string),
