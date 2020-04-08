@@ -7,7 +7,7 @@ import {
   generateInterfaceFiles,
 } from "./index";
 
-async function main() {
+export async function main() {
   const logger = await createLogger({ level: "trace" });
 
   const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";

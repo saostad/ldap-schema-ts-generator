@@ -1,0 +1,9 @@
+{
+  "inputFiles": ["./src/index.ts"],
+  "tsconfig": "./tsconfig.json",
+  "mode": "file",
+  "out": "docs",
+  "entryPoint": "index",
+  "exclude": "**/*+(test|.spec|.e2e).ts",
+  "readme": "./README.md"
+}
