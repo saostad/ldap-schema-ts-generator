@@ -33,6 +33,20 @@ main().catch((err) => {
 });
 ```
 
+### Options:
+
+```ts
+options?: {
+    /** default generated folder of root directory of you project */
+    outputFolder?: string;
+    /** use prettier to format generated files. default true */
+    usePrettier?: boolean;
+    /** create index file for output folder. default true */
+    indexFile: boolean;
+  };
+
+```
+
 ### Result
 
 creates typescript interface for each LDAP class that exist in schema
@@ -123,29 +137,28 @@ export interface Container extends Top, MsExchBaseClass {
 }
 ```
 
-### Options:
-
-```ts
-options?: {
-    /** default generated folder of root directory of you project */
-    outputFolder?: string;
-    /** use prettier to format generated files. default true */
-    usePrettier?: boolean;
-    /** create index file for output folder. default true */
-    indexFile: boolean;
-  };
-
-```
-
 ### TODO:
 
 - [ ] handle relations (forwardLink/BackLink) via linkID field
 - [ ] change relation filed type from object to something more relevant
-- [ ] generate ldap controls supported by server
-- [ ] generate ldap capabilities supported by server
-- [ ] generate ldap extensions supported by server
-- [ ] generate ldap policies supported by server
+- [x] generate ldap controls supported by server
+- [x] generate ldap capabilities supported by server
+- [x] generate ldap extensions supported by server
+- [x] generate ldap policies supported by server
 
 ### Know Issues
 
 - when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning
+
+### Credit
+
+- OID info source: https://ldap.com/ldap-oid-reference-guide/
+- Policies info source: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3f0137a1-63df-400c-bf97-e1040f055a99
+- Capabilities info source: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3ed61e6c-cfdc-487d-9f02-5a3397be3772
+- Websites that helped me to understand ldap protocol better:
+  - https://ldapwiki.com/wiki/LDAP
+  - https://www.oreilly.com/library/view/active-directory-4th/
+  - https://blog.stealthbits.com/a-guide-to-active-directory-linked-attributes/
+  - https://www.neroblanco.co.uk/2015/07/links-and-backlinks-in-active-directory-for-exchange/
+  - https://docs.oracle.com/cd/E19957-01/817-6707/controls.html
+  - https://blog.kloud.com.au/2016/09/26/active-directory-what-are-linked-attributes/

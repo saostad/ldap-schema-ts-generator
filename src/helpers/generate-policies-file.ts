@@ -1,12 +1,12 @@
-import { OID } from "../typings/general/types";
 import { getLdapOids } from "./ldap-oid";
 import { writeTsFile } from "./write-ts-file";
 import { defaultEnumsDir } from "./variables";
 import path from "path";
 import { writeLog } from "fast-node-logger";
+import { getLdapPolicies } from "./ldap-policy";
 
-interface GenerateExtensionsFileFnInput {
-  extensions: OID[];
+interface GeneratePoliciesFileFnInput {
+  policies: string[];
   options?: {
     /** output directory of file.
      *  - Note: at this point file name hard coded to 'SchemaExtensions.ts' to prevent conflict with other generated files
@@ -17,33 +17,35 @@ interface GenerateExtensionsFileFnInput {
   };
 }
 
-export async function generateExtensionsFile({
-  extensions,
+export async function generatePoliciesFile({
+  policies,
   options,
-}: GenerateExtensionsFileFnInput): Promise<void> {
-  const allOids = await getLdapOids({ useCache: true });
+}: GeneratePoliciesFileFnInput): Promise<void> {
+  const allPolicies = await getLdapPolicies({ useCache: true });
 
-  const oids = extensions.map((el) => {
-    const oidItem = allOids.find((oid) => oid.OID === el);
+  const policiesWithMeta = policies.map((el) => {
+    const policyItem = allPolicies.find(
+      (policy) => policy["Policy name"] === el,
+    );
     return {
-      oid: el,
-      purpose: oidItem?.Purpose,
-      source: oidItem?.Source,
+      policy: el,
+      description: policyItem?.Description,
+      defaultValue: policyItem?.["Default value"],
     };
   });
 
   const textToWriteToFile = `
     /**
-    * Enum for schema extensions
+    * Enum for schema policy
     */
-    export enum SchemaExtensions {
-    ${oids
+    export enum SchemaPolicies {
+    ${policiesWithMeta
       .map(
         (el) => `
     /** 
-     * - Purpose: ${el.purpose} 
-     * - Source: ${el.source} */
-    "${el.oid}"= "${el.oid}",
+     * - Default: ${el.defaultValue} 
+     * - Description: ${el.description} */
+    "${el.policy}"= "${el.policy}",
     `,
       )
       .join("")}
@@ -56,13 +58,13 @@ export async function generateExtensionsFile({
   if (options && options.usePrettier) {
     usePrettier = options.usePrettier;
   }
-  const filePath = path.join(outDir, "SchemaExtensions.ts");
+  const filePath = path.join(outDir, "SchemaPolicies.ts");
 
   await writeTsFile(textToWriteToFile, {
     filePath,
     usePrettier,
   });
-  writeLog(`SchemaExtensions has been created in ${filePath}`, {
+  writeLog(`SchemaPolicies has been created in ${filePath}`, {
     stdout: true,
   });
 }

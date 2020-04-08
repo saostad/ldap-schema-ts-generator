@@ -94,6 +94,18 @@
 main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
   <span class="hljs-built_in">console</span>.log(err);
 });</code></pre>
+				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
+					<h3>Options:</h3>
+				</a>
+				<pre><code class="language-ts">options?: {
+    <span class="hljs-comment">/** default generated folder of root directory of you project */</span>
+    outputFolder?: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/** use prettier to format generated files. default true */</span>
+    usePrettier?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/** create index file for output folder. default true */</span>
+    indexFile: <span class="hljs-built_in">boolean</span>;
+  };
+</code></pre>
 				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
 					<h3>Result</h3>
 				</a>
@@ -182,34 +194,39 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
    */</span>
   readonly defaultClassStore?: object[];
 }</code></pre>
-				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
-					<h3>Options:</h3>
-				</a>
-				<pre><code class="language-ts">options?: {
-    <span class="hljs-comment">/** default generated folder of root directory of you project */</span>
-    outputFolder?: <span class="hljs-built_in">string</span>;
-    <span class="hljs-comment">/** use prettier to format generated files. default true */</span>
-    usePrettier?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/** create index file for output folder. default true */</span>
-    indexFile: <span class="hljs-built_in">boolean</span>;
-  };
-</code></pre>
 				<a href="#todo" id="todo" style="color: inherit; text-decoration: none;">
 					<h3>TODO:</h3>
 				</a>
 				<ul>
 					<li><input disabled="" type="checkbox"> handle relations (forwardLink/BackLink) via linkID field</li>
 					<li><input disabled="" type="checkbox"> change relation filed type from object to something more relevant</li>
-					<li><input disabled="" type="checkbox"> generate ldap controls supported by server</li>
-					<li><input disabled="" type="checkbox"> generate ldap capabilities supported by server</li>
-					<li><input disabled="" type="checkbox"> generate ldap extensions supported by server</li>
-					<li><input disabled="" type="checkbox"> generate ldap policies supported by server</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap controls supported by server</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap capabilities supported by server</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap extensions supported by server</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap policies supported by server</li>
 				</ul>
 				<a href="#know-issues" id="know-issues" style="color: inherit; text-decoration: none;">
 					<h3>Know Issues</h3>
 				</a>
 				<ul>
 					<li>when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning</li>
+				</ul>
+				<a href="#credit" id="credit" style="color: inherit; text-decoration: none;">
+					<h3>Credit</h3>
+				</a>
+				<ul>
+					<li>OID info source: <a href="https://ldap.com/ldap-oid-reference-guide/">https://ldap.com/ldap-oid-reference-guide/</a></li>
+					<li>Policies info source: <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3f0137a1-63df-400c-bf97-e1040f055a99">https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3f0137a1-63df-400c-bf97-e1040f055a99</a></li>
+					<li>Capabilities info source: <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3ed61e6c-cfdc-487d-9f02-5a3397be3772">https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3ed61e6c-cfdc-487d-9f02-5a3397be3772</a></li>
+					<li>Websites that helped me to understand ldap protocol better:<ul>
+							<li><a href="https://ldapwiki.com/wiki/LDAP">https://ldapwiki.com/wiki/LDAP</a></li>
+							<li><a href="https://www.oreilly.com/library/view/active-directory-4th/">https://www.oreilly.com/library/view/active-directory-4th/</a></li>
+							<li><a href="https://blog.stealthbits.com/a-guide-to-active-directory-linked-attributes/">https://blog.stealthbits.com/a-guide-to-active-directory-linked-attributes/</a></li>
+							<li><a href="https://www.neroblanco.co.uk/2015/07/links-and-backlinks-in-active-directory-for-exchange/">https://www.neroblanco.co.uk/2015/07/links-and-backlinks-in-active-directory-for-exchange/</a></li>
+							<li><a href="https://docs.oracle.com/cd/E19957-01/817-6707/controls.html">https://docs.oracle.com/cd/E19957-01/817-6707/controls.html</a></li>
+							<li><a href="https://blog.kloud.com.au/2016/09/26/active-directory-what-are-linked-attributes/">https://blog.kloud.com.au/2016/09/26/active-directory-what-are-linked-attributes/</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -227,10 +244,25 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 						<a href="interfaces/attributefields.html" class="tsd-kind-icon">Attribute<wbr>Fields</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/generatecapabilitiesfilefninput.html" class="tsd-kind-icon">Generate<wbr>Capabilities<wbr>File<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/generateclassinterfacefninput.html" class="tsd-kind-icon">Generate<wbr>Class<wbr>Interface<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/generatecontrolsfilefninput.html" class="tsd-kind-icon">Generate<wbr>Controls<wbr>File<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/generateextensionsfilefninput.html" class="tsd-kind-icon">Generate<wbr>Extensions<wbr>File<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/generateinterfacefilesfninput.html" class="tsd-kind-icon">Generate<wbr>Interface<wbr>Files<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/generatepoliciesfilefninput.html" class="tsd-kind-icon">Generate<wbr>Policies<wbr>File<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getlapoidsfninput.html" class="tsd-kind-icon">Get<wbr>Lap<wbr>Oids<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
@@ -248,10 +280,19 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 						<a href="interfaces/getschemaextensionsfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Extensions<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/getschemapoliciesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/mapclassattributesfninput.html" class="tsd-kind-icon">Map<wbr>Class<wbr>Attributes<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/oidinfo.html" class="tsd-kind-icon">OIDInfo</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/options.html" class="tsd-kind-icon">Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/policyinfo.html" class="tsd-kind-icon">Policy<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/schemaattribute.html" class="tsd-kind-icon">Schema<wbr>Attribute</a>
@@ -278,7 +319,22 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 						<a href="globals.html#getschemaextensionsfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Extensions<wbr>FnOutput</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#getschemapoliciesfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnOutput</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#logger" class="tsd-kind-icon">Logger</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#oid" class="tsd-kind-icon">OID</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#defaultenumsdir" class="tsd-kind-icon">default<wbr>Enums<wbr>Dir</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#defaultinterfacesdir" class="tsd-kind-icon">default<wbr>Interfaces<wbr>Dir</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#defaultoutdir" class="tsd-kind-icon">default<wbr>Out<wbr>Dir</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#arraytolines" class="tsd-kind-icon">array<wbr>ToLines</a>
@@ -287,10 +343,31 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 						<a href="globals.html#arrayifyprop" class="tsd-kind-icon">arrayify<wbr>Prop</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#dirpathexist" class="tsd-kind-icon">dir<wbr>Path<wbr>Exist</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#generatecapabilitiesfile" class="tsd-kind-icon">generate<wbr>Capabilities<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#generateclassinterface" class="tsd-kind-icon">generate<wbr>Class<wbr>Interface</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#generatecontrolsfile" class="tsd-kind-icon">generate<wbr>Controls<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#generateextensionsfile" class="tsd-kind-icon">generate<wbr>Extensions<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#generateinterfacefiles" class="tsd-kind-icon">generate<wbr>Interface<wbr>Files</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#generatepoliciesfile" class="tsd-kind-icon">generate<wbr>Policies<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getldapoids" class="tsd-kind-icon">get<wbr>Ldap<wbr>Oids</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getldappolicies" class="tsd-kind-icon">get<wbr>Ldap<wbr>Policies</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getschemaattributes" class="tsd-kind-icon">get<wbr>Schema<wbr>Attributes</a>
@@ -306,6 +383,9 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getschemaextensions" class="tsd-kind-icon">get<wbr>Schema<wbr>Extensions</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getschemapolicies" class="tsd-kind-icon">get<wbr>Schema<wbr>Policies</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#ldapbooleantojsboolean" class="tsd-kind-icon">ldap<wbr>Boolean<wbr>ToJs<wbr>Boolean</a>

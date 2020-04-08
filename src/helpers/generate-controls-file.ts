@@ -1,5 +1,5 @@
 import { OID } from "../typings/general/types";
-import { getLapOids } from "./ldap-oid";
+import { getLdapOids } from "./ldap-oid";
 import { writeTsFile } from "./write-ts-file";
 import { defaultEnumsDir } from "./variables";
 import path from "path";
@@ -21,7 +21,7 @@ export async function generateControlsFile({
   controls,
   options,
 }: GenerateControlsFileFnInput): Promise<void> {
-  const allOids = await getLapOids({ useCache: true });
+  const allOids = await getLdapOids({ useCache: true });
 
   const oids = controls.map((el) => {
     const oidItem = allOids.find((oid) => oid.OID === el);
@@ -40,7 +40,9 @@ export async function generateControlsFile({
     ${oids
       .map(
         (el) => `
-    /** Purpose: ${el.purpose} - Source: ${el.source} */
+    /** 
+     * - Purpose: ${el.purpose} 
+     * - Source: ${el.source} */
     "${el.oid}"= "${el.oid}",
     `,
       )

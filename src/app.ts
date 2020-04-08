@@ -7,10 +7,19 @@ import {
   generateInterfaceFiles,
   generateControlsFile,
   getSchemaControls,
+  getSchemaCapabilities,
+  generateCapabilitiesFile,
+  getSchemaExtensions,
+  generateExtensionsFile,
+  generatePoliciesFile,
 } from "./index";
+import { getSchemaPolicies } from "./services";
 
 export async function main() {
-  const logger = await createLogger({ level: "trace" });
+  const logger = await createLogger({
+    level: "trace",
+    prettyPrint: { colorize: true },
+  });
 
   const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
   const options = {
@@ -22,6 +31,15 @@ export async function main() {
 
   const controls = await getSchemaControls({ options });
   await generateControlsFile({ controls });
+
+  const extensions = await getSchemaExtensions({ options });
+  await generateExtensionsFile({ extensions });
+
+  const capabilities = await getSchemaCapabilities({ options });
+  await generateCapabilitiesFile({ capabilities });
+
+  const policies = await getSchemaPolicies({ options });
+  await generatePoliciesFile({ policies });
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
 

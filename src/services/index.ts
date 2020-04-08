@@ -3,3 +3,4 @@ export * from "./capability";
 export * from "./class";
 export * from "./control";
 export * from "./extension";
+export * from "./policy";

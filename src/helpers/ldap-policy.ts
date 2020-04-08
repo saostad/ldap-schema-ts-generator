@@ -5,25 +5,25 @@ interface GetLapOidsFnInput {
   useCache: boolean;
 }
 
-interface OIDInfo {
-  OID: string;
-  Purpose: string;
-  Source: string;
+interface PolicyInfo {
+  "Policy name": string;
+  "Default value": string;
+  Description: string;
 }
 
-export async function getLdapOids({
+export async function getLdapPolicies({
   useCache,
-}: GetLapOidsFnInput): Promise<OIDInfo[]> {
+}: GetLapOidsFnInput): Promise<PolicyInfo[]> {
   const cacheLocation = path.join(
     __dirname,
     "..",
     "..",
     "cache",
-    "ldap-oids.json",
+    "ldap-policies.json",
   );
   if (useCache) {
-    const oids = await promises.readFile(cacheLocation, "utf8");
-    return JSON.parse(oids);
+    const policies = await promises.readFile(cacheLocation, "utf8");
+    return JSON.parse(policies);
   } else {
     // TODO: getting oids from internet
     throw new Error("getting oids from internet not implemented");
