@@ -37,72 +37,89 @@ main().catch((err) => {
 
 creates typescript interface for each LDAP class that exist in schema
 
-### Sample:
+### Sample Generated File:
 
 ```ts Account.ts
 import { Top } from "./Top";
+import { MsExchBaseClass } from "./MsExchBaseClass";
 
-/**  - object class: account
+/**  - object class: container
  *  - child of class: top
- *  - dn: CN=account,CN=Schema,CN=Configuration,DC=ki,DC=local
+ *  - dn: CN=Container,CN=Schema,CN=Configuration,DC=ki,DC=local
  */
 
-export interface Account extends Top {
+export interface Container extends Top, MsExchBaseClass {
   /**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 0.9.2342.19200300.100.1.1
-   *   - adminDisplayName: uid
-   *   - adminDescription: A user ID.
-   *   - dn: CN=uid,CN=Schema,CN=Configuration,DC=ki,DC=local
+   *   - attributeID: 2.5.4.3
+   *   - adminDisplayName: Common-Name
+   *   - adminDescription: Common-Name
+   *   - dn: CN=Common-Name,CN=Schema,CN=Configuration,DC=ki,DC=local
    */
-  uid?: string[];
+  readonly cn: string;
 
   /**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 0.9.2342.19200300.100.1.9
-   *   - adminDisplayName: host
-   *   - adminDescription: The host attribute type specifies a host computer.
-   *   - dn: CN=host,CN=Schema,CN=Configuration,DC=ki,DC=local
+   *   - attributeID: 1.2.840.113556.1.2.508
+   *   - adminDisplayName: ms-Exch-X500-RDN
+   *   - adminDescription: ms-Exch-X500-RDN
+   *   - dn: CN=ms-Exch-X500-RDN,CN=Schema,CN=Configuration,DC=ki,DC=local
    */
-  host?: string[];
+  x500RDN?: string;
 
-  /**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 2.5.4.11
-   *   - adminDisplayName: Organizational-Unit-Name
-   *   - adminDescription: Organizational-Unit-Name
-   *   - dn: CN=Organizational-Unit-Name,CN=Schema,CN=Configuration,DC=ki,DC=local
+  /**  - attributeSyntax: 2.5.5.4
+   *   - attributeID: 1.2.840.113556.1.4.7000.102.65
+   *   - adminDisplayName: ms-Exch-Template-RDNs
+   *   - adminDescription: ms-Exch-Template-RDNs
+   *   - dn: CN=ms-Exch-Template-RDNs,CN=Schema,CN=Configuration,DC=ki,DC=local
    */
-  ou?: string[];
-
-  /**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 2.5.4.10
-   *   - adminDisplayName: Organization-Name
-   *   - adminDescription: Organization-Name
-   *   - dn: CN=Organization-Name,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */
-  o?: string[];
-
-  /**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 2.5.4.7
-   *   - adminDisplayName: Locality-Name
-   *   - adminDescription: Locality-Name
-   *   - dn: CN=Locality-Name,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */
-  l?: string;
+  msExchTemplateRDNs?: string[];
 
   /**  - attributeSyntax: 2.5.5.1
-   *   - attributeID: 2.5.4.34
-   *   - adminDisplayName: See-Also
-   *   - adminDescription: See-Also
-   *   - dn: CN=See-Also,CN=Schema,CN=Configuration,DC=ki,DC=local
+   *   - attributeID: 1.2.840.113556.1.4.7000.102.50004
+   *   - adminDisplayName: ms-Exch-Policy-List
+   *   - adminDescription: ms-Exch-Policy-List
+   *   - dn: CN=ms-Exch-Policy-List,CN=Schema,CN=Configuration,DC=ki,DC=local
    */
-  seeAlso?: object[];
+  msExchPolicyList?: object[];
 
-  /**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 2.5.4.13
-   *   - adminDisplayName: Description
-   *   - adminDescription: Description
-   *   - dn: CN=Description,CN=Schema,CN=Configuration,DC=ki,DC=local
+  /**  - attributeSyntax: 2.5.5.9
+   *   - attributeID: 1.2.840.113556.1.2.296
+   *   - adminDisplayName: ms-Exch-Container-Info
+   *   - adminDescription: ms-Exch-Container-Info
+   *   - dn: CN=ms-Exch-Container-Info,CN=Schema,CN=Configuration,DC=ki,DC=local
    */
-  description?: string[];
+  containerInfo?: number;
+
+  /**  - attributeSyntax: 2.5.5.1
+   *   - attributeID: 1.2.840.113556.1.4.7000.102.1027
+   *   - adminDisplayName: ms-Exch-Export-Containers-BL
+   *   - adminDescription: ms-Exch-Export-Containers-BL
+   *   - dn: CN=ms-Exch-Export-Containers-BL,CN=Schema,CN=Configuration,DC=ki,DC=local
+   */
+  msExchExportContainersBL?: object;
+
+  /**  - attributeSyntax: 2.5.5.1
+   *   - attributeID: 1.2.840.113556.1.4.1840
+   *   - adminDisplayName: ms-DS-Object-Reference
+   *   - adminDescription: A link to the object that uses the data stored in the object that contains this attribute.
+   *   - dn: CN=ms-DS-Object-Reference,CN=Schema,CN=Configuration,DC=ki,DC=local
+   */
+  "msDS-ObjectReference"?: object[];
+
+  /**  - attributeSyntax: 2.5.5.9
+   *   - attributeID: 1.2.840.113556.1.2.471
+   *   - adminDisplayName: Schema-Version
+   *   - adminDescription: Schema-Version
+   *   - dn: CN=Schema-Version,CN=Schema,CN=Configuration,DC=ki,DC=local
+   */
+  readonly schemaVersion?: number[];
+
+  /**  - attributeSyntax: 2.5.5.1
+   *   - attributeID: 1.2.840.113556.1.4.213
+   *   - adminDisplayName: Default-Class-Store
+   *   - adminDescription: Default-Class-Store
+   *   - dn: CN=Default-Class-Store,CN=Schema,CN=Configuration,DC=ki,DC=local
+   */
+  readonly defaultClassStore?: object[];
 }
 ```
 
@@ -119,3 +136,12 @@ options?: {
   };
 
 ```
+
+### TODO:
+
+- [ ] handle relations (forwardLink/BackLink) via linkID field
+- [ ] change relation filed type from object to something more relevant
+
+### Know Issues
+
+- when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning
