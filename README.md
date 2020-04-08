@@ -2,19 +2,23 @@
 
 ### How to use
 
+```
+npm i ldap-schema-ts-generator
+```
+
 ```ts
 import {
   getSchemaAttributes,
   getSchemaClasses,
   generateInterfaceFiles,
-} from "./index";
+} from "ldap-schema-ts-generator";
 
 async function main() {
-  const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
+  const schemaDn = "CN=Schema,CN=Configuration,DC=domain,DC=com";
   const options = {
-    user: process.env.AD_USER ?? "",
-    pass: process.env.AD_Pass ?? "",
-    ldapServerUrl: process.env.AD_URI ?? "",
+    user: "**********",
+    pass: "************",
+    ldapServerUrl: "ldap://domain.com",
   };
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
@@ -23,6 +27,7 @@ async function main() {
 
   await generateInterfaceFiles({ objectAttributes, objectClasses });
 }
+
 main().catch((err) => {
   console.log(err);
 });
