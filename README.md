@@ -47,6 +47,10 @@ options?: {
 
 ```
 
+### API
+
+use [api website](https://saostad.github.io/ldap-schema-ts-generator/) for more details
+
 ### Result
 
 creates typescript interface for each LDAP class that exist in schema
