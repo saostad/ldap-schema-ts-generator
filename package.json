@@ -1,7 +1,7 @@
 {
   "name": "ldap-schema-ts-generator",
-  "version": "1.1.3",
-  "description": "Ldap Active Directory Schema Typescript Interface Generator",
+  "version": "1.1.4",
+  "description": "Typescript typedef generator from Ldap Schema. It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.",
   "repository": {
     "type": "git",
     "url": "https://github.com/saostad/ldap-schema-ts-generator.git"

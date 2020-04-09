@@ -1,4 +1,6 @@
-# Ldap Active Directory Schema Typescript Generator
+# Typescript typedef generator for LDAP Schema
+
+It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.
 
 ### How to use
 
