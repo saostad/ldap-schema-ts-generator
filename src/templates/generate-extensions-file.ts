@@ -1,15 +1,15 @@
 import { OID } from "../typings/general/types";
-import { getLdapOids } from "./ldap-oid";
-import { writeTsFile } from "./write-ts-file";
-import { defaultEnumsDir } from "./variables";
 import path from "path";
 import { writeLog } from "fast-node-logger";
+import { getLdapOids } from "../services/ldap-oid";
+import { defaultEnumsDir } from "../helpers/variables";
+import { writeTsFile } from "../helpers/write-ts-file";
 
-interface GenerateCapabilitiesFileFnInput {
-  capabilities: OID[];
+interface GenerateExtensionsFileFnInput {
+  extensions: OID[];
   options?: {
     /** output directory of file.
-     *  - Note: at this point file name hard coded to 'SchemaCapabilities.ts' to prevent conflict with other generated files
+     *  - Note: at this point file name hard coded to 'SchemaExtensions.ts' to prevent conflict with other generated files
      */
     outDir?: string;
     /** default true */
@@ -17,13 +17,14 @@ interface GenerateCapabilitiesFileFnInput {
   };
 }
 
-export async function generateCapabilitiesFile({
-  capabilities,
+export async function generateExtensionsFile({
+  extensions,
   options,
-}: GenerateCapabilitiesFileFnInput): Promise<void> {
+}: GenerateExtensionsFileFnInput): Promise<void> {
+  writeLog(`generateExtensionsFile()`, { level: "trace" });
   const allOids = await getLdapOids({ useCache: true });
 
-  const oids = capabilities.map((el) => {
+  const oids = extensions.map((el) => {
     const oidItem = allOids.find((oid) => oid.OID === el);
     return {
       oid: el,
@@ -34,9 +35,9 @@ export async function generateCapabilitiesFile({
 
   const textToWriteToFile = `
     /**
-    * Enum for schema capabilities
+    * Enum for schema extensions
     */
-    export enum SchemaCapabilities {
+    export enum SchemaExtensions {
     ${oids
       .map(
         (el) => `
@@ -56,13 +57,13 @@ export async function generateCapabilitiesFile({
   if (options && options.usePrettier) {
     usePrettier = options.usePrettier;
   }
-  const filePath = path.join(outDir, "SchemaCapabilities.ts");
+  const filePath = path.join(outDir, "SchemaExtensions.ts");
 
   await writeTsFile(textToWriteToFile, {
     filePath,
     usePrettier,
   });
-  writeLog(`SchemaCapabilities has been created in ${filePath}`, {
+  writeLog(`SchemaExtensions has been created in ${filePath}`, {
     stdout: true,
   });
 }

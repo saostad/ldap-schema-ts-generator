@@ -10,7 +10,9 @@ interface GetSchemaControlsFnInput {
   };
 }
 
-/** get schema controls from RootDSE */
+/** get schema controls from RootDSE
+ * - A multiple-valued attribute that contains the OIDs for extension controls supported by this directory server. See the table below for a list of the possible control OIDs.
+ */
 type GetSchemaControlsFnOutput = Promise<string[]>;
 
 export async function getSchemaControls({

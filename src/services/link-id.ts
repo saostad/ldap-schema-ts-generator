@@ -11,32 +11,33 @@ interface GetSchemaAttributesFnInput {
     logger?: Logger;
   };
 }
-export interface SchemaAttribute
+export interface SchemaLinkAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
   cn: string;
   attributeID: string;
   attributeSyntax: string;
   /** string value of TRUE / FALSE */
   isSingleValued: string;
-  /** string value of TRUE / FALSE */
-  showInAdvancedViewOnly: string;
   adminDisplayName: string;
   adminDescription: string;
-  oMSyntax: string | string[];
   lDAPDisplayName: string;
   systemOnly: string;
-  systemFlags: string | string[];
-  objectCategory: string | string[];
+  /** Defines Relation between attributes
+   * - Even Attribute Value are forward links
+   * - Odd Attribute Value are BackLinks equals to the LinkID of the corresponding forward link LinkID plus one.
+   * - Attribute Value of 0 or not present implies it is NOT a Linked Attribute
+   */
+  linkID: number;
 }
 
-// TODO: remove Partial after we make sure we know which fields are always available
-type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
-/** get defined an attribute objects in the schema. */
-export async function getSchemaAttributes({
+/** get Attributes defined in schema which has linkID
+ * - LinkID is a Number specified in AttributeSchema for Microsoft Active Directory which indicated a Linked Attribute
+ */
+export async function getLinkIds({
   schemaDn,
   options,
-}: GetSchemaAttributesFnInput): GetSchemaAttributesFnOutput {
-  options.logger?.trace("getSchemaAttributes()");
+}: GetSchemaAttributesFnInput): Promise<SchemaLinkAttribute[]> {
+  options.logger?.trace("getLinkIds()");
   const adClient = new AdClient({
     bindDN: options.user,
     secret: options.pass,
@@ -49,24 +50,21 @@ export async function getSchemaAttributes({
     options: {
       sizeLimit: 200,
       paged: true,
-      filter: "&(objectClass=attributeSchema)",
+      filter: "(&(objectClass=attributeSchema)(LinkID=*))",
       scope: "one",
       attributes: [
         "cn",
         "attributeID",
         "attributeSyntax",
         "isSingleValued",
-        "showInAdvancedViewOnly",
         "adminDisplayName",
         "adminDescription",
-        "oMSyntax",
         "lDAPDisplayName",
         "systemOnly",
-        "systemFlags",
-        "objectCategory",
+        "LinkID",
       ],
     },
   });
   adClient.unbind();
-  return objectAttributes;
+  return (objectAttributes as unknown) as SchemaLinkAttribute[];
 }

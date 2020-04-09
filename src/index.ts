@@ -1,10 +1,10 @@
 export * from "./services";
 
 import { generateInterfaceFiles } from "./helpers/generate-interface-files";
-import { generateControlsFile } from "./helpers/generate-controls-file";
-import { generateExtensionsFile } from "./helpers/generate-extensions-file";
-import { generateCapabilitiesFile } from "./helpers/generate-capabilities-file";
-import { generatePoliciesFile } from "./helpers/generate-policies-file";
+import { generateControlsFile } from "./templates/generate-controls-file";
+import { generateExtensionsFile } from "./templates/generate-extensions-file";
+import { generateCapabilitiesFile } from "./templates/generate-capabilities-file";
+import { generatePoliciesFile } from "./templates/generate-policies-file";
 
 export {
   generateInterfaceFiles,

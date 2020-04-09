@@ -1,9 +1,9 @@
 import { OID } from "../typings/general/types";
-import { getLdapOids } from "./ldap-oid";
-import { writeTsFile } from "./write-ts-file";
-import { defaultEnumsDir } from "./variables";
 import path from "path";
 import { writeLog } from "fast-node-logger";
+import { getLdapOids } from "../services/ldap-oid";
+import { defaultEnumsDir } from "../helpers/variables";
+import { writeTsFile } from "../helpers/write-ts-file";
 
 interface GenerateControlsFileFnInput {
   controls: OID[];
@@ -21,6 +21,7 @@ export async function generateControlsFile({
   controls,
   options,
 }: GenerateControlsFileFnInput): Promise<void> {
+  writeLog(`generateControlsFile()`, { level: "trace" });
   const allOids = await getLdapOids({ useCache: true });
 
   const oids = controls.map((el) => {

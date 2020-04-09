@@ -12,7 +12,9 @@ interface GetSchemaCapabilitiesFnInput {
 
 type GetSchemaCapabilitiesFnOutput = Promise<string[]>;
 
-/** get schema capabilities from RootDSE */
+/** get schema capabilities from RootDSE
+ * - A multiple-valued attribute that contains the capabilities supported by this directory server.
+ */
 export async function getSchemaCapabilities({
   options,
 }: GetSchemaCapabilitiesFnInput): GetSchemaCapabilitiesFnOutput {

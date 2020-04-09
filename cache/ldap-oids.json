@@ -3913,5 +3913,15 @@
     "Purpose": "AD Extended Control: LDAP_SERVER_THREAD_TRACE_OVERRIDE_OID - Description: Allows the caller to provide a request to the DC to   perform additional implementation-defined troubleshooting.",
     "OID": "1.2.840.113556.1.4.2354",
     "Source": "Active Directory"
+  },
+  {
+    "Purpose": "Schema Extension: supportedExtension: Dynamic Refresh. See IETF RFC2589",
+    "OID": "1.3.6.1.4.1.1466.101.119.1",
+    "Source": "http://oidref.com/1.3.6.1.4.1.1466.101.119.1"
+  },
+  {
+    "Purpose": "Schema Extension: The Microsoft Lightweight Directory Access Protocol (LDAP) Application Programming Interface (API) will send an extended request with this name to Active Directory to request that all binds on this connection be processed as 'fast' binds.",
+    "OID": "1.2.840.113556.1.4.1781",
+    "Source": "https://oidref.com/1.2.840.113556.1.4.1781"
   }
 ]

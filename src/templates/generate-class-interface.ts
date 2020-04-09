@@ -1,8 +1,8 @@
-import { SchemaClassWithAttributes } from "./map-class-attributes";
-import { typeMapper } from "./type-map";
+import { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
 import { pascalCase } from "pascal-case";
-import { arrayToLines } from "./utils";
 import { writeLog } from "fast-node-logger";
+import { arrayToLines } from "../helpers/utils";
+import { typeMapper } from "../helpers/type-map";
 
 interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;

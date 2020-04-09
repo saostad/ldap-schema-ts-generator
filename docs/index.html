@@ -64,9 +64,10 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#ldap-active-directory-schema-typescript-generator" id="ldap-active-directory-schema-typescript-generator" style="color: inherit; text-decoration: none;">
-					<h1>Ldap Active Directory Schema Typescript Generator</h1>
+				<a href="#typescript-typedef-and-meta-data-generator-for-ldap-schema" id="typescript-typedef-and-meta-data-generator-for-ldap-schema" style="color: inherit; text-decoration: none;">
+					<h1>Typescript typedef and meta-data generator for LDAP Schema</h1>
 				</a>
+				<p>It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.</p>
 				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
 					<h3>How to use</h3>
 				</a>
@@ -109,7 +110,7 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
 					<h3>API</h3>
 				</a>
-				<p>use <a href="https://saostad.github.io/ldap-schema-ts-generator/docs/modules/_index_.html">api website</a> for more details</p>
+				<p>use <a href="https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html">api website</a> for more details</p>
 				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
 					<h3>Result</h3>
 				</a>
@@ -204,10 +205,13 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 				<ul>
 					<li><input disabled="" type="checkbox"> handle relations (forwardLink/BackLink) via linkID field</li>
 					<li><input disabled="" type="checkbox"> change relation filed type from object to something more relevant</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap controls supported by server</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap capabilities supported by server</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap extensions supported by server</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap policies supported by server</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap controls supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap capabilities supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap extensions supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate ldap policies supported by server from RootDSE</li>
+					<li><input disabled="" type="checkbox"> generate Base DNs from RootDSE (List of DNs of all the naming contexts and application partitions maintained by the DC)</li>
+					<li><input disabled="" type="checkbox"> generate naming contexts fields from RootDSE (e.g. defaultNamingContext, configurationNamingContext, schemaNamingContext, rootNamingContext)</li>
+					<li><input disabled="" type="checkbox"> Active Directory create a functionality to fetch all meta data about server <a href="https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse">ref</a></li>
 				</ul>
 				<a href="#know-issues" id="know-issues" style="color: inherit; text-decoration: none;">
 					<h3>Know Issues</h3>
@@ -222,13 +226,14 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					<li>OID info source: <a href="https://ldap.com/ldap-oid-reference-guide/">https://ldap.com/ldap-oid-reference-guide/</a></li>
 					<li>Policies info source: <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3f0137a1-63df-400c-bf97-e1040f055a99">https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3f0137a1-63df-400c-bf97-e1040f055a99</a></li>
 					<li>Capabilities info source: <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3ed61e6c-cfdc-487d-9f02-5a3397be3772">https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/3ed61e6c-cfdc-487d-9f02-5a3397be3772</a></li>
-					<li>Websites that helped me to understand ldap protocol better:<ul>
+					<li>Websites that helped me to better understand the ldap protocol:<ul>
 							<li><a href="https://ldapwiki.com/wiki/LDAP">https://ldapwiki.com/wiki/LDAP</a></li>
 							<li><a href="https://www.oreilly.com/library/view/active-directory-4th/">https://www.oreilly.com/library/view/active-directory-4th/</a></li>
 							<li><a href="https://blog.stealthbits.com/a-guide-to-active-directory-linked-attributes/">https://blog.stealthbits.com/a-guide-to-active-directory-linked-attributes/</a></li>
 							<li><a href="https://www.neroblanco.co.uk/2015/07/links-and-backlinks-in-active-directory-for-exchange/">https://www.neroblanco.co.uk/2015/07/links-and-backlinks-in-active-directory-for-exchange/</a></li>
 							<li><a href="https://docs.oracle.com/cd/E19957-01/817-6707/controls.html">https://docs.oracle.com/cd/E19957-01/817-6707/controls.html</a></li>
 							<li><a href="https://blog.kloud.com.au/2016/09/26/active-directory-what-are-linked-attributes/">https://blog.kloud.com.au/2016/09/26/active-directory-what-are-linked-attributes/</a></li>
+							<li><a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/d2435927-0999-4c62-8c6d-13ba31a52e1a">Active Directory Technical Specification</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -241,28 +246,7 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_capabilities_file_.html">&quot;helpers/generate-<wbr>capabilities-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_class_interface_.html">&quot;helpers/generate-<wbr>class-<wbr>interface&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_controls_file_.html">&quot;helpers/generate-<wbr>controls-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_extensions_file_.html">&quot;helpers/generate-<wbr>extensions-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
 						<a href="modules/_helpers_generate_interface_files_.html">&quot;helpers/generate-<wbr>interface-<wbr>files&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_policies_file_.html">&quot;helpers/generate-<wbr>policies-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_ldap_oid_.html">&quot;helpers/ldap-<wbr>oid&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_ldap_policy_.html">&quot;helpers/ldap-<wbr>policy&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_helpers_map_class_attributes_.html">&quot;helpers/map-<wbr>class-<wbr>attributes&quot;</a>
@@ -301,7 +285,43 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 						<a href="modules/_services_index_.html">&quot;services/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_services_ldap_oid_.html">&quot;services/ldap-<wbr>oid&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_services_ldap_policy_.html">&quot;services/ldap-<wbr>policy&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_services_ldap_version_.html">&quot;services/ldap-<wbr>version&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_services_link_id_.html">&quot;services/link-<wbr>id&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_services_naming_context_.html">&quot;services/naming-<wbr>context&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_services_policy_.html">&quot;services/policy&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_services_root_dse_.html">&quot;services/root-<wbr>dse&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_services_sasl_mechanism_.html">&quot;services/sasl-<wbr>mechanism&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_templates_generate_capabilities_file_.html">&quot;templates/generate-<wbr>capabilities-<wbr>file&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_templates_generate_class_interface_.html">&quot;templates/generate-<wbr>class-<wbr>interface&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_templates_generate_controls_file_.html">&quot;templates/generate-<wbr>controls-<wbr>file&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_templates_generate_extensions_file_.html">&quot;templates/generate-<wbr>extensions-<wbr>file&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_templates_generate_policies_file_.html">&quot;templates/generate-<wbr>policies-<wbr>file&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_typings_general_types_.html">&quot;typings/general/types&quot;</a>

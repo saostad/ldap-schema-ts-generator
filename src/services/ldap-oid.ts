@@ -1,5 +1,6 @@
 import path from "path";
 import { promises } from "fs";
+import { writeLog } from "fast-node-logger";
 
 interface GetLapOidsFnInput {
   useCache: boolean;
@@ -14,6 +15,7 @@ interface OIDInfo {
 export async function getLdapOids({
   useCache,
 }: GetLapOidsFnInput): Promise<OIDInfo[]> {
+  writeLog(`getLdapOids()`, { level: "trace" });
   const cacheLocation = path.join(
     __dirname,
     "..",

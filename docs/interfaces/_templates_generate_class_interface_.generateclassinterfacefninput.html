@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetSchemaAttributesFnInput | ldap-schema-ts-generator</title>
+	<title>GenerateClassInterfaceFnInput | ldap-schema-ts-generator</title>
 	<meta name="description" content="Documentation for ldap-schema-ts-generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_services_attribute_.html">&quot;services/attribute&quot;</a>
+					<a href="../modules/_templates_generate_class_interface_.html">&quot;templates/generate-class-interface&quot;</a>
 				</li>
 				<li>
-					<a href="_services_attribute_.getschemaattributesfninput.html">GetSchemaAttributesFnInput</a>
+					<a href="_templates_generate_class_interface_.generateclassinterfacefninput.html">GenerateClassInterfaceFnInput</a>
 				</li>
 			</ul>
-			<h1>Interface GetSchemaAttributesFnInput</h1>
+			<h1>Interface GenerateClassInterfaceFnInput</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetSchemaAttributesFnInput</span>
+						<span class="target">GenerateClassInterfaceFnInput</span>
 					</li>
 				</ul>
 			</section>
@@ -84,8 +84,7 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_services_attribute_.getschemaattributesfninput.html#options" class="tsd-kind-icon">options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_services_attribute_.getschemaattributesfninput.html#schemadn" class="tsd-kind-icon">schema<wbr>Dn</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_templates_generate_class_interface_.generateclassinterfacefninput.html#data" class="tsd-kind-icon">data</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,39 +93,12 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="options" class="tsd-anchor"></a>
-					<h3>options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>ldapServerUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logger<span class="tsd-signature-symbol">?: </span><a href="../modules/_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol">; </span>pass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="_helpers_map_class_attributes_.schemaclasswithattributes.html" class="tsd-signature-type">SchemaClassWithAttributes</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/3f6d6f0/src/services/attribute.ts#L7">services/attribute.ts:7</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>ldap<wbr>Server<wbr>Url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> logger<span class="tsd-signature-symbol">?: </span><a href="../modules/_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>pass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="schemadn" class="tsd-anchor"></a>
-					<h3>schema<wbr>Dn</h3>
-					<div class="tsd-signature tsd-kind-icon">schema<wbr>Dn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/3f6d6f0/src/services/attribute.ts#L6">services/attribute.ts:6</a></li>
+							<li>Defined in templates/generate-class-interface.ts:8</li>
 						</ul>
 					</aside>
 				</section>
@@ -139,7 +111,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_services_attribute_.html">&quot;services/attribute&quot;</a>
+						<a href="../modules/_templates_generate_class_interface_.html">&quot;templates/generate-<wbr>class-<wbr>interface&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -148,26 +120,17 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_services_attribute_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
+						<a href="_templates_generate_class_interface_.generateclassinterfacefninput.html" class="tsd-kind-icon">Generate<wbr>Class<wbr>Interface<wbr>FnInput</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_services_attribute_.getschemaattributesfninput.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_services_attribute_.getschemaattributesfninput.html#schemadn" class="tsd-kind-icon">schema<wbr>Dn</a>
+								<a href="_templates_generate_class_interface_.generateclassinterfacefninput.html#data" class="tsd-kind-icon">data</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_services_attribute_.schemaattribute.html" class="tsd-kind-icon">Schema<wbr>Attribute</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../modules/_services_attribute_.html#getschemaattributesfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnOutput</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_services_attribute_.html#getschemaattributes" class="tsd-kind-icon">get<wbr>Schema<wbr>Attributes</a>
+						<a href="../modules/_templates_generate_class_interface_.html#generateclassinterface" class="tsd-kind-icon">generate<wbr>Class<wbr>Interface</a>
 					</li>
 				</ul>
 			</nav>

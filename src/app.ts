@@ -12,8 +12,9 @@ import {
   getSchemaExtensions,
   generateExtensionsFile,
   generatePoliciesFile,
+  getSchemaPolicies,
+  getSchemaNamingContext,
 } from "./index";
-import { getSchemaPolicies } from "./services";
 
 export async function main() {
   const logger = await createLogger({
@@ -21,13 +22,14 @@ export async function main() {
     prettyPrint: { colorize: true },
   });
 
-  const schemaDn = "CN=Schema,CN=Configuration,DC=ki,DC=local";
   const options = {
     user: process.env.AD_USER ?? "",
     pass: process.env.AD_Pass ?? "",
     ldapServerUrl: process.env.AD_URI ?? "",
     logger,
   };
+
+  const schemaDn = await getSchemaNamingContext({ options });
 
   const controls = await getSchemaControls({ options });
   await generateControlsFile({ controls });

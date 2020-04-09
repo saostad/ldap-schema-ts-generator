@@ -48,7 +48,7 @@ export interface SchemaClass
 
 // TODO: remove Partial after we make sure we know which fields are always available
 type GetSchemaClassesFnOutput = Promise<Partial<SchemaClass>[]>;
-
+/** get defined classSchema Objects in schema */
 export async function getSchemaClasses({
   schemaDn,
   options,

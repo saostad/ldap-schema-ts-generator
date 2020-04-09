@@ -27,6 +27,7 @@ export function arrayifyProp(input: string | string[]): string[] {
   return input;
 }
 
+/** convert LDAP boolean "TRUE"/"FALSE" to js boolean */
 export function ldapBooleanToJsBoolean(input: string): boolean {
   writeLog(`ldapBooleanToJsBoolean()`, { level: "trace" });
   if (input === "TRUE") {
@@ -44,6 +45,8 @@ export function arrayToLines(data?: string[]): string {
   return data.join("\n");
 }
 
+/** check if directory exist */
 export async function dirPathExist(targetPath: string) {
+  writeLog(`dirPathExist()`, { level: "trace" });
   return promisify(fs.exists)(path.dirname(targetPath));
 }

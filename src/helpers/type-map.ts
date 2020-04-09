@@ -4,7 +4,6 @@ import { writeLog } from "fast-node-logger";
  * - https://social.technet.microsoft.com/wiki/contents/articles/52570.active-directory-syntaxes-of-attributes.aspx
  * - https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7cda533e-d7a4-4aec-a517-91d02ff4a1aa?redirectedfrom=MSDN
  */
-
 const typeMap = {
   string: [
     "2.5.5.12",
@@ -35,12 +34,12 @@ export function typeMapper(attributeSyntax: string): string {
     }
   }
 
-  /**default type if type not found */
-  console.log(
-    `File: type-map.ts,`,
-    `Line: 16 => `,
-    `type ${attributeSyntax} not found`,
-  );
+  /** type not found */
+  writeLog(`type ${attributeSyntax} not found`, {
+    stdout: true,
+    level: "error",
+  });
 
+  /** default type */
   return "string";
 }

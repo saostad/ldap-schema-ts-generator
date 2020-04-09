@@ -19,6 +19,7 @@ interface AttributeFields {
   adminDisplayName?: string;
   adminDescription?: string;
 }
+
 export interface SchemaClassWithAttributes {
   className: string;
   ldapName: string;

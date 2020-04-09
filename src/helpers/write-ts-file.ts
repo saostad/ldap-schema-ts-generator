@@ -9,6 +9,7 @@ interface Options {
   usePrettier?: boolean;
 }
 
+/** apply prettier write text to file */
 export async function writeTsFile(
   rawText: string,
   { filePath, usePrettier }: Options,

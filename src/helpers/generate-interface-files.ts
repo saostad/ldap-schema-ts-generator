@@ -1,13 +1,13 @@
 import { SchemaClass, SchemaAttribute } from "../services";
 import { mapClassAttributes } from "./map-class-attributes";
-import { generateClassInterface } from "./generate-class-interface";
+import { generateClassInterface } from "../templates/generate-class-interface";
 import path from "path";
 import { pascalCase } from "pascal-case";
 import { writeTsFile } from "./write-ts-file";
 import { writeLog } from "fast-node-logger";
 import { defaultInterfacesDir } from "./variables";
 
-export interface GenerateInterfaceFilesFnInput {
+interface GenerateInterfaceFilesFnInput {
   objectClasses: Partial<SchemaClass>[];
   objectAttributes: Partial<SchemaAttribute>[];
   options?: {

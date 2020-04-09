@@ -1,9 +1,8 @@
-import { getLdapOids } from "./ldap-oid";
-import { writeTsFile } from "./write-ts-file";
-import { defaultEnumsDir } from "./variables";
 import path from "path";
 import { writeLog } from "fast-node-logger";
-import { getLdapPolicies } from "./ldap-policy";
+import { getLdapPolicies } from "../services/ldap-policy";
+import { defaultEnumsDir } from "../helpers/variables";
+import { writeTsFile } from "../helpers/write-ts-file";
 
 interface GeneratePoliciesFileFnInput {
   policies: string[];
@@ -21,6 +20,7 @@ export async function generatePoliciesFile({
   policies,
   options,
 }: GeneratePoliciesFileFnInput): Promise<void> {
+  writeLog(`generatePoliciesFile()`, { level: "trace" });
   const allPolicies = await getLdapPolicies({ useCache: true });
 
   const policiesWithMeta = policies.map((el) => {

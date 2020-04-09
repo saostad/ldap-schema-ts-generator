@@ -12,7 +12,9 @@ interface GetSchemaPoliciesFnInput {
 
 type GetSchemaPoliciesFnOutput = Promise<string[]>;
 
-/** get schema supported policies from RootDSE */
+/** get schema supported policies from RootDSE
+ * - A multiple-valued attribute that contains the names of the supported LDAP management policies.
+ */
 export async function getSchemaPolicies({
   options,
 }: GetSchemaPoliciesFnInput): GetSchemaPoliciesFnOutput {
