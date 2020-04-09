@@ -10,8 +10,9 @@ interface GetSchemaCapabilitiesFnInput {
   };
 }
 
-export type GetSchemaCapabilitiesFnOutput = Promise<string[]>;
+type GetSchemaCapabilitiesFnOutput = Promise<string[]>;
 
+/** get schema capabilities from RootDSE */
 export async function getSchemaCapabilities({
   options,
 }: GetSchemaCapabilitiesFnInput): GetSchemaCapabilitiesFnOutput {

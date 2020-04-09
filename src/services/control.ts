@@ -10,7 +10,8 @@ interface GetSchemaControlsFnInput {
   };
 }
 
-export type GetSchemaControlsFnOutput = Promise<string[]>;
+/** get schema controls from RootDSE */
+type GetSchemaControlsFnOutput = Promise<string[]>;
 
 export async function getSchemaControls({
   options,

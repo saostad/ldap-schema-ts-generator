@@ -30,7 +30,7 @@ export interface SchemaAttribute
 }
 
 // TODO: remove Partial after we make sure we know which fields are always available
-export type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
+type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
 
 export async function getSchemaAttributes({
   schemaDn,

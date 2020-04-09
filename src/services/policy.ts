@@ -10,8 +10,9 @@ interface GetSchemaPoliciesFnInput {
   };
 }
 
-export type GetSchemaPoliciesFnOutput = Promise<string[]>;
+type GetSchemaPoliciesFnOutput = Promise<string[]>;
 
+/** get schema supported policies from RootDSE */
 export async function getSchemaPolicies({
   options,
 }: GetSchemaPoliciesFnInput): GetSchemaPoliciesFnOutput {

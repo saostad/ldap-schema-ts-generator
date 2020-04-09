@@ -10,8 +10,9 @@ interface GetSchemaExtensionsFnInput {
   };
 }
 
-export type GetSchemaExtensionsFnOutput = Promise<string[]>;
+type GetSchemaExtensionsFnOutput = Promise<string[]>;
 
+/** get schema controls from RootDSE */
 export async function getSchemaExtensions({
   options,
 }: GetSchemaExtensionsFnInput): GetSchemaExtensionsFnOutput {
