@@ -49,7 +49,7 @@ options?: {
 
 ### API
 
-use [api website](https://saostad.github.io/ldap-schema-ts-generator/docs/modules/_index_.html) for more details
+use [api website](https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html) for more details
 
 ### Result
 
