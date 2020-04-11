@@ -1,6 +1,7 @@
 import { AdClient } from "node-ad-ldap";
 import { Logger } from "../typings/general/types";
 import { SearchEntryObject } from "ldapjs";
+import Control from "ldapjs/lib/controls/control";
 
 interface GetSchemaAttributesFnInput {
   schemaDn: string;
@@ -48,8 +49,8 @@ export async function getLinkIds({
 
   const objectAttributes = await adClient.queryAttributes({
     options: {
-      sizeLimit: 200,
-      paged: true,
+      sizeLimit: 1000,
+      paged: false,
       filter: "(&(objectClass=attributeSchema)(LinkID=*))",
       scope: "one",
       attributes: [

@@ -14,6 +14,7 @@ import {
   generatePoliciesFile,
   getSchemaPolicies,
   getSchemaNamingContext,
+  getLinkIds,
 } from "./index";
 
 export async function main() {
@@ -31,23 +32,27 @@ export async function main() {
 
   const schemaDn = await getSchemaNamingContext({ options });
 
-  const controls = await getSchemaControls({ options });
-  await generateControlsFile({ controls });
+  const linkIds = await getLinkIds({ options, schemaDn });
+  linkIds.sort((a, b) => Number(a.linkID) - Number(b.linkID));
+  console.log(`File: app.ts,`, `Line: 37 => `, linkIds[0], linkIds[1]);
 
-  const extensions = await getSchemaExtensions({ options });
-  await generateExtensionsFile({ extensions });
+  // const controls = await getSchemaControls({ options });
+  // await generateControlsFile({ controls });
 
-  const capabilities = await getSchemaCapabilities({ options });
-  await generateCapabilitiesFile({ capabilities });
+  // const extensions = await getSchemaExtensions({ options });
+  // await generateExtensionsFile({ extensions });
 
-  const policies = await getSchemaPolicies({ options });
-  await generatePoliciesFile({ policies });
+  // const capabilities = await getSchemaCapabilities({ options });
+  // await generateCapabilitiesFile({ capabilities });
 
-  const objectAttributes = await getSchemaAttributes({ schemaDn, options });
+  // const policies = await getSchemaPolicies({ options });
+  // await generatePoliciesFile({ policies });
 
-  const objectClasses = await getSchemaClasses({ schemaDn, options });
+  // const objectAttributes = await getSchemaAttributes({ schemaDn, options });
 
-  await generateInterfaceFiles({ objectAttributes, objectClasses });
+  // const objectClasses = await getSchemaClasses({ schemaDn, options });
+
+  // await generateInterfaceFiles({ objectAttributes, objectClasses });
 }
 main().catch((err) => {
   console.log(`File: app.ts,`, `Line: 48 => `, err);
