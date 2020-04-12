@@ -151,6 +151,7 @@ export interface Container extends Top, MsExchBaseClass {
 - [ ] generate Base DNs from RootDSE (List of DNs of all the naming contexts and application partitions maintained by the DC)
 - [ ] generate naming contexts fields from RootDSE (e.g. defaultNamingContext, configurationNamingContext, schemaNamingContext, rootNamingContext)
 - [ ] Active Directory create a functionality to fetch all meta data about server [ref](https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse)
+- [ ] add option to customize generated file names with prefix/postfix (now it 's using Pascal case of ldap display name as interface and file name)
 
 ### Know Issues
 

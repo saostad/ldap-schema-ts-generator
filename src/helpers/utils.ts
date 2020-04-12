@@ -50,3 +50,12 @@ export async function dirPathExist(targetPath: string) {
   writeLog(`dirPathExist()`, { level: "trace" });
   return promisify(fs.exists)(path.dirname(targetPath));
 }
+
+/** check if number odd */
+export function isOdd(input: number): boolean {
+  writeLog(`isOdd()`, { level: "trace" });
+  if (input % 2 === 0) {
+    return false;
+  }
+  return true;
+}
