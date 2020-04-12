@@ -1,7 +1,6 @@
 import { AdClient } from "node-ad-ldap";
 import { Logger } from "../typings/general/types";
 import { SearchEntryObject } from "ldapjs";
-import Control from "ldapjs/lib/controls/control";
 
 interface GetSchemaAttributesFnInput {
   schemaDn: string;
@@ -67,5 +66,11 @@ export async function getLinkIds({
     },
   });
   adClient.unbind();
-  return (objectAttributes as unknown) as SchemaLinkAttribute[];
+
+  const linkIds = (objectAttributes as unknown) as SchemaLinkAttribute[];
+
+  /** sort the result base on linkID field */
+  linkIds.sort((a, b) => Number(a.linkID) - Number(b.linkID));
+
+  return linkIds;
 }

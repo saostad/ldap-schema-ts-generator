@@ -143,7 +143,7 @@ export interface Container extends Top, MsExchBaseClass {
 ### TODO:
 
 - [ ] handle relations (forwardLink/BackLink) via linkID field
-- [ ] change relation filed type from object to something more relevant
+- [x] change relation DN fields type from object to string
 - [x] generate ldap controls supported by server from RootDSE
 - [x] generate ldap capabilities supported by server from RootDSE
 - [x] generate ldap extensions supported by server from RootDSE

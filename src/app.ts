@@ -33,7 +33,7 @@ export async function main() {
   const schemaDn = await getSchemaNamingContext({ options });
 
   const linkIds = await getLinkIds({ options, schemaDn });
-  linkIds.sort((a, b) => Number(a.linkID) - Number(b.linkID));
+
   console.log(`File: app.ts,`, `Line: 37 => `, linkIds[0], linkIds[1]);
 
   // const controls = await getSchemaControls({ options });
