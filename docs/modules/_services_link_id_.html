@@ -74,6 +74,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_services_link_id_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_services_link_id_.relation.html" class="tsd-kind-icon">Relation</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a></li>
 							</ul>
 						</section>
@@ -81,6 +82,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_services_link_id_.html#getlinkids" class="tsd-kind-icon">get<wbr>Link<wbr>Ids</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_services_link_id_.html#getrelations" class="tsd-kind-icon">get<wbr>Relations</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,7 +100,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in services/link-id.ts:36</li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/fd23d45/src/services/link-id.ts#L38">services/link-id.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -141,6 +143,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getrelations" class="tsd-anchor"></a>
+					<h3>get<wbr>Relations</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Relations<span class="tsd-signature-symbol">(</span>linkIds<span class="tsd-signature-symbol">: </span><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_services_link_id_.relation.html" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/fd23d45/src/services/link-id.ts#L102">services/link-id.ts:102</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>process linkIds</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>linkIds: <a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_services_link_id_.relation.html" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></h4>
+							<p>array of relations</p>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -160,10 +191,16 @@
 						<a href="../interfaces/_services_link_id_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_services_link_id_.relation.html" class="tsd-kind-icon">Relation</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_services_link_id_.html#getlinkids" class="tsd-kind-icon">get<wbr>Link<wbr>Ids</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_services_link_id_.html#getrelations" class="tsd-kind-icon">get<wbr>Relations</a>
 					</li>
 				</ul>
 			</nav>

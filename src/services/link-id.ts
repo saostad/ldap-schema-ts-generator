@@ -77,7 +77,7 @@ export async function getLinkIds({
   return linkIds;
 }
 
-interface Relation {
+export interface Relation {
   [ldapName: string]: {
     isBackLink: boolean;
     /** Back Link Attribute LDAP Name (readonly) */
@@ -95,6 +95,7 @@ interface Relation {
     /** boolean flag that shows attribute back link */
   };
 }
+
 /** process linkIds
  * @return array of relations
  */
@@ -119,10 +120,14 @@ export function getRelations(linkIds: SchemaLinkAttribute[]): Relation[] {
       return linkItem.linkID === String(otherSideOfRelationId);
     });
     if (!otherSideOfRelation) {
-      writeLog(`relation for linkID ${el.linkID} not found!`, {
-        level: "warn",
-        stdout: true,
-      });
+      writeLog(
+        `relation for ${el.lDAPDisplayName} linkID ${el.linkID} not found!`,
+        {
+          level: "warn",
+          stdout: true,
+        },
+      );
+      /** ignore this relation */
       return;
     }
 

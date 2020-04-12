@@ -77,24 +77,21 @@
   generateInterfaceFiles,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">"ldap-schema-ts-generator"</span>;
 
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> schemaDn = <span class="hljs-string">"CN=Schema,CN=Configuration,DC=domain,DC=com"</span>;
-  <span class="hljs-keyword">const</span> options = {
-    user: <span class="hljs-string">"**********"</span>,
-    pass: <span class="hljs-string">"************"</span>,
-    ldapServerUrl: <span class="hljs-string">"ldap://domain.com"</span>,
-  };
+<span class="hljs-keyword">const</span> options = {
+  user: <span class="hljs-string">"**********"</span>,
+  pass: <span class="hljs-string">"************"</span>,
+  ldapServerUrl: <span class="hljs-string">"ldap://domain.com"</span>,
+};
 
-  <span class="hljs-keyword">const</span> objectAttributes = <span class="hljs-keyword">await</span> getSchemaAttributes({ schemaDn, options });
+<span class="hljs-keyword">const</span> schemaDn = <span class="hljs-keyword">await</span> getSchemaNamingContext({ options });
 
-  <span class="hljs-keyword">const</span> objectClasses = <span class="hljs-keyword">await</span> getSchemaClasses({ schemaDn, options });
+<span class="hljs-keyword">const</span> objectAttributes = <span class="hljs-keyword">await</span> getSchemaAttributes({ schemaDn, options });
 
-  <span class="hljs-keyword">await</span> generateInterfaceFiles({ objectAttributes, objectClasses });
+<span class="hljs-keyword">const</span> objectClasses = <span class="hljs-keyword">await</span> getSchemaClasses({ schemaDn, options });
+
+<span class="hljs-keyword">await</span> generateInterfaceFiles({ objectAttributes, objectClasses });
 }
-
-main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
-  <span class="hljs-built_in">console</span>.log(err);
-});</code></pre>
+</code></pre>
 				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
 					<h3>Options:</h3>
 				</a>
@@ -204,7 +201,7 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 				</a>
 				<ul>
 					<li><input disabled="" type="checkbox"> handle relations (forwardLink/BackLink) via linkID field</li>
-					<li><input disabled="" type="checkbox"> change relation filed type from object to something more relevant</li>
+					<li><input checked="" disabled="" type="checkbox"> change relation DN fields type from object to string</li>
 					<li><input checked="" disabled="" type="checkbox"> generate ldap controls supported by server from RootDSE</li>
 					<li><input checked="" disabled="" type="checkbox"> generate ldap capabilities supported by server from RootDSE</li>
 					<li><input checked="" disabled="" type="checkbox"> generate ldap extensions supported by server from RootDSE</li>
@@ -212,6 +209,7 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					<li><input disabled="" type="checkbox"> generate Base DNs from RootDSE (List of DNs of all the naming contexts and application partitions maintained by the DC)</li>
 					<li><input disabled="" type="checkbox"> generate naming contexts fields from RootDSE (e.g. defaultNamingContext, configurationNamingContext, schemaNamingContext, rootNamingContext)</li>
 					<li><input disabled="" type="checkbox"> Active Directory create a functionality to fetch all meta data about server <a href="https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse">ref</a></li>
+					<li><input disabled="" type="checkbox"> add option to customize generated file names with prefix/postfix (now it &#39;s using Pascal case of ldap display name as interface and file name)</li>
 				</ul>
 				<a href="#know-issues" id="know-issues" style="color: inherit; text-decoration: none;">
 					<h3>Know Issues</h3>
@@ -259,6 +257,9 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_helpers_variables_.html">&quot;helpers/variables&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_helpers_write_to_file_.html">&quot;helpers/write-<wbr>to-<wbr>file&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_helpers_write_ts_file_.html">&quot;helpers/write-<wbr>ts-<wbr>file&quot;</a>
@@ -322,6 +323,9 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_templates_generate_policies_file_.html">&quot;templates/generate-<wbr>policies-<wbr>file&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_templates_generate_relations_file_.html">&quot;templates/generate-<wbr>relations-<wbr>file&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_typings_general_types_.html">&quot;typings/general/types&quot;</a>

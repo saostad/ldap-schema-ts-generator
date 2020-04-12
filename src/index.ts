@@ -5,6 +5,7 @@ import { generateControlsFile } from "./templates/generate-controls-file";
 import { generateExtensionsFile } from "./templates/generate-extensions-file";
 import { generateCapabilitiesFile } from "./templates/generate-capabilities-file";
 import { generatePoliciesFile } from "./templates/generate-policies-file";
+import { generateRelationsFile } from "./templates/generate-relations-file";
 
 export {
   generateInterfaceFiles,
@@ -12,4 +13,5 @@ export {
   generateCapabilitiesFile,
   generateExtensionsFile,
   generatePoliciesFile,
+  generateRelationsFile,
 };

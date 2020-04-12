@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GenerateControlsFileFnInput | ldap-schema-ts-generator</title>
+	<title>GenerateRelationsFileFnInput | ldap-schema-ts-generator</title>
 	<meta name="description" content="Documentation for ldap-schema-ts-generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_templates_generate_controls_file_.html">&quot;templates/generate-controls-file&quot;</a>
+					<a href="../modules/_templates_generate_relations_file_.html">&quot;templates/generate-relations-file&quot;</a>
 				</li>
 				<li>
-					<a href="_templates_generate_controls_file_.generatecontrolsfilefninput.html">GenerateControlsFileFnInput</a>
+					<a href="_templates_generate_relations_file_.generaterelationsfilefninput.html">GenerateRelationsFileFnInput</a>
 				</li>
 			</ul>
-			<h1>Interface GenerateControlsFileFnInput</h1>
+			<h1>Interface GenerateRelationsFileFnInput</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GenerateControlsFileFnInput</span>
+						<span class="target">GenerateRelationsFileFnInput</span>
 					</li>
 				</ul>
 			</section>
@@ -84,8 +84,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_templates_generate_controls_file_.generatecontrolsfilefninput.html#controls" class="tsd-kind-icon">controls</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_templates_generate_controls_file_.generatecontrolsfilefninput.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_templates_generate_relations_file_.generaterelationsfilefninput.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_templates_generate_relations_file_.generaterelationsfilefninput.html#relations" class="tsd-kind-icon">relations</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,22 +94,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="controls" class="tsd-anchor"></a>
-					<h3>controls</h3>
-					<div class="tsd-signature tsd-kind-icon">controls<span class="tsd-signature-symbol">:</span> <a href="../modules/_typings_general_types_.html#oid" class="tsd-signature-type">OID</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/fd23d45/src/templates/generate-controls-file.ts#L9">templates/generate-controls-file.ts:9</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="options" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> options</h3>
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>outDir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>usePrettier<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/fd23d45/src/templates/generate-controls-file.ts#L10">templates/generate-controls-file.ts:10</a></li>
+							<li>Defined in templates/generate-relations-file.ts:9</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="relations" class="tsd-anchor"></a>
+					<h3>relations</h3>
+					<div class="tsd-signature tsd-kind-icon">relations<span class="tsd-signature-symbol">:</span> <a href="_services_link_id_.relation.html" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in templates/generate-relations-file.ts:8</li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +122,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_templates_generate_controls_file_.html">&quot;templates/generate-<wbr>controls-<wbr>file&quot;</a>
+						<a href="../modules/_templates_generate_relations_file_.html">&quot;templates/generate-<wbr>relations-<wbr>file&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -131,20 +131,20 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_templates_generate_controls_file_.generatecontrolsfilefninput.html" class="tsd-kind-icon">Generate<wbr>Controls<wbr>File<wbr>FnInput</a>
+						<a href="_templates_generate_relations_file_.generaterelationsfilefninput.html" class="tsd-kind-icon">Generate<wbr>Relations<wbr>File<wbr>FnInput</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_templates_generate_controls_file_.generatecontrolsfilefninput.html#controls" class="tsd-kind-icon">controls</a>
+								<a href="_templates_generate_relations_file_.generaterelationsfilefninput.html#options" class="tsd-kind-icon">options</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_templates_generate_controls_file_.generatecontrolsfilefninput.html#options" class="tsd-kind-icon">options</a>
+								<a href="_templates_generate_relations_file_.generaterelationsfilefninput.html#relations" class="tsd-kind-icon">relations</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_templates_generate_controls_file_.html#generatecontrolsfile" class="tsd-kind-icon">generate<wbr>Controls<wbr>File</a>
+						<a href="../modules/_templates_generate_relations_file_.html#generaterelationsfile" class="tsd-kind-icon">generate<wbr>Relations<wbr>File</a>
 					</li>
 				</ul>
 			</nav>

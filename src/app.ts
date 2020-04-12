@@ -16,6 +16,7 @@ import {
   getSchemaNamingContext,
   getLinkIds,
   getRelations,
+  generateRelationsFile,
 } from "./index";
 
 export async function main() {
@@ -33,10 +34,9 @@ export async function main() {
 
   const schemaDn = await getSchemaNamingContext({ options });
 
-  const linkIds = await getLinkIds({ options, schemaDn });
-
-  const relations = getRelations(linkIds);
-  console.log(`File: app.ts,`, `Line: 39 => `, relations);
+  // const linkIds = await getLinkIds({ options, schemaDn });
+  // const relations = getRelations(linkIds);
+  // await generateRelationsFile({ relations });
 
   // const controls = await getSchemaControls({ options });
   // await generateControlsFile({ controls });
@@ -51,9 +51,7 @@ export async function main() {
   // await generatePoliciesFile({ policies });
 
   // const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-
   // const objectClasses = await getSchemaClasses({ schemaDn, options });
-
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 }
 main().catch((err) => {
