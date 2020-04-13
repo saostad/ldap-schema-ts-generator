@@ -51,6 +51,7 @@ export function generateClassInterface({
    *  - child of class: ${data.subClassOf}
    *  - dn: ${data.originalClassFields.dn}
   */  
+ // @ts-ignore
   export interface ${pascalCase(data.ldapName)} ${
     data.ldapName !== "top"
       ? `extends ${parentClasses.map((el) => pascalCase(el)).join()}`

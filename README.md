@@ -155,7 +155,7 @@ export interface Container extends Top, MsExchBaseClass {
 
 ### Know Issues
 
-- when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning
+- when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning which prevent generated code to be executed with typescript complier. to fix the problem an extra comment `// @ts-ignore` added in top of all generated interfaces
 
 ### Credit
 
