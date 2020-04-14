@@ -1,4 +1,4 @@
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 import { Logger } from "../typings/general/types";
 import { SearchEntryObject } from "ldapjs";
 
@@ -54,7 +54,7 @@ export async function getSchemaClasses({
   options,
 }: GetSchemaClassesFnInput): GetSchemaClassesFnOutput {
   options.logger?.trace("getSchemaClasses()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,

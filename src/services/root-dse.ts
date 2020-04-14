@@ -1,5 +1,5 @@
 import { Logger } from "../typings/general/types";
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 
 interface GetRootDseFnInput {
   options: {
@@ -15,7 +15,7 @@ interface GetRootDseFnInput {
  */
 export async function getRootDSE({ options }: GetRootDseFnInput) {
   options.logger?.trace("getRootDSE()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,
@@ -51,7 +51,7 @@ export async function getSubSchemaSubEntry({
   options,
 }: GetSubSchemaSubEntryFnInput): Promise<string> {
   options.logger?.trace("getSubSchemaSubEntry()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,

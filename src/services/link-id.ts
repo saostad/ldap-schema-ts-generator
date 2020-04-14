@@ -1,4 +1,4 @@
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 import { Logger } from "../typings/general/types";
 import { SearchEntryObject } from "ldapjs";
 import { isOdd } from "../helpers/utils";
@@ -40,7 +40,7 @@ export async function getLinkIds({
   options,
 }: GetSchemaAttributesFnInput): Promise<SchemaLinkAttribute[]> {
   options.logger?.trace("getLinkIds()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,

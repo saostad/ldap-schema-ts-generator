@@ -1,5 +1,5 @@
 import { Logger } from "../typings/general/types";
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 
 interface GetNamingContextsFnInput {
   options: {
@@ -17,7 +17,7 @@ export async function getNamingContexts({
   options,
 }: GetNamingContextsFnInput): Promise<string[]> {
   options.logger?.trace("getNamingContexts()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,
@@ -43,7 +43,7 @@ export async function getDefaultNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getDefaultNamingContext()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,
@@ -69,7 +69,7 @@ export async function getSchemaNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getSchemaNamingContext()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,
@@ -95,7 +95,7 @@ export async function getRootNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getSchemaNamingContext()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,
@@ -121,7 +121,7 @@ export async function getConfigurationNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getSchemaNamingContext()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,

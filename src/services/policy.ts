@@ -1,5 +1,5 @@
 import { Logger } from "../typings/general/types";
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 
 interface GetSchemaPoliciesFnInput {
   options: {
@@ -19,7 +19,7 @@ export async function getSchemaPolicies({
   options,
 }: GetSchemaPoliciesFnInput): GetSchemaPoliciesFnOutput {
   options.logger?.trace("getSchemaPolicies()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,

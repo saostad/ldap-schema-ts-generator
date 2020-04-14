@@ -1,5 +1,5 @@
 import { Logger } from "../typings/general/types";
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 
 interface GetSupportedSaslMechanismsFnInput {
   options: {
@@ -21,7 +21,7 @@ export async function getSupportedSaslMechanisms({
   options,
 }: GetSupportedSaslMechanismsFnInput): Promise<string[]> {
   options.logger?.trace("getSupportedSaslMechanisms()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,

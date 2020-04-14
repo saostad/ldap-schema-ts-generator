@@ -1,5 +1,5 @@
 import { Logger } from "../typings/general/types";
-import { AdClient } from "node-ad-ldap";
+import { Client } from "ldap-ts-client";
 
 interface GetSupportedLdapVersionsFnInput {
   options: {
@@ -17,7 +17,7 @@ export async function getSupportedLdapVersions({
   options,
 }: GetSupportedLdapVersionsFnInput): Promise<string[]> {
   options.logger?.trace("getSupportedLdapVersions()");
-  const adClient = new AdClient({
+  const adClient = new Client({
     bindDN: options.user,
     secret: options.pass,
     url: options.ldapServerUrl,
