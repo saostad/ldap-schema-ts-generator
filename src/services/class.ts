@@ -54,49 +54,49 @@ export async function getSchemaClasses({
   options,
 }: GetSchemaClassesFnInput): GetSchemaClassesFnOutput {
   options.logger?.trace("getSchemaClasses()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    user: options.user,
+    pass: options.pass,
+    ldapServerUrl: options.ldapServerUrl,
     baseDN: schemaDn,
     logger: options.logger,
   });
 
-  const objectClasses = await adClient.queryAttributes({
+  const objectClasses = await client.queryAttributes({
+    attributes: [
+      "objectClass",
+      "cn",
+      "instanceType",
+      "subClassOf",
+      "auxiliaryClass",
+      "systemAuxiliaryClass",
+      "governsID",
+      "rDNAttID",
+      "showInAdvancedViewOnly",
+      "adminDisplayName",
+      "adminDescription",
+      "objectClassCategory",
+      "lDAPDisplayName",
+      "name",
+      "systemOnly",
+      "systemPossSuperiors",
+      "systemMayContain",
+      "systemMustContain",
+      "systemFlags",
+      "defaultHidingValue",
+      "objectCategory",
+      "defaultObjectCategory",
+      "mustContain",
+      "mayContain",
+      "possSuperiors",
+    ],
     options: {
       sizeLimit: 200,
       paged: true,
       filter: "&(objectClass=classSchema)",
       scope: "one",
-      attributes: [
-        "objectClass",
-        "cn",
-        "instanceType",
-        "subClassOf",
-        "auxiliaryClass",
-        "systemAuxiliaryClass",
-        "governsID",
-        "rDNAttID",
-        "showInAdvancedViewOnly",
-        "adminDisplayName",
-        "adminDescription",
-        "objectClassCategory",
-        "lDAPDisplayName",
-        "name",
-        "systemOnly",
-        "systemPossSuperiors",
-        "systemMayContain",
-        "systemMustContain",
-        "systemFlags",
-        "defaultHidingValue",
-        "objectCategory",
-        "defaultObjectCategory",
-        "mustContain",
-        "mayContain",
-        "possSuperiors",
-      ],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return objectClasses;
 }

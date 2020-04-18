@@ -19,21 +19,19 @@ export async function getSchemaPolicies({
   options,
 }: GetSchemaPoliciesFnInput): GetSchemaPoliciesFnOutput {
   options.logger?.trace("getSchemaPolicies()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["supportedLDAPPolicies"],
     options: {
       filter: "&(objectClass=*)",
       scope: "base",
-      attributes: ["supportedLDAPPolicies"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].supportedLDAPPolicies as string[];
 }

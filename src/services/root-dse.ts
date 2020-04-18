@@ -15,22 +15,20 @@ interface GetRootDseFnInput {
  */
 export async function getRootDSE({ options }: GetRootDseFnInput) {
   options.logger?.trace("getRootDSE()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["*"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["*"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data;
 }
 
@@ -51,21 +49,19 @@ export async function getSubSchemaSubEntry({
   options,
 }: GetSubSchemaSubEntryFnInput): Promise<string> {
   options.logger?.trace("getSubSchemaSubEntry()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["subschemaSubentry"],
     options: {
       filter: "&(objectClass=*)",
       scope: "base",
-      attributes: ["subschemaSubentry"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].subschemaSubentry as string;
 }

@@ -19,21 +19,19 @@ export async function getSchemaExtensions({
   options,
 }: GetSchemaExtensionsFnInput): GetSchemaExtensionsFnOutput {
   options.logger?.trace("getSchemaExtensions()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["supportedExtension"],
     options: {
       filter: "&(objectClass=*)",
       scope: "base",
-      attributes: ["supportedExtension"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].supportedExtension as string[];
 }

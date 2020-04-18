@@ -19,21 +19,19 @@ export async function getSchemaControls({
   options,
 }: GetSchemaControlsFnInput): GetSchemaControlsFnOutput {
   options.logger?.trace("getSchemaControls()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["supportedControl"],
     options: {
       filter: "&(objectClass=*)",
       scope: "base",
-      attributes: ["supportedControl"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].supportedControl as string[];
 }

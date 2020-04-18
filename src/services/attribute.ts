@@ -37,36 +37,38 @@ export async function getSchemaAttributes({
   options,
 }: GetSchemaAttributesFnInput): GetSchemaAttributesFnOutput {
   options.logger?.trace("getSchemaAttributes()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    user: options.user,
+    pass: options.pass,
+    ldapServerUrl: options.ldapServerUrl,
     baseDN: schemaDn,
     logger: options.logger,
   });
 
-  const objectAttributes = await adClient.queryAttributes({
+  const objectAttributes = await client.queryAttributes({
+    attributes: [
+      "cn",
+      "attributeID",
+      "attributeSyntax",
+      "isSingleValued",
+      "showInAdvancedViewOnly",
+      "adminDisplayName",
+      "adminDescription",
+      "oMSyntax",
+      "lDAPDisplayName",
+      "systemOnly",
+      "systemFlags",
+      "objectCategory",
+    ],
     options: {
       sizeLimit: 200,
       paged: true,
       filter: "&(objectClass=attributeSchema)",
       scope: "one",
-      attributes: [
-        "cn",
-        "attributeID",
-        "attributeSyntax",
-        "isSingleValued",
-        "showInAdvancedViewOnly",
-        "adminDisplayName",
-        "adminDescription",
-        "oMSyntax",
-        "lDAPDisplayName",
-        "systemOnly",
-        "systemFlags",
-        "objectCategory",
-      ],
     },
   });
-  adClient.unbind();
+
+  client.unbind();
+
   return objectAttributes;
 }

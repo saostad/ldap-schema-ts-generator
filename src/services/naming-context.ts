@@ -17,22 +17,20 @@ export async function getNamingContexts({
   options,
 }: GetNamingContextsFnInput): Promise<string[]> {
   options.logger?.trace("getNamingContexts()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["namingContexts"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["namingContexts"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].namingContexts as string[];
 }
 
@@ -43,22 +41,20 @@ export async function getDefaultNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getDefaultNamingContext()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["defaultNamingContext"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["defaultNamingContext"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].defaultNamingContext as string;
 }
 
@@ -69,22 +65,20 @@ export async function getSchemaNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getSchemaNamingContext()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["schemaNamingContext"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["schemaNamingContext"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].schemaNamingContext as string;
 }
 
@@ -95,22 +89,20 @@ export async function getRootNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getSchemaNamingContext()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["rootDomainNamingContext"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["rootDomainNamingContext"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].rootDomainNamingContext as string;
 }
 
@@ -121,21 +113,19 @@ export async function getConfigurationNamingContext({
   options,
 }: GetNamingContextsFnInput): Promise<string> {
   options.logger?.trace("getSchemaNamingContext()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["configurationNamingContext"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["configurationNamingContext"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].configurationNamingContext as string;
 }

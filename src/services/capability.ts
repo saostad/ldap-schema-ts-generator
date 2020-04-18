@@ -19,21 +19,23 @@ export async function getSchemaCapabilities({
   options,
 }: GetSchemaCapabilitiesFnInput): GetSchemaCapabilitiesFnOutput {
   options.logger?.trace("getSchemaCapabilities()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    user: options.user,
+    pass: options.pass,
+    ldapServerUrl: options.ldapServerUrl,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["supportedCapabilities"],
     options: {
       filter: "&(objectClass=*)",
       scope: "base",
-      attributes: ["supportedCapabilities"],
     },
   });
-  adClient.unbind();
+
+  client.unbind();
+
   return data[0].supportedCapabilities as string[];
 }

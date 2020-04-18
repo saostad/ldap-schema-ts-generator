@@ -17,21 +17,19 @@ export async function getSupportedLdapVersions({
   options,
 }: GetSupportedLdapVersionsFnInput): Promise<string[]> {
   options.logger?.trace("getSupportedLdapVersions()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["supportedLDAPVersion"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["supportedLDAPVersion"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].supportedLDAPVersion as string[];
 }

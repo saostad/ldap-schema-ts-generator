@@ -21,21 +21,19 @@ export async function getSupportedSaslMechanisms({
   options,
 }: GetSupportedSaslMechanismsFnInput): Promise<string[]> {
   options.logger?.trace("getSupportedSaslMechanisms()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: "",
     logger: options.logger,
   });
 
-  const data = await adClient.queryAttributes({
+  const data = await client.queryAttributes({
+    attributes: ["supportedSASLMechanisms"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
-      attributes: ["supportedSASLMechanisms"],
     },
   });
-  adClient.unbind();
+  client.unbind();
   return data[0].supportedSASLMechanisms as string[];
 }

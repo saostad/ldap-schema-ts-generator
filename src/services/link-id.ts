@@ -40,34 +40,32 @@ export async function getLinkIds({
   options,
 }: GetSchemaAttributesFnInput): Promise<SchemaLinkAttribute[]> {
   options.logger?.trace("getLinkIds()");
-  const adClient = new Client({
-    bindDN: options.user,
-    secret: options.pass,
-    url: options.ldapServerUrl,
+  const client = new Client({
+    ...options,
     baseDN: schemaDn,
     logger: options.logger,
   });
 
-  const objectAttributes = await adClient.queryAttributes({
+  const objectAttributes = await client.queryAttributes({
+    attributes: [
+      "cn",
+      "attributeID",
+      "attributeSyntax",
+      "isSingleValued",
+      "adminDisplayName",
+      "adminDescription",
+      "lDAPDisplayName",
+      "systemOnly",
+      "LinkID",
+    ],
     options: {
       sizeLimit: 1000,
       paged: false,
       filter: "(&(objectClass=attributeSchema)(LinkID=*))",
       scope: "one",
-      attributes: [
-        "cn",
-        "attributeID",
-        "attributeSyntax",
-        "isSingleValued",
-        "adminDisplayName",
-        "adminDescription",
-        "lDAPDisplayName",
-        "systemOnly",
-        "LinkID",
-      ],
     },
   });
-  adClient.unbind();
+  client.unbind();
 
   const linkIds = (objectAttributes as unknown) as SchemaLinkAttribute[];
 

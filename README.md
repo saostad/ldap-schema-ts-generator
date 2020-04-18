@@ -144,14 +144,24 @@ export interface Container extends Top, MsExchBaseClass {
 
 - [ ] handle relations (forwardLink/BackLink) via linkID field
 - [x] change relation DN fields type from object to string
-- [x] generate ldap controls supported by server from RootDSE
-- [x] generate ldap capabilities supported by server from RootDSE
-- [x] generate ldap extensions supported by server from RootDSE
-- [x] generate ldap policies supported by server from RootDSE
+- [x] generate Enum for ldap controls supported by server from RootDSE
+- [x] generate Enum for ldap capabilities supported by server from RootDSE
+- [x] generate Enum for ldap extensions supported by server from RootDSE
+- [x] generate Enum for ldap policies supported by server from RootDSE
 - [ ] generate Base DNs from RootDSE (List of DNs of all the naming contexts and application partitions maintained by the DC)
 - [ ] generate naming contexts fields from RootDSE (e.g. defaultNamingContext, configurationNamingContext, schemaNamingContext, rootNamingContext)
 - [ ] Active Directory create a functionality to fetch all meta data about server [ref](https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse)
 - [ ] add option to customize generated file names with prefix/postfix (now it 's using Pascal case of ldap display name as interface and file name)
+- [ ] create out folders if not exist instead of throwing error
+- [ ] generate graphql types and CRUD operations
+  - [ ] generate Type for each objectClass in schema
+    - [ ] respect inheritance
+    - [ ] respect relations by linkID attribute
+  - [ ] use dn as identification field
+  - [ ] generate general operations for each Type:
+    - [ ] Query get by dn
+    - [ ] Mutation delete by dn
+    - [ ] Mutation update by dn (input only not readonly attributes)
 
 ### Know Issues
 

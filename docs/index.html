@@ -202,20 +202,36 @@
 				<ul>
 					<li><input disabled="" type="checkbox"> handle relations (forwardLink/BackLink) via linkID field</li>
 					<li><input checked="" disabled="" type="checkbox"> change relation DN fields type from object to string</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap controls supported by server from RootDSE</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap capabilities supported by server from RootDSE</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap extensions supported by server from RootDSE</li>
-					<li><input checked="" disabled="" type="checkbox"> generate ldap policies supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate Enum for ldap controls supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate Enum for ldap capabilities supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate Enum for ldap extensions supported by server from RootDSE</li>
+					<li><input checked="" disabled="" type="checkbox"> generate Enum for ldap policies supported by server from RootDSE</li>
 					<li><input disabled="" type="checkbox"> generate Base DNs from RootDSE (List of DNs of all the naming contexts and application partitions maintained by the DC)</li>
 					<li><input disabled="" type="checkbox"> generate naming contexts fields from RootDSE (e.g. defaultNamingContext, configurationNamingContext, schemaNamingContext, rootNamingContext)</li>
 					<li><input disabled="" type="checkbox"> Active Directory create a functionality to fetch all meta data about server <a href="https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse">ref</a></li>
 					<li><input disabled="" type="checkbox"> add option to customize generated file names with prefix/postfix (now it &#39;s using Pascal case of ldap display name as interface and file name)</li>
+					<li><input disabled="" type="checkbox"> create out folders if not exist instead of throwing error</li>
+					<li><input disabled="" type="checkbox"> generate graphql types and CRUD operations<ul>
+							<li><input disabled="" type="checkbox"> generate Type for each objectClass in schema<ul>
+									<li><input disabled="" type="checkbox"> respect inheritance</li>
+									<li><input disabled="" type="checkbox"> respect relations by linkID attribute</li>
+								</ul>
+							</li>
+							<li><input disabled="" type="checkbox"> use dn as identification field</li>
+							<li><input disabled="" type="checkbox"> generate general operations for each Type:<ul>
+									<li><input disabled="" type="checkbox"> Query get by dn</li>
+									<li><input disabled="" type="checkbox"> Mutation delete by dn</li>
+									<li><input disabled="" type="checkbox"> Mutation update by dn (input only not readonly attributes)</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
 				</ul>
 				<a href="#know-issues" id="know-issues" style="color: inherit; text-decoration: none;">
 					<h3>Know Issues</h3>
 				</a>
 				<ul>
-					<li>when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning</li>
+					<li>when extends to another interface sometimes a field is optional but in other interface is not so typescript gives compatibility warning which prevent generated code to be executed with typescript complier. to fix the problem an extra comment <code>// @ts-ignore</code> added in top of all generated interfaces</li>
 				</ul>
 				<a href="#credit" id="credit" style="color: inherit; text-decoration: none;">
 					<h3>Credit</h3>
