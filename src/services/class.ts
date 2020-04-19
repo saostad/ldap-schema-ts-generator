@@ -1,6 +1,5 @@
 import { Client, IClientConfig } from "ldap-ts-client";
 import {
-  Logger,
   SearchEntryObject,
   ObjectClass,
   CN,
