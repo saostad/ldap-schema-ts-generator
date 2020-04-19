@@ -3,7 +3,7 @@ import { promisify } from "util";
 import path from "path";
 import fs from "fs";
 
-/** make sure output is string */
+/** make sure output is string, if array of string provided in join all in one string with join() */
 export function stringifyProp(input: string | string[]): string {
   writeLog(`stringifyProp()`, { level: "trace" });
   if (!input) {
@@ -15,7 +15,7 @@ export function stringifyProp(input: string | string[]): string {
   return input;
 }
 
-/** make sure output is array of strings */
+/** make sure output is array of strings even if it's just single string */
 export function arrayifyProp(input: string | string[]): string[] {
   writeLog(`arrayifyProp()`, { level: "trace" });
   if (!input) {

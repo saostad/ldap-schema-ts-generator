@@ -1,6 +1,5 @@
 import { Client } from "ldap-ts-client";
-import { Logger } from "../typings/general/types";
-import { SearchEntryObject } from "ldapjs";
+import type { Logger, SearchEntryObject } from "../typings/general/types";
 import { isOdd } from "../helpers/utils";
 import { writeLog } from "fast-node-logger";
 

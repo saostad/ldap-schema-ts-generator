@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetRootDseFnInput | ldap-schema-ts-generator</title>
+	<title>MapClassAttributesFnInput | ldap-schema-ts-generator</title>
 	<meta name="description" content="Documentation for ldap-schema-ts-generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_services_root_dse_.html">&quot;services/root-dse&quot;</a>
+					<a href="../modules/_helpers_map_class_attributes_inheritance_.html">&quot;helpers/map-class-attributes-inheritance&quot;</a>
 				</li>
 				<li>
-					<a href="_services_root_dse_.getrootdsefninput.html">GetRootDseFnInput</a>
+					<a href="_helpers_map_class_attributes_inheritance_.mapclassattributesfninput.html">MapClassAttributesFnInput</a>
 				</li>
 			</ul>
-			<h1>Interface GetRootDseFnInput</h1>
+			<h1>Interface MapClassAttributesFnInput</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetRootDseFnInput</span>
+						<span class="target">MapClassAttributesFnInput</span>
 					</li>
 				</ul>
 			</section>
@@ -84,7 +84,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_services_root_dse_.getrootdsefninput.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_helpers_map_class_attributes_inheritance_.mapclassattributesfninput.html#attributes" class="tsd-kind-icon">attributes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_helpers_map_class_attributes_inheritance_.mapclassattributesfninput.html#classobj" class="tsd-kind-icon">class<wbr>Obj</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,31 +94,24 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="options" class="tsd-anchor"></a>
-					<h3>options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>ldapServerUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logger<span class="tsd-signature-symbol">?: </span><a href="../modules/_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol">; </span>pass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<a name="attributes" class="tsd-anchor"></a>
+					<h3>attributes</h3>
+					<div class="tsd-signature tsd-kind-icon">attributes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5cf2729/src/services/root-dse.ts#L5">services/root-dse.ts:5</a></li>
+							<li>Defined in helpers/map-class-attributes-inheritance.ts:11</li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>ldap<wbr>Server<wbr>Url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> logger<span class="tsd-signature-symbol">?: </span><a href="../modules/_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>pass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="classobj" class="tsd-anchor"></a>
+					<h3>class<wbr>Obj</h3>
+					<div class="tsd-signature tsd-kind-icon">class<wbr>Obj<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in helpers/map-class-attributes-inheritance.ts:10</li>
 						</ul>
-					</div>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -128,7 +122,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_services_root_dse_.html">&quot;services/root-<wbr>dse&quot;</a>
+						<a href="../modules/_helpers_map_class_attributes_inheritance_.html">&quot;helpers/map-<wbr>class-<wbr>attributes-<wbr>inheritance&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -137,23 +131,20 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_services_root_dse_.getrootdsefninput.html" class="tsd-kind-icon">Get<wbr>Root<wbr>Dse<wbr>FnInput</a>
+						<a href="_helpers_map_class_attributes_inheritance_.mapclassattributesfninput.html" class="tsd-kind-icon">Map<wbr>Class<wbr>Attributes<wbr>FnInput</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_services_root_dse_.getrootdsefninput.html#options" class="tsd-kind-icon">options</a>
+								<a href="_helpers_map_class_attributes_inheritance_.mapclassattributesfninput.html#attributes" class="tsd-kind-icon">attributes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_helpers_map_class_attributes_inheritance_.mapclassattributesfninput.html#classobj" class="tsd-kind-icon">class<wbr>Obj</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_services_root_dse_.getsubschemasubentryfninput.html" class="tsd-kind-icon">Get<wbr>Sub<wbr>Schema<wbr>Sub<wbr>Entry<wbr>FnInput</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_services_root_dse_.html#getrootdse" class="tsd-kind-icon">get<wbr>RootDSE</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_services_root_dse_.html#getsubschemasubentry" class="tsd-kind-icon">get<wbr>Sub<wbr>Schema<wbr>Sub<wbr>Entry</a>
+						<a href="../modules/_helpers_map_class_attributes_inheritance_.html#mapclassattributes" class="tsd-kind-icon">map<wbr>Class<wbr>Attributes</a>
 					</li>
 				</ul>
 			</nav>

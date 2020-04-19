@@ -1,16 +1,7 @@
 import { Client } from "ldap-ts-client";
-import { Logger } from "../typings/general/types";
-import { SearchEntryObject } from "ldapjs";
+import { Logger, SearchEntryObject } from "../typings/general/types";
+import { QueryGenerator } from "ldap-query-generator";
 
-interface GetSchemaClassesFnInput {
-  schemaDn: string;
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
-}
 export interface SchemaClass
   extends Pick<SearchEntryObject, "dn" | "controls"> {
   objectClass: string | string[];
@@ -46,13 +37,20 @@ export interface SchemaClass
   possSuperiors: string | string[];
 }
 
-// TODO: remove Partial after we make sure we know which fields are always available
-type GetSchemaClassesFnOutput = Promise<Partial<SchemaClass>[]>;
+interface GetSchemaClassesFnInput {
+  schemaDn: string;
+  options: {
+    user: string;
+    pass: string;
+    ldapServerUrl: string;
+    logger?: Logger;
+  };
+}
 /** get defined classSchema Objects in schema */
 export async function getSchemaClasses({
   schemaDn,
   options,
-}: GetSchemaClassesFnInput): GetSchemaClassesFnOutput {
+}: GetSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
   options.logger?.trace("getSchemaClasses()");
   const client = new Client({
     user: options.user,
@@ -62,7 +60,7 @@ export async function getSchemaClasses({
     logger: options.logger,
   });
 
-  const objectClasses = await client.queryAttributes({
+  const objectClasses = await client.queryAttributes<SchemaClass>({
     attributes: [
       "objectClass",
       "cn",
@@ -99,4 +97,80 @@ export async function getSchemaClasses({
   });
   client.unbind();
   return objectClasses;
+}
+
+interface GetSchemaClassByLdapNameFnInput {
+  schemaDn: string;
+  ldapName: string;
+  options: {
+    user: string;
+    pass: string;
+    ldapServerUrl: string;
+    logger?: Logger;
+  };
+}
+export async function getSchemaClassByLdapName({
+  options,
+  schemaDn,
+  ldapName,
+}: GetSchemaClassByLdapNameFnInput): Promise<Partial<SchemaClass>[]> {
+  options.logger?.trace("getSchemaClassByLdapName()");
+  const client = new Client({
+    user: options.user,
+    pass: options.pass,
+    ldapServerUrl: options.ldapServerUrl,
+    baseDN: schemaDn,
+    logger: options.logger,
+  });
+
+  const qGen = new QueryGenerator<SchemaClass>({
+    logger: options.logger,
+  });
+
+  const { query } = qGen
+    .select([
+      "objectClass",
+      "cn",
+      "instanceType",
+      "subClassOf",
+      "auxiliaryClass",
+      "systemAuxiliaryClass",
+      "governsID",
+      "rDNAttID",
+      "showInAdvancedViewOnly",
+      "adminDisplayName",
+      "adminDescription",
+      "objectClassCategory",
+      "lDAPDisplayName",
+      "name",
+      "systemOnly",
+      "systemPossSuperiors",
+      "systemMayContain",
+      "systemMustContain",
+      "systemFlags",
+      "defaultHidingValue",
+      "objectCategory",
+      "defaultObjectCategory",
+      "mustContain",
+      "mayContain",
+      "possSuperiors",
+    ])
+    .where({ field: "objectClass", action: "equal", criteria: "classSchema" })
+    .whereAnd({
+      field: "lDAPDisplayName",
+      action: "equal",
+      criteria: ldapName,
+    });
+
+  const objectClass = await client.queryAttributes<SchemaClass>({
+    attributes: query.attributes,
+    options: {
+      sizeLimit: 200,
+      paged: true,
+      filter: query.toString(),
+      scope: "one",
+    },
+  });
+  client.unbind();
+  return objectClass;
 }

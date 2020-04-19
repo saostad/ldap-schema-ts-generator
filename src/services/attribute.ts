@@ -1,6 +1,5 @@
 import { Client } from "ldap-ts-client";
-import { Logger } from "../typings/general/types";
-import { SearchEntryObject } from "ldapjs";
+import type { Logger, SearchEntryObject } from "../typings/general/types";
 
 interface GetSchemaAttributesFnInput {
   schemaDn: string;
@@ -29,7 +28,6 @@ export interface SchemaAttribute
   objectCategory: string | string[];
 }
 
-// TODO: remove Partial after we make sure we know which fields are always available
 type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
 /** get defined an attribute objects in the schema. */
 export async function getSchemaAttributes({
@@ -45,7 +43,7 @@ export async function getSchemaAttributes({
     logger: options.logger,
   });
 
-  const objectAttributes = await client.queryAttributes({
+  const objectAttributes = await client.queryAttributes<SchemaAttribute>({
     attributes: [
       "cn",
       "attributeID",
