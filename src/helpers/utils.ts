@@ -3,15 +3,28 @@ import { promisify } from "util";
 import path from "path";
 import fs from "fs";
 
-/** make sure output is string, if array of string provided in join all in one string with join() */
+/** make sure output is string
+ * - throw error if array has multiple entry
+ * - if array has just one entry, string provided in join all in one string with join() */
 export function stringifyProp(input: string | string[]): string {
   writeLog(`stringifyProp()`, { level: "trace" });
   if (!input) {
     throw new Error(`Field required to stringify! but provided: ${input} `);
   }
+
   if (Array.isArray(input)) {
-    return input.join();
+    /** this check is for prevent unexpected bugs */
+    if (input.length > 1) {
+      throw new Error(
+        `array supposed to has just one entry but has more than one item: ${input}.`,
+      );
+    } else {
+      /** array has just one entry */
+      return input.join();
+    }
   }
+
+  /** input is string (no need to do anything) */
   return input;
 }
 

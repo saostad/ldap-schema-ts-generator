@@ -1,10 +1,43 @@
 import type { SchemaClass, SchemaAttribute } from "../services";
 import { writeLog } from "fast-node-logger";
-import { stringifyProp, arrayifyProp, ldapBooleanToJsBoolean } from "./utils";
+import { arrayifyProp, ldapBooleanToJsBoolean } from "./utils";
 import type {
-  SchemaClassWithAttributes,
-  AttributeFields,
+  CN,
+  LDAPDisplayName,
+  DN,
+  AttributeID,
+  AttributeSyntax,
+  AdminDisplayName,
+  AdminDescription,
+  SubClassOf,
+  Name,
+  AuxiliaryClass,
+  SystemAuxiliaryClass,
 } from "../typings/general/types";
+
+export interface AnalysedAttributeFields {
+  cn: CN;
+  lDAPDisplayName: LDAPDisplayName;
+  dn: DN;
+  attributeID: AttributeID;
+  attributeSyntax: AttributeSyntax;
+  isRequired: boolean;
+  isSingleValued: boolean;
+  systemOnly?: boolean;
+  adminDisplayName?: AdminDisplayName;
+  adminDescription?: AdminDescription;
+}
+
+export interface SchemaClassWithAttributes {
+  className: Name;
+  ldapName: LDAPDisplayName;
+  subClassOf: SubClassOf;
+  auxiliaryClass?: Extract<AuxiliaryClass, string[]>;
+  systemAuxiliaryClass?: Extract<SystemAuxiliaryClass, string[]>;
+  originalClassFields: Partial<SchemaClass>;
+  originalAttributes?: Partial<SchemaAttribute>[];
+  attributes?: AnalysedAttributeFields[];
+}
 
 interface MapClassAttributesFnInput {
   classObj: Partial<SchemaClass>;
@@ -17,9 +50,9 @@ export function mapClassAttributes({
 }: MapClassAttributesFnInput): SchemaClassWithAttributes {
   writeLog(`mapClassAttributes()`, { level: "trace" });
   const result: SchemaClassWithAttributes = {
-    className: stringifyProp(classObj.name as string),
-    ldapName: stringifyProp(classObj.lDAPDisplayName as string),
-    subClassOf: stringifyProp(classObj.subClassOf as string),
+    className: classObj.name!,
+    ldapName: classObj.lDAPDisplayName!,
+    subClassOf: classObj.subClassOf!,
     originalClassFields: { ...classObj },
     originalAttributes: [],
     attributes: [],
@@ -94,7 +127,6 @@ export function mapClassAttributes({
   combinedRawAttributes.forEach(
     ({ attributeToFind, isRequired, isSystemProp }) => {
       /** search in attributes */
-      //TODO: this is an expensive operation there should be better way to improve it
       const foundAttribute = attributes.find(
         (attributeItem) => attributeItem.lDAPDisplayName === attributeToFind,
       );
@@ -106,41 +138,29 @@ export function mapClassAttributes({
       /**push found attribute */
       result.originalAttributes?.push(foundAttribute);
 
-      const classAttributes: AttributeFields = {
-        dn: stringifyProp(foundAttribute.dn as string),
-        cn: stringifyProp(foundAttribute.cn as string),
-        lDAPDisplayName: stringifyProp(
-          foundAttribute.lDAPDisplayName as string,
-        ),
-        attributeSyntax: stringifyProp(
-          foundAttribute.attributeSyntax as string,
-        ),
-        attributeID: stringifyProp(foundAttribute.attributeID as string),
+      const classAttributes: AnalysedAttributeFields = {
+        dn: foundAttribute.dn!,
+        cn: foundAttribute.cn!,
+        lDAPDisplayName: foundAttribute.lDAPDisplayName!,
+        attributeSyntax: foundAttribute.attributeSyntax!,
+        attributeID: foundAttribute.attributeID!,
         isRequired,
-        isSingleValued: ldapBooleanToJsBoolean(
-          stringifyProp(foundAttribute.isSingleValued as string),
-        ),
+        isSingleValued: ldapBooleanToJsBoolean(foundAttribute.isSingleValued!),
       };
 
       /** this field can be empty */
       if (foundAttribute.adminDisplayName) {
-        classAttributes.adminDisplayName = stringifyProp(
-          foundAttribute.adminDisplayName as string,
-        );
+        classAttributes.adminDisplayName = foundAttribute.adminDisplayName;
       }
 
       /** this field can be empty */
       if (foundAttribute.adminDescription) {
-        classAttributes.adminDescription = stringifyProp(
-          foundAttribute.adminDescription as string,
-        );
+        classAttributes.adminDescription = foundAttribute.adminDescription;
       }
 
       /** this field can be empty */
       if (foundAttribute.systemOnly) {
-        const systemOnly = ldapBooleanToJsBoolean(
-          stringifyProp(foundAttribute.systemOnly),
-        );
+        const systemOnly = ldapBooleanToJsBoolean(foundAttribute.systemOnly);
 
         /** either systemOnly or isSystemProp this flag makes attribute in interface readonly */
         classAttributes.systemOnly = systemOnly || isSystemProp;

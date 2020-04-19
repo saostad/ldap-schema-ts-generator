@@ -1,50 +1,67 @@
-import { Client } from "ldap-ts-client";
-import { Logger, SearchEntryObject } from "../typings/general/types";
+import { Client, IClientConfig } from "ldap-ts-client";
+import {
+  Logger,
+  SearchEntryObject,
+  ObjectClass,
+  CN,
+  InstanceType,
+  SubClassOf,
+  AuxiliaryClass,
+  SystemAuxiliaryClass,
+  GovernsID,
+  RDnAttId,
+  ShowInAdvancedViewOnly,
+  AdminDisplayName,
+  AdminDescription,
+  ObjectClassCategory,
+  LDAPDisplayName,
+  Name,
+  SystemOnly,
+  SystemPossSuperiors,
+  SystemMayContain,
+  SystemMustContain,
+  SystemFlags,
+  DefaultHidingValue,
+  ObjectCategory,
+  DefaultObjectCategory,
+  MustContain,
+  MayContain,
+  PossSuperiors,
+} from "../typings/general/types";
 import { QueryGenerator } from "ldap-query-generator";
 
 export interface SchemaClass
   extends Pick<SearchEntryObject, "dn" | "controls"> {
-  objectClass: string | string[];
-  cn: string;
-  instanceType: string | string[];
-  subClassOf: string;
-  auxiliaryClass?: string | string[];
-  systemAuxiliaryClass?: string | string[];
-  governsID: string | string[];
-  rDNAttID: string | string[];
-  /** string value of TRUE / FALSE */
-  showInAdvancedViewOnly: string;
-  adminDisplayName: string;
-  adminDescription: string;
-  objectClassCategory: string | string[];
-  lDAPDisplayName: string;
-  name: string;
-  /** string value of TRUE / FALSE */
-  systemOnly: string;
-  systemPossSuperiors: string | string[];
-  /** list of direct optional and readonly properties */
-  systemMayContain: string | string[];
-  /** list of direct required and readonly properties */
-  systemMustContain: string | string[];
-  systemFlags: string | string[];
-  defaultHidingValue: string | string[];
-  objectCategory: string | string[];
-  defaultObjectCategory: string | string[];
-  /** list of direct required and editable properties */
-  mustContain: string | string[];
-  /** list of direct optional and editable properties */
-  mayContain: string | string[];
-  possSuperiors: string | string[];
+  objectClass: ObjectClass;
+  cn: CN;
+  instanceType: InstanceType;
+  subClassOf: SubClassOf;
+  auxiliaryClass?: AuxiliaryClass;
+  systemAuxiliaryClass?: SystemAuxiliaryClass;
+  governsID: GovernsID;
+  rDNAttID: RDnAttId;
+  showInAdvancedViewOnly: ShowInAdvancedViewOnly;
+  adminDisplayName: AdminDisplayName;
+  adminDescription: AdminDescription;
+  objectClassCategory: ObjectClassCategory;
+  lDAPDisplayName: LDAPDisplayName;
+  name: Name;
+  systemOnly: SystemOnly;
+  systemMayContain: SystemMayContain;
+  systemMustContain: SystemMustContain;
+  systemFlags: SystemFlags;
+  defaultHidingValue: DefaultHidingValue;
+  objectCategory: ObjectCategory;
+  defaultObjectCategory: DefaultObjectCategory;
+  mustContain: MustContain;
+  mayContain: MayContain;
+  possSuperiors: PossSuperiors;
+  systemPossSuperiors: SystemPossSuperiors;
 }
 
 interface GetSchemaClassesFnInput {
   schemaDn: string;
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 /** get defined classSchema Objects in schema */
 export async function getSchemaClasses({
@@ -102,12 +119,7 @@ export async function getSchemaClasses({
 interface GetSchemaClassByLdapNameFnInput {
   schemaDn: string;
   ldapName: string;
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 export async function getSchemaClassByLdapName({
   options,

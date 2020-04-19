@@ -1,34 +1,34 @@
-import { Client } from "ldap-ts-client";
-import type { Logger, SearchEntryObject } from "../typings/general/types";
+import { Client, IClientConfig } from "ldap-ts-client";
+import type {
+  SearchEntryObject,
+  CN,
+  AttributeID,
+  AttributeSyntax,
+  IsSingleValued,
+  AdminDisplayName,
+  AdminDescription,
+  LDAPDisplayName,
+  SystemOnly,
+  LinkID,
+} from "../typings/general/types";
 import { isOdd } from "../helpers/utils";
 import { writeLog } from "fast-node-logger";
 
 interface GetSchemaAttributesFnInput {
   schemaDn: string;
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 export interface SchemaLinkAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
-  cn: string;
-  attributeID: string;
-  attributeSyntax: string;
-  /** string value of TRUE / FALSE */
-  isSingleValued: string;
-  adminDisplayName: string;
-  adminDescription: string;
-  lDAPDisplayName: string;
-  systemOnly: string;
-  /** Defines Relation between attributes
-   * - Even linkID Value are forward links
-   * - Odd linkID Value are BackLinks equals to the linkID of the corresponding forward link linkID plus one.
-   * - linkID Value of 0 or not present implies it is NOT a Linked Attribute
-   */
-  linkID: string;
+  cn: CN;
+  attributeID: AttributeID;
+  attributeSyntax: AttributeSyntax;
+  isSingleValued: IsSingleValued;
+  adminDisplayName: AdminDisplayName;
+  adminDescription: AdminDescription;
+  lDAPDisplayName: LDAPDisplayName;
+  systemOnly: SystemOnly;
+  linkID: LinkID;
 }
 
 /** get Attributes defined in schema which has linkID
@@ -45,7 +45,7 @@ export async function getLinkIds({
     logger: options.logger,
   });
 
-  const objectAttributes = await client.queryAttributes({
+  const objectAttributes = await client.queryAttributes<SchemaLinkAttribute>({
     attributes: [
       "cn",
       "attributeID",
@@ -55,7 +55,7 @@ export async function getLinkIds({
       "adminDescription",
       "lDAPDisplayName",
       "systemOnly",
-      "LinkID",
+      "linkID",
     ],
     options: {
       sizeLimit: 1000,

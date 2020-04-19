@@ -17,6 +17,7 @@ import {
   getLinkIds,
   getRelations,
   generateRelationsFile,
+  Types,
 } from "./index";
 
 export async function main() {

@@ -1,13 +1,7 @@
-import { Logger } from "../typings/general/types";
-import { Client } from "ldap-ts-client";
+import { Client, IClientConfig } from "ldap-ts-client";
 
 interface GetRootDseFnInput {
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 
 /** get RootDSE entries
@@ -33,12 +27,7 @@ export async function getRootDSE({ options }: GetRootDseFnInput) {
 }
 
 interface GetSubSchemaSubEntryFnInput {
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 
 /** get schema SubSchemaSubEntry from RootDSE

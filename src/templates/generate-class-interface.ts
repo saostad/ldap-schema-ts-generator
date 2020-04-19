@@ -2,13 +2,13 @@ import { pascalCase } from "pascal-case";
 import { writeLog } from "fast-node-logger";
 import { arrayToLines } from "../helpers/utils";
 import { typeMapper } from "../helpers/type-map";
-import type { SchemaClassWithAttributes } from "../typings/general/types";
+import { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
 
 interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;
 }
 
-/** Generate test of Class Interface to be written in file 
+/** Generate Class Interface to be written in file 
  -  respect auxiliaryClass and systemAuxiliaryClass inheritance by extends interface 
 * ref: 
 *  - https://docs.microsoft.com/en-us/windows/win32/ad/structural-abstract-and-auxiliary-classes

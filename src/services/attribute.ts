@@ -1,31 +1,38 @@
-import { Client } from "ldap-ts-client";
-import type { Logger, SearchEntryObject } from "../typings/general/types";
+import { Client, IClientConfig } from "ldap-ts-client";
+import type {
+  SearchEntryObject,
+  CN,
+  AttributeID,
+  AttributeSyntax,
+  IsSingleValued,
+  ShowInAdvancedViewOnly,
+  AdminDisplayName,
+  AdminDescription,
+  OMSyntax,
+  LDAPDisplayName,
+  SystemOnly,
+  SystemFlags,
+  ObjectCategory,
+} from "../typings/general/types";
 
 interface GetSchemaAttributesFnInput {
   schemaDn: string;
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 export interface SchemaAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
-  cn: string;
-  attributeID: string;
-  attributeSyntax: string;
-  /** string value of TRUE / FALSE */
-  isSingleValued: string;
-  /** string value of TRUE / FALSE */
-  showInAdvancedViewOnly: string;
-  adminDisplayName: string;
-  adminDescription: string;
-  oMSyntax: string | string[];
-  lDAPDisplayName: string;
-  systemOnly: string;
-  systemFlags: string | string[];
-  objectCategory: string | string[];
+  cn: CN;
+  attributeID: AttributeID;
+  attributeSyntax: AttributeSyntax;
+  isSingleValued: IsSingleValued;
+  showInAdvancedViewOnly: ShowInAdvancedViewOnly;
+  adminDisplayName: AdminDisplayName;
+  adminDescription: AdminDescription;
+  oMSyntax: OMSyntax;
+  lDAPDisplayName: LDAPDisplayName;
+  systemOnly: SystemOnly;
+  systemFlags: SystemFlags;
+  objectCategory: ObjectCategory;
 }
 
 type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;

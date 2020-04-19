@@ -1,13 +1,7 @@
-import { Logger } from "../typings/general/types";
-import { Client } from "ldap-ts-client";
+import { Client, IClientConfig } from "ldap-ts-client";
 
 interface GetSupportedLdapVersionsFnInput {
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
 
 /** get supported LDAP versions from RootDSE

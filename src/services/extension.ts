@@ -1,23 +1,15 @@
-import { Logger } from "../typings/general/types";
-import { Client } from "ldap-ts-client";
+import { Client, IClientConfig } from "ldap-ts-client";
 
 interface GetSchemaExtensionsFnInput {
-  options: {
-    user: string;
-    pass: string;
-    ldapServerUrl: string;
-    logger?: Logger;
-  };
+  options: Omit<IClientConfig, "baseDN">;
 }
-
-type GetSchemaExtensionsFnOutput = Promise<string[]>;
 
 /** get schema extensions from RootDSE.
  * - A supported extension is a mechanism for identifying the Extended Request supported by the Directory Server. The OIDs of these extended operations are listed in the supportedExtension attribute of the server's root DSE.
  */
 export async function getSchemaExtensions({
   options,
-}: GetSchemaExtensionsFnInput): GetSchemaExtensionsFnOutput {
+}: GetSchemaExtensionsFnInput): Promise<string[]> {
   options.logger?.trace("getSchemaExtensions()");
   const client = new Client({
     ...options,
