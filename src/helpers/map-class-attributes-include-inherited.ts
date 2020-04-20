@@ -32,8 +32,6 @@ export function mapClassAttributesIncludeInherited({
   options,
 }: MapClassAttributesIncludeInheritedFnInput): SchemaClassWithAttributes[] {
   writeLog(`mapClassAttributesIncludeInherited()`, { level: "trace" });
-  /** place holder for all attributes including inherited ones */
-  const allAttributes: SchemaClassWithAttributes[] = [];
 
   const classesWithDirectAttributes = classes.map((classObj) => {
     /** get direct attributes for class */
@@ -156,6 +154,23 @@ export function mapClassAttributesIncludeInherited({
       "this function created just for structural classes in purpose of generating graphql types.",
     );
   }
-
-  return allAttributes;
 }
+
+interface AddAttributesOfAuxiliaryClassesFnInput {
+  classesWithAttributes: SchemaClassWithAttributes[];
+  targetClass: SchemaClassWithAttributes;
+}
+/** mutate/add attributes exist in auxiliaryClass and systemAuxiliaryClass fields to target class */
+function addAttributesOfAuxiliaryClasses({
+  classesWithAttributes,
+  targetClass,
+}: AddAttributesOfAuxiliaryClassesFnInput): SchemaClassWithAttributes {
+  targetClass.auxiliaryClass?.forEach();
+}
+
+interface AddAttributesOfAuxiliaryClassesFnInput {
+  classesWithAttributes: SchemaClassWithAttributes[];
+  targetClass: SchemaClassWithAttributes;
+}
+/** follow subClassOf field in class schema to gets to the top class */
+function getListOfParents(params: type): LDAPDisplayName[] {}

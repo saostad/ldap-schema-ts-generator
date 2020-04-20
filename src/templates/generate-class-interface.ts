@@ -1,8 +1,8 @@
 import { pascalCase } from "pascal-case";
 import { writeLog } from "fast-node-logger";
 import { arrayToLines } from "../helpers/utils";
-import { typeMapper } from "../helpers/type-map";
-import { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
+import { jsTypeMapper } from "../helpers/type-map";
+import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
 
 interface GenerateClassInterfaceFnInput {
   data: SchemaClassWithAttributes;
@@ -69,7 +69,7 @@ export function generateClassInterface({
           */
           ${el.systemOnly ? "readonly" : ""} "${el.lDAPDisplayName}" ${
             el.isRequired ? "" : "?"
-          }: ${typeMapper(el.attributeSyntax)} ${
+          }: ${jsTypeMapper(el.attributeSyntax)} ${
             el.isSingleValued ? "" : "[]"
           };`;
         }),

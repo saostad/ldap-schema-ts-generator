@@ -4,7 +4,7 @@ import { writeLog } from "fast-node-logger";
  * - https://social.technet.microsoft.com/wiki/contents/articles/52570.active-directory-syntaxes-of-attributes.aspx
  * - https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7cda533e-d7a4-4aec-a517-91d02ff4a1aa?redirectedfrom=MSDN
  */
-const typeMap = {
+const jsTypeMap = {
   /** - note for 2.5.5.1 : https://docs.microsoft.com/en-us/windows/win32/adschema/s-object-ds-dn */
   string: [
     "2.5.5.1",
@@ -26,9 +26,9 @@ const typeMap = {
 };
 
 /** get ldap attributeSyntax and return js equivalent type */
-export function typeMapper(attributeSyntax: string): string {
+export function jsTypeMapper(attributeSyntax: string): string {
   writeLog(`typeMapper()`, { level: "trace" });
-  for (const [key, value] of Object.entries(typeMap)) {
+  for (const [key, value] of Object.entries(jsTypeMap)) {
     if (value.includes(attributeSyntax)) {
       return key;
     }

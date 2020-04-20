@@ -45,6 +45,8 @@ interface MapClassAttributesFnInput {
   attributes: Partial<SchemaAttribute>[];
 }
 
+/** merge direct attributes addressed in fields mustContain, systemMustContain, mayContain, and systemMayContain with meta data.
+ * @note does not add inherited attributes of classes named in auxiliaryClass and systemAuxiliaryClass fields or other type of inheritance. */
 export function mapClassAttributes({
   classObj,
   attributes,
