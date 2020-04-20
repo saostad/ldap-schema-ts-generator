@@ -36,6 +36,7 @@ export interface SchemaClassWithAttributes {
   systemAuxiliaryClass?: Extract<SystemAuxiliaryClass, string[]>;
   originalClassFields: Partial<SchemaClass>;
   originalAttributes?: Partial<SchemaAttribute>[];
+  /** attributes with meta data */
   attributes?: AnalysedAttributeFields[];
 }
 

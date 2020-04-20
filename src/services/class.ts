@@ -115,6 +115,63 @@ export async function getSchemaClasses({
   return objectClasses;
 }
 
+interface GetSchemaClassesFnInput {
+  schemaDn: string;
+  options: Omit<IClientConfig, "baseDN">;
+}
+/** get defined classSchema Objects in schema where objectClassCategory=1 */
+export async function getStructuralSchemaClasses({
+  schemaDn,
+  options,
+}: GetSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
+  options.logger?.trace("getSchemaClasses()");
+  const client = new Client({
+    user: options.user,
+    pass: options.pass,
+    ldapServerUrl: options.ldapServerUrl,
+    baseDN: schemaDn,
+    logger: options.logger,
+  });
+
+  const objectClasses = await client.queryAttributes<SchemaClass>({
+    attributes: [
+      "objectClass",
+      "cn",
+      "instanceType",
+      "subClassOf",
+      "auxiliaryClass",
+      "systemAuxiliaryClass",
+      "governsID",
+      "rDNAttID",
+      "showInAdvancedViewOnly",
+      "adminDisplayName",
+      "adminDescription",
+      "objectClassCategory",
+      "lDAPDisplayName",
+      "name",
+      "systemOnly",
+      "systemPossSuperiors",
+      "systemMayContain",
+      "systemMustContain",
+      "systemFlags",
+      "defaultHidingValue",
+      "objectCategory",
+      "defaultObjectCategory",
+      "mustContain",
+      "mayContain",
+      "possSuperiors",
+    ],
+    options: {
+      sizeLimit: 200,
+      paged: true,
+      filter: "(&(objectClass=classSchema)(objectClassCategory=1))",
+      scope: "one",
+    },
+  });
+  client.unbind();
+  return objectClasses;
+}
+
 interface GetSchemaClassByLdapNameFnInput {
   schemaDn: string;
   ldapName: string;

@@ -48,18 +48,31 @@ export type MayContain = string[] | string;
 /** multi-valued properties that specify the attributes that MAY be present on instances of this class. These are optional attributes that are not mandatory and, therefore, may or may not be present on an instance of this class. You can add or remove mayContain values from an existing category 1 or category 2 classSchema object. Before removing a mayContain value from a classSchema object, you should search for instances of the object class and clear any values for the attribute that you are removing. After creation of the class, the systemMayContain property cannot be changed The full set of optional attributes for a class is the union of the systemMayContain and mayContain values on this class and all inherited classes. */
 export type SystemMayContain = string[] | string;
 
-/** multi-valued properties that specify the structural classes that can be legal parents of instances of this class. The full set of possible superiors is the union of the systemPossSuperiors and possSuperiors values on this class and any inherited structural or abstract classes. systemPossSuperiors and possSuperiors values are not inherited from auxiliary classes. You can add or remove possSuperiors values from an existing category 1 or category 2 classSchema object. After creation of the class, the systemPossSuperiors property cannot be changed. */
+/** multi-valued properties that specify the structural classes that can be legal parents of instances of this class.
+ * The full set of possible superiors is the union of the systemPossSuperiors and possSuperiors values on this class and any inherited structural or abstract classes.
+ * - systemPossSuperiors and possSuperiors values are not inherited from auxiliary classes.
+ * - You can add or remove possSuperiors values from an existing category 1 or category 2 classSchema object.
+ * - After creation of the class, the systemPossSuperiors property cannot be changed.
+ * - See [MS-ADTS](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/d2435927-0999-4c62-8c6d-13ba31a52e1a) section [3.1.1.2.4.4](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/8c6a7be3-ae6e-4dae-9148-c6ac649e3816) for more information on Active Directory usage.
+ */
 export type PossSuperiors = string[] | string;
 
-/** multi-valued properties that specify the structural classes that can be legal parents of instances of this class. The full set of possible superiors is the union of the systemPossSuperiors and possSuperiors values on this class and any inherited structural or abstract classes. systemPossSuperiors and possSuperiors values are not inherited from auxiliary classes. You can add or remove possSuperiors values from an existing category 1 or category 2 classSchema object. After creation of the class, the systemPossSuperiors property cannot be changed. */
+/** multi-valued properties that specify the structural classes that can be legal parents of instances of this class.
+ * The full set of possible superiors is the union of the systemPossSuperiors and possSuperiors values on this class and any inherited structural or abstract classes.
+ * - systemPossSuperiors and possSuperiors values are not inherited from auxiliary classes.
+ * - You can add or remove possSuperiors values from an existing category 1 or category 2 classSchema object.
+ * - After creation of the class, the systemPossSuperiors property cannot be changed.
+ * - See [MS-ADTS](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/d2435927-0999-4c62-8c6d-13ba31a52e1a) section [3.1.1.2.4.4](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/8c6a7be3-ae6e-4dae-9148-c6ac649e3816) for more information on Active Directory usage. */
 export type SystemPossSuperiors = string[] | string;
 
 /** An integer value that specifies the category of the class, which can be one of the following:
- * - Structural, meaning that it can be instantiated in the directory.
- * - Abstract, meaning that the class provides a basic definition of a class that can be used to form structural classes.
- * - Auxiliary, meaning that a class that can be used to extend the definition of a class that inherits from it but cannot be used to form a class by itself.
+ * - 1 for Structural, you can directly create objects of its type in Active Directory. The user and group classes are examples of structural classes.
+ * - 2 for Abstract, meaning that the class provides a basic definition of a class that can be used to form structural classes. It is possible that you would want to create a class that inherits from other classes and has certain attributes but that is not one you will ever need to create instances of directly. This type of class is known as abstract. For example, let’s say that the Marketing-User and Finance-User were to be the first of a number of structural classes that had a common structure. In that case, you could create an abstract class to be used as the basis of other structural classes. Abstract classes can inherit from other classes, can have attributes defined on them directly, and in all other ways act like structural classes, except that instances of them cannot directly be created as objects in Active Directory.
+ * - 3 for Auxiliary, meaning that a class that can be used to extend the definition of a class that inherits from it but cannot be used to form a class by itself. An auxiliary class is used to store sets of attributes that other classes can inherit. Auxiliary classes are a way for structural and abstract classes to inherit collections of attributes that do not have to be defined directly within the classes themselves. It is primarily a grouping mechanism.
  *
- * For more information, see [Structural, Abstract, and Auxiliary Classes](https://docs.microsoft.com/en-us/windows/win32/ad/structural-abstract-and-auxiliary-classes). */
+ * - Size 4 bytes. 0 should not be used.
+ * - For more information, see [Structural, Abstract, and Auxiliary Classes](https://docs.microsoft.com/en-us/windows/win32/ad/structural-abstract-and-auxiliary-classes).
+ */
 export type ObjectClassCategory = string;
 
 /** Object identifiers (OID) are used throughout LDAP, but they’re particularly common in schema elements, controls, and extended operations.
@@ -67,12 +80,20 @@ export type ObjectClassCategory = string;
  */
 export type OID = string;
 
-/** An OID for the immediate superclass of this class, that is, the class from which this class is derived.
+/** The parent class of a class.
+ * The subClassOf attribute of a classSchema object is a single-valued property that indicates the immediate superclass of the class.
  * - For structural classes, subClassOf can be a structural or abstract class.
  * - For abstract classes, subClassOf can be an abstract class only.
  * - For auxiliary classes, subClassOf can be an abstract or auxiliary class.
  * - If you define a new class, ensure that the subClassOf class exists or will exist when the new class is written to the directory.
- * - If class does not exist, the classSchema object is not added to the directory. */
+ * - If class does not exist, the classSchema object is not added to the directory.
+ * @Note
+ * A class inherits the following data from its superclasses:
+ * - Possible attributes: The values of the mustContain, mayContain, systemMustContain, and systemMayContain attributes of a classSchema object define a complete list of the attributes that can be set on an instance of the object class. For each object class, the values of these attributes include all of the values that are inherited from its superclasses, as well as any values that are set explicitly for the object class itself. Thus, the mustContain attribute of the organizationalPerson class includes all the mustContain values that are inherited from the person and top classes as well as any mustContain values that are set explicitly on the organizationalPerson class.
+ * - Possible parents in the directory hierarchy: The values of the possSuperiors and systemPossSuperiors attributes of a classSchema object define a complete list of the object classes that can contain an instance of the object class. For each object class, the values include those inherited from its superclasses, as well as those set explicitly for the object class itself.
+ * @Note
+ * Be aware that object class can also have many auxiliary classes, which are specified in the auxiliaryClass and systemAuxiliaryClass attributes of a classSchema object. An object class inherits mustContain, mayContain, systemMustContain, and systemMayContain values from its auxiliary classes.
+ */
 export type SubClassOf = string;
 
 /** multi-valued properties that specify the auxiliary classes that this class inherits from. The full set of auxiliary classes is the union of the systemAuxiliaryClass and auxiliaryClass values on this class and all inherited classes. For an existing classSchema object, values can be added to the auxiliaryClass property but not removed. After creation of the class, the systemAuxiliaryClass property cannot be changed. */
@@ -115,7 +136,7 @@ export type IsDefunct = string;
 /** A text description of the class for use by administrative applications. */
 export type Description = string;
 
-/** Identifies the object class of which this object is an instance, which is the classSchema object class for all class definitions and the attributeSchema object class for all attribute definitions. */
+/** The list of classes from which this class is derived. */
 export type ObjectClass = string | string[];
 
 /** The classDisplayName attribute is a single-value Unicode string that specifies the class display name. */

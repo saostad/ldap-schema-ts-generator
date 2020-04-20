@@ -18,6 +18,7 @@ import {
   getRelations,
   generateRelationsFile,
   Types,
+  mapClassAttributesIncludeInherited,
 } from "./index";
 
 export async function main() {
@@ -35,25 +36,37 @@ export async function main() {
 
   const schemaDn = await getSchemaNamingContext({ options });
 
-  const linkIds = await getLinkIds({ options, schemaDn });
-  const relations = getRelations(linkIds);
-  await generateRelationsFile({ relations });
+  // const linkIds = await getLinkIds({ options, schemaDn });
+  // const relations = getRelations(linkIds);
+  // await generateRelationsFile({ relations });
 
-  const controls = await getSchemaControls({ options });
-  await generateControlsFile({ controls });
+  // const controls = await getSchemaControls({ options });
+  // await generateControlsFile({ controls });
 
-  const extensions = await getSchemaExtensions({ options });
-  await generateExtensionsFile({ extensions });
+  // const extensions = await getSchemaExtensions({ options });
+  // await generateExtensionsFile({ extensions });
 
-  const capabilities = await getSchemaCapabilities({ options });
-  await generateCapabilitiesFile({ capabilities });
+  // const capabilities = await getSchemaCapabilities({ options });
+  // await generateCapabilitiesFile({ capabilities });
 
-  const policies = await getSchemaPolicies({ options });
-  await generatePoliciesFile({ policies });
+  // const policies = await getSchemaPolicies({ options });
+  // await generatePoliciesFile({ policies });
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
   const objectClasses = await getSchemaClasses({ schemaDn, options });
-  await generateInterfaceFiles({ objectAttributes, objectClasses });
+  // await generateInterfaceFiles({ objectAttributes, objectClasses });
+
+  const data = mapClassAttributesIncludeInherited({
+    attributes: objectAttributes,
+    classes: objectClasses,
+  });
+  data.forEach((el) => {
+    console.log(
+      el.ldapName,
+      el.attributes?.length,
+      el.originalAttributes?.length,
+    );
+  });
 }
 main().catch((err) => {
   console.log(`File: app.ts,`, `Line: 48 => `, err);

@@ -8,6 +8,7 @@ import { generateExtensionsFile } from "./templates/generate-extensions-file";
 import { generateCapabilitiesFile } from "./templates/generate-capabilities-file";
 import { generatePoliciesFile } from "./templates/generate-policies-file";
 import { generateRelationsFile } from "./templates/generate-relations-file";
+import { mapClassAttributesIncludeInherited } from "./helpers/map-class-attributes-include-inherited";
 
 export {
   generateInterfaceFiles,
@@ -16,4 +17,5 @@ export {
   generateExtensionsFile,
   generatePoliciesFile,
   generateRelationsFile,
+  mapClassAttributesIncludeInherited,
 };
