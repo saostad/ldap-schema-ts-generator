@@ -3,9 +3,9 @@ import { writeLog } from "fast-node-logger";
 import { graphqlTypeMapper } from "../helpers/type-map";
 import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
 
-interface GenerateGraphqlTypeFnInput {
+type GenerateGraphqlTypeFnInput = {
   data: SchemaClassWithAttributes;
-}
+};
 
 export function generateGraphqlType({
   data,

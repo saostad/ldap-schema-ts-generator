@@ -4,9 +4,9 @@ import { arrayToLines } from "../helpers/utils";
 import { jsTypeMapper } from "../helpers/type-map";
 import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
 
-interface GenerateClassInterfaceFnInput {
+type GenerateClassInterfaceFnInput = {
   data: SchemaClassWithAttributes;
-}
+};
 
 /** Generate Class Interface to be written in file 
  -  respect auxiliaryClass and systemAuxiliaryClass inheritance by extends interface 

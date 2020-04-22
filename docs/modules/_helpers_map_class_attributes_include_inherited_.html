@@ -91,13 +91,13 @@
 					<a name="mapclassattributesincludeinherited" class="tsd-anchor"></a>
 					<h3>map<wbr>Class<wbr>Attributes<wbr>Include<wbr>Inherited</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">map<wbr>Class<wbr>Attributes<wbr>Include<wbr>Inherited<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_helpers_map_class_attributes_.schemaclasswithattributes.html" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">map<wbr>Class<wbr>Attributes<wbr>Include<wbr>Inherited<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>justStructuralClasses<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_helpers_map_class_attributes_.schemaclasswithattributes.html" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in helpers/map-class-attributes-include-inherited.ts:22</li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/b00162a/src/helpers/map-class-attributes-include-inherited.ts#L34">helpers/map-class-attributes-include-inherited.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -105,26 +105,32 @@
 									<dt>summary:</dt>
 									<dd><ol>
 											<li>list auxiliary classes</li>
-											<li>list system auxiliary classes</li>
-											<li>create inheritance graph with following auxiliary classes (class &#39;top&#39; is parent of all classes)</li>
+											<li>list systemAuxiliary classes</li>
+											<li>create inheritance graph of structural classes with objectClassCategory=1 by following subClassOf field (class &#39;top&#39; is parent of all classes)</li>
 											<li>get direct attributes of each class in graph</li>
-											<li>merge all attributes</li>
 											<li>get direct attributes for class</li>
 											<li>merge direct attributes of class and override existing ones since direct attributes has more priority over attributes of auxiliary classes.</li>
 										</ol>
+										<ul>
+											<li>Note: child properties (override parent properties).
+											if a field exist in parent and child, child&#39;s attributes should override parent&#39;s one. (Source: <a href="https://docs.oracle.com/cd/E23507_01/Platform.20073/RepositoryGuide/html/s1804itemdescriptorhierarchiesandinhe01.html">https://docs.oracle.com/cd/E23507_01/Platform.20073/RepositoryGuide/html/s1804itemdescriptorhierarchiesandinhe01.html</a>)</li>
+										</ul>
 									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>justStructuralClasses<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>justStructuralClasses<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> }</span></h5>
 										</li>
 									</ul>
 								</li>

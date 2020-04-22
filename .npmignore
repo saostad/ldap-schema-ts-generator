@@ -1,6 +1,6 @@
 .npmrc
 .env
 *.log
-dist
 generated
 docs
+src/**/*.*

@@ -2,6 +2,14 @@
 
 It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.
 
+### Functionalities
+
+- generate typescript interface each object class
+- generate enum for supported controls, capabilities, extensions, policies
+- generate relations between classes in json format
+- generate graphql type for each object class
+- generate graphql basic CRUD resolvers for each object class
+
 ### How to use
 
 ```
@@ -107,36 +115,12 @@ export interface Container extends Top, MsExchBaseClass {
   containerInfo?: number;
 
   /**  - attributeSyntax: 2.5.5.1
-   *   - attributeID: 1.2.840.113556.1.4.7000.102.1027
-   *   - adminDisplayName: ms-Exch-Export-Containers-BL
-   *   - adminDescription: ms-Exch-Export-Containers-BL
-   *   - dn: CN=ms-Exch-Export-Containers-BL,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */
-  msExchExportContainersBL?: object;
-
-  /**  - attributeSyntax: 2.5.5.1
    *   - attributeID: 1.2.840.113556.1.4.1840
    *   - adminDisplayName: ms-DS-Object-Reference
    *   - adminDescription: A link to the object that uses the data stored in the object that contains this attribute.
    *   - dn: CN=ms-DS-Object-Reference,CN=Schema,CN=Configuration,DC=ki,DC=local
    */
   "msDS-ObjectReference"?: object[];
-
-  /**  - attributeSyntax: 2.5.5.9
-   *   - attributeID: 1.2.840.113556.1.2.471
-   *   - adminDisplayName: Schema-Version
-   *   - adminDescription: Schema-Version
-   *   - dn: CN=Schema-Version,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */
-  readonly schemaVersion?: number[];
-
-  /**  - attributeSyntax: 2.5.5.1
-   *   - attributeID: 1.2.840.113556.1.4.213
-   *   - adminDisplayName: Default-Class-Store
-   *   - adminDescription: Default-Class-Store
-   *   - dn: CN=Default-Class-Store,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */
-  readonly defaultClassStore?: object[];
 }
 ```
 
@@ -153,15 +137,16 @@ export interface Container extends Top, MsExchBaseClass {
 - [ ] Active Directory create a functionality to fetch all meta data about server [ref](https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse)
 - [ ] add option to customize generated file names with prefix/postfix (now it 's using Pascal case of ldap display name as interface and file name)
 - [ ] create out folders if not exist instead of throwing error
-- [ ] generate graphql types and CRUD operations
-  - [ ] generate Type for each objectClass in schema
-    - [ ] respect inheritance
+- [x] generate graphql types and CRUD operations
+  - [x] generate Type for each objectClass in schema
+    - [x] respect inheritance
     - [ ] respect relations by linkID attribute
-  - [ ] use dn as identification field
-  - [ ] generate general operations for each Type:
-    - [ ] Query get by dn
-    - [ ] Mutation delete by dn
-    - [ ] Mutation update by dn (input only not readonly attributes)
+  - [x] use dn as identification field
+  - [x] generate general operations for each Type:
+    - [x] Query get all
+    - [x] Query get by dn
+    - [x] Mutation delete by dn
+    - [x] Mutation update by dn (input only not readonly attributes)
 
 ### Know Issues
 

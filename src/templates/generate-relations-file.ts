@@ -4,7 +4,7 @@ import { defaultJsonDir } from "../helpers/variables";
 import { Relation } from "../services/link-id";
 import { writeToFile } from "../helpers/write-to-file";
 
-interface GenerateRelationsFileFnInput {
+type GenerateRelationsFileFnInput = {
   relations: Relation[];
   options?: {
     /** output directory of file.
@@ -14,7 +14,7 @@ interface GenerateRelationsFileFnInput {
     /** default true */
     usePrettier?: boolean;
   };
-}
+};
 
 export async function generateRelationsFile({
   relations,
