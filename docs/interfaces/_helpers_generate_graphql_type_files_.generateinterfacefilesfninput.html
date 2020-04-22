@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetSchemaControlsFnInput | ldap-schema-ts-generator</title>
+	<title>GenerateInterfaceFilesFnInput | ldap-schema-ts-generator</title>
 	<meta name="description" content="Documentation for ldap-schema-ts-generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_services_control_.html">&quot;services/control&quot;</a>
+					<a href="../modules/_helpers_generate_graphql_type_files_.html">&quot;helpers/generate-graphql-type-files&quot;</a>
 				</li>
 				<li>
-					<a href="_services_control_.getschemacontrolsfninput.html">GetSchemaControlsFnInput</a>
+					<a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html">GenerateInterfaceFilesFnInput</a>
 				</li>
 			</ul>
-			<h1>Interface GetSchemaControlsFnInput</h1>
+			<h1>Interface GenerateInterfaceFilesFnInput</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetSchemaControlsFnInput</span>
+						<span class="target">GenerateInterfaceFilesFnInput</span>
 					</li>
 				</ul>
 			</section>
@@ -84,7 +84,9 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_services_control_.getschemacontrolsfninput.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html#objectattributes" class="tsd-kind-icon">object<wbr>Attributes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html#objectclasses" class="tsd-kind-icon">object<wbr>Classes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html#options" class="tsd-kind-icon">options</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,12 +95,32 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="options" class="tsd-anchor"></a>
-					<h3>options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IClientConfig</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"baseDN"</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="objectattributes" class="tsd-anchor"></a>
+					<h3>object<wbr>Attributes</h3>
+					<div class="tsd-signature tsd-kind-icon">object<wbr>Attributes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/7fc6a8c/src/services/control.ts#L4">services/control.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/7fc6a8c/src/helpers/generate-graphql-type-files.ts#L13">helpers/generate-graphql-type-files.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="objectclasses" class="tsd-anchor"></a>
+					<h3>object<wbr>Classes</h3>
+					<div class="tsd-signature tsd-kind-icon">object<wbr>Classes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/7fc6a8c/src/helpers/generate-graphql-type-files.ts#L12">helpers/generate-graphql-type-files.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>outputFolder<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>usePrettier<span class="tsd-signature-symbol">?: </span><a href="_helpers_write_ts_file_.options.html" class="tsd-signature-type">Options</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/7fc6a8c/src/helpers/generate-graphql-type-files.ts#L14">helpers/generate-graphql-type-files.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -111,7 +133,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_services_control_.html">&quot;services/control&quot;</a>
+						<a href="../modules/_helpers_generate_graphql_type_files_.html">&quot;helpers/generate-<wbr>graphql-<wbr>type-<wbr>files&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -120,20 +142,23 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_services_control_.getschemacontrolsfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Controls<wbr>FnInput</a>
+						<a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html" class="tsd-kind-icon">Generate<wbr>Interface<wbr>Files<wbr>FnInput</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_services_control_.getschemacontrolsfninput.html#options" class="tsd-kind-icon">options</a>
+								<a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html#objectattributes" class="tsd-kind-icon">object<wbr>Attributes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html#objectclasses" class="tsd-kind-icon">object<wbr>Classes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_helpers_generate_graphql_type_files_.generateinterfacefilesfninput.html#options" class="tsd-kind-icon">options</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../modules/_services_control_.html#getschemacontrolsfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Controls<wbr>FnOutput</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_services_control_.html#getschemacontrols" class="tsd-kind-icon">get<wbr>Schema<wbr>Controls</a>
+						<a href="../modules/_helpers_generate_graphql_type_files_.html#generategraphqltypefiles" class="tsd-kind-icon">generate<wbr>Graph<wbr>QlType<wbr>Files</a>
 					</li>
 				</ul>
 			</nav>

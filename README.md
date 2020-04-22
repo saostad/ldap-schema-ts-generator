@@ -2,6 +2,13 @@
 
 It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.
 
+### Functionalities:
+
+- generate typescript interface each object class
+- generate enum for supported controls, capabilities, extensions, policies
+- generate relations between classes in json format
+- generate graphql type for each object class
+
 ### How to use
 
 ```
@@ -154,10 +161,10 @@ export interface Container extends Top, MsExchBaseClass {
 - [ ] add option to customize generated file names with prefix/postfix (now it 's using Pascal case of ldap display name as interface and file name)
 - [ ] create out folders if not exist instead of throwing error
 - [ ] generate graphql types and CRUD operations
-  - [ ] generate Type for each objectClass in schema
-    - [ ] respect inheritance
+  - [x] generate Type for each objectClass in schema
+    - [x] respect inheritance
     - [ ] respect relations by linkID attribute
-  - [ ] use dn as identification field
+  - [x] use dn as identification field
   - [ ] generate general operations for each Type:
     - [ ] Query get by dn
     - [ ] Mutation delete by dn
