@@ -5,7 +5,7 @@ import { getLdapOids } from "../services/ldap-oid";
 import { defaultEnumsDir } from "../helpers/variables";
 import { writeTsFile } from "../helpers/write-ts-file";
 
-interface GenerateControlsFileFnInput {
+type GenerateControlsFileFnInput = {
   controls: OID[];
   options?: {
     /** output directory of file.
@@ -15,7 +15,7 @@ interface GenerateControlsFileFnInput {
     /** default true */
     usePrettier?: boolean;
   };
-}
+};
 
 export async function generateControlsFile({
   controls,

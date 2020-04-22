@@ -4,7 +4,7 @@ import { getLdapPolicies } from "../services/ldap-policy";
 import { defaultEnumsDir } from "../helpers/variables";
 import { writeTsFile } from "../helpers/write-ts-file";
 
-interface GeneratePoliciesFileFnInput {
+type GeneratePoliciesFileFnInput = {
   policies: string[];
   options?: {
     /** output directory of file.
@@ -14,7 +14,7 @@ interface GeneratePoliciesFileFnInput {
     /** default true */
     usePrettier?: boolean;
   };
-}
+};
 
 export async function generatePoliciesFile({
   policies,

@@ -7,6 +7,7 @@ import { mapClassAttributesIncludeInherited } from "./map-class-attributes-inclu
 import { writeToFile } from "./write-to-file";
 import { Options } from "prettier";
 import { generateGraphqlType } from "../templates/generate-graphql-type";
+import { generateGraphqlResolvers } from "../templates/generate-graphql-resolvers";
 
 interface GenerateInterfaceFilesFnInput {
   objectClasses: Partial<SchemaClass>[];
@@ -14,6 +15,10 @@ interface GenerateInterfaceFilesFnInput {
   options?: {
     /** default generated folder of root directory of you project */
     outputFolder?: string;
+    /** output extension. default .gql */
+    fileExtension: "gql" | "graphql";
+    /** generate basic CRUD graphql resolvers. default true */
+    generateResolvers?: boolean;
     /** use prettier to format generated files. default { parser: "graphql" } */
     usePrettier?: Options;
   };
@@ -38,6 +43,16 @@ export async function generateGraphQlTypeFiles({
     usePrettier = options.usePrettier;
   }
 
+  let generateResolvers = true;
+  if (options && options.generateResolvers) {
+    generateResolvers = options.generateResolvers;
+  }
+
+  let fileExtension = "gql";
+  if (options && options.fileExtension) {
+    fileExtension = options.fileExtension;
+  }
+
   const promises: Promise<void>[] = [];
 
   const classesWithInheritedAttributes = mapClassAttributesIncludeInherited({
@@ -50,7 +65,7 @@ export async function generateGraphQlTypeFiles({
 
     const filePath = path.join(
       outDir,
-      `${pascalCase(classObj.lDAPDisplayName as string)}.gql`,
+      `${pascalCase(classObj.lDAPDisplayName as string)}.${fileExtension}`,
     );
 
     promises.push(
@@ -59,6 +74,22 @@ export async function generateGraphQlTypeFiles({
         prettierOptions: usePrettier ? { parser: "graphql" } : undefined,
       }),
     );
+
+    if (generateResolvers) {
+      const rawResolversOutput = generateGraphqlResolvers({ data: classObj });
+
+      const resolversFilePath = path.join(
+        outDir,
+        `${pascalCase(classObj.lDAPDisplayName as string)}-Resolvers.gql`,
+      );
+
+      promises.push(
+        writeToFile(rawResolversOutput, {
+          filePath: resolversFilePath,
+          prettierOptions: usePrettier ? { parser: "graphql" } : undefined,
+        }),
+      );
+    }
   });
 
   await Promise.all(promises);

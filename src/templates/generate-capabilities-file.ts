@@ -5,7 +5,7 @@ import { getLdapOids } from "../services/ldap-oid";
 import { defaultEnumsDir } from "../helpers/variables";
 import { writeTsFile } from "../helpers/write-ts-file";
 
-interface GenerateCapabilitiesFileFnInput {
+type GenerateCapabilitiesFileFnInput = {
   capabilities: OID[];
   options?: {
     /** output directory of file.
@@ -15,7 +15,7 @@ interface GenerateCapabilitiesFileFnInput {
     /** default true */
     usePrettier?: boolean;
   };
-}
+};
 
 export async function generateCapabilitiesFile({
   capabilities,

@@ -5,7 +5,7 @@ import { getLdapOids } from "../services/ldap-oid";
 import { defaultEnumsDir } from "../helpers/variables";
 import { writeTsFile } from "../helpers/write-ts-file";
 
-interface GenerateExtensionsFileFnInput {
+type GenerateExtensionsFileFnInput = {
   extensions: OID[];
   options?: {
     /** output directory of file.
@@ -15,7 +15,7 @@ interface GenerateExtensionsFileFnInput {
     /** default true */
     usePrettier?: boolean;
   };
-}
+};
 
 export async function generateExtensionsFile({
   extensions,
