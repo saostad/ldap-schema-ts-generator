@@ -62,12 +62,10 @@ export async function main() {
   });
   data.forEach((el) => {
     console.log(
-      el.ldapName,
+      el.lDAPDisplayName,
       el.attributes?.length,
       el.originalAttributes?.length,
     );
   });
 }
-main().catch((err) => {
-  console.log(`File: app.ts,`, `Line: 48 => `, err);
-});
+main();

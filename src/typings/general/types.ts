@@ -97,10 +97,10 @@ export type OID = string;
 export type SubClassOf = string;
 
 /** multi-valued properties that specify the auxiliary classes that this class inherits from. The full set of auxiliary classes is the union of the systemAuxiliaryClass and auxiliaryClass values on this class and all inherited classes. For an existing classSchema object, values can be added to the auxiliaryClass property but not removed. After creation of the class, the systemAuxiliaryClass property cannot be changed. */
-export type AuxiliaryClass = string | string[];
+export type AuxiliaryClass = LDAPDisplayName | LDAPDisplayName[];
 
 /** multi-valued properties that specify the auxiliary classes that this class inherits from. The full set of auxiliary classes is the union of the systemAuxiliaryClass and auxiliaryClass values on this class and all inherited classes. For an existing classSchema object, values can be added to the auxiliaryClass property but not removed. After creation of the class, the systemAuxiliaryClass property cannot be changed. */
-export type SystemAuxiliaryClass = string | string[];
+export type SystemAuxiliaryClass = LDAPDisplayName | LDAPDisplayName[];
 
 /** The distinguished name of this object class or one of its superclasses. 
  * - When an instance of this object class is created, the system sets the objectCategory property of the new instance to the value specified in the defaultObjectCategory property of its object class. 

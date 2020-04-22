@@ -6,6 +6,11 @@ import {
   AnalysedAttributeFields,
 } from "./map-class-attributes";
 import { LDAPDisplayName } from "../typings/general/types";
+import {
+  getListOfParents,
+  mergeAttributesOfAuxiliaryClasses,
+  mergeAttributes,
+} from "./utils";
 
 interface MapClassAttributesIncludeInheritedFnInput {
   attributes: Partial<SchemaAttribute>[];
@@ -34,7 +39,6 @@ export function mapClassAttributesIncludeInherited({
   writeLog(`mapClassAttributesIncludeInherited()`, { level: "trace" });
 
   const classesWithDirectAttributes = classes.map((classObj) => {
-    /** get direct attributes for class */
     return mapClassAttributes({ attributes, classObj });
   });
 
@@ -51,100 +55,64 @@ export function mapClassAttributesIncludeInherited({
     const structuralClassesWithParents = structuralClasses.map(
       (
         /** original raw structural class (attributes not processed)*/
-        originalStructuralClassObj,
+        originalStructuralClass,
       ) => {
-        /** placeholder for all attributes including inherited ones */
-        const mergedAttributes: {
-          [attributeLdapName: string]: AnalysedAttributeFields;
-        } = {};
-
         /** placeholder for list of parents. */
-        const superClasses: LDAPDisplayName[] = [];
+        const superClasses: LDAPDisplayName[] = getListOfParents({
+          targetClassSubClassOf: originalStructuralClass.subClassOf!,
+          allClasses: classesWithDirectAttributes,
+        });
 
-        /** set the first parent */
-        let parentLdapName = originalStructuralClassObj.subClassOf!;
+        /** placeholder for all auxiliary attributes including inherited ones. */
+        const mergedAuxiliaryAttributes: AnalysedAttributeFields[] = [];
 
-        while (parentLdapName.toLowerCase() !== "top") {
-          superClasses.push(parentLdapName);
-          /**
-           * 1. find parent class by it's ldapDisplayName
-           * 2. follow the subClassOf field to find next parent
-           */
-          const parentClass = classesWithDirectAttributes.find(
-            (classItem) => classItem.ldapName === parentLdapName,
-          );
-
-          if (!parentClass) {
-            throw new Error(`class ${parentLdapName} not found!`);
-          }
-          parentLdapName = parentClass.subClassOf;
-        }
-
-        /** add "top" as last parent */
-        superClasses.push(parentLdapName);
-
-        /** now we have all the parents!
-         * it's time to merge attributes of parent classes
-         */
-        superClasses.forEach((ldapDisplayName) => {
+        superClasses.forEach((parentLdapName) => {
           const parentClassItem = classesWithDirectAttributes.find(
-            (el) => el.ldapName === ldapDisplayName,
+            (el) => el.lDAPDisplayName === parentLdapName,
           );
 
           if (!parentClassItem) {
             throw new Error(`class ${parentClassItem} not found!`);
           }
 
-          parentClassItem.attributes?.forEach((attributeItem) => {
-            mergedAttributes[attributeItem.lDAPDisplayName] = attributeItem;
-          });
-        });
+          /** @step merge direct attributes of parent classes with it's auxiliary attributes */
 
-        /** override parent attributes with direct attributes if there are same ones*/
-
-        const originalStructuralClassWithDirectAttributes = classesWithDirectAttributes.find(
-          (el) => el.ldapName === originalStructuralClassObj.lDAPDisplayName!,
-        );
-
-        if (!originalStructuralClassWithDirectAttributes) {
-          throw new Error(
-            `class ${originalStructuralClassWithDirectAttributes} not found!`,
-          );
-        }
-
-        Object.entries(mergedAttributes).forEach((el) => {
-          const [attributeLdapName, attributeData] = el;
-          const attribIndex = originalStructuralClassWithDirectAttributes.attributes?.findIndex(
-            (attribute) => attribute.lDAPDisplayName === attributeLdapName,
+          /** */
+          const parentClassWithAllAttributes = mergeAttributesOfAuxiliaryClasses(
+            {
+              targetClassLdapName: parentClassItem.lDAPDisplayName,
+              classesWithAttributes: classesWithDirectAttributes,
+            },
           );
 
-          /** if (
-           * - attributes field exist
-           * - and attribIndex is not undefined
-           * - and attribIndex !== -1
-           * ){
-           *    attribute exist and need to be override.
-           * } else {
-           *    attribute not exist and can be add to array of attributes
-           * }
-           */
-          if (
-            originalStructuralClassWithDirectAttributes.attributes &&
-            attribIndex &&
-            attribIndex !== -1
-          ) {
-            /** attribute exist and need to be override. */
-            originalStructuralClassWithDirectAttributes.attributes[
-              attribIndex
-            ] = attributeData;
-          } else {
-            /** attribute not exist and can be add to array of attributes */
-            originalStructuralClassWithDirectAttributes.attributes?.push(
-              attributeData,
+          if (parentClassWithAllAttributes.attributes) {
+            mergedAuxiliaryAttributes.push(
+              ...parentClassWithAllAttributes.attributes,
             );
           }
         });
-        return originalStructuralClassWithDirectAttributes;
+
+        /** @step override parent attributes with direct attributes if there are same ones */
+
+        /** Original Structural Class with Direct Attributes */
+        const origClassObj = classesWithDirectAttributes.find(
+          (el) =>
+            el.lDAPDisplayName === originalStructuralClass.lDAPDisplayName!,
+        );
+
+        if (!origClassObj) {
+          throw new Error(`class ${origClassObj} not found!`);
+        }
+
+        const resultAttributes = mergeAttributes({
+          importantAttributes: origClassObj.attributes ?? [],
+          extraAttributes: mergedAuxiliaryAttributes,
+        });
+
+        return {
+          ...origClassObj,
+          attributes: resultAttributes,
+        };
       },
     );
     return structuralClassesWithParents;
@@ -155,22 +123,3 @@ export function mapClassAttributesIncludeInherited({
     );
   }
 }
-
-interface AddAttributesOfAuxiliaryClassesFnInput {
-  classesWithAttributes: SchemaClassWithAttributes[];
-  targetClass: SchemaClassWithAttributes;
-}
-/** mutate/add attributes exist in auxiliaryClass and systemAuxiliaryClass fields to target class */
-function addAttributesOfAuxiliaryClasses({
-  classesWithAttributes,
-  targetClass,
-}: AddAttributesOfAuxiliaryClassesFnInput): SchemaClassWithAttributes {
-  targetClass.auxiliaryClass?.forEach();
-}
-
-interface AddAttributesOfAuxiliaryClassesFnInput {
-  classesWithAttributes: SchemaClassWithAttributes[];
-  targetClass: SchemaClassWithAttributes;
-}
-/** follow subClassOf field in class schema to gets to the top class */
-function getListOfParents(params: type): LDAPDisplayName[] {}

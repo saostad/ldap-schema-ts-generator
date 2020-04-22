@@ -38,7 +38,7 @@ export function generateClassInterface({
 
   const result = `
   ${
-    data.ldapName !== "top"
+    data.lDAPDisplayName !== "top"
       ? `${parentClasses
           .map((el) => `import {${pascalCase(el)}} from './${pascalCase(el)}';`)
           .join("")}`
@@ -47,13 +47,13 @@ export function generateClassInterface({
   
   
   
-  /**  - object class: ${data.ldapName}
+  /**  - object class: ${data.lDAPDisplayName}
    *  - child of class: ${data.subClassOf}
    *  - dn: ${data.originalClassFields.dn}
   */  
  // @ts-ignore
-  export interface ${pascalCase(data.ldapName)} ${
-    data.ldapName !== "top"
+  export interface ${pascalCase(data.lDAPDisplayName)} ${
+    data.lDAPDisplayName !== "top"
       ? `extends ${parentClasses.map((el) => pascalCase(el)).join()}`
       : ""
   }{

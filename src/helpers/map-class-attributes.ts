@@ -30,7 +30,7 @@ export interface AnalysedAttributeFields {
 
 export interface SchemaClassWithAttributes {
   className: Name;
-  ldapName: LDAPDisplayName;
+  lDAPDisplayName: LDAPDisplayName;
   subClassOf: SubClassOf;
   auxiliaryClass?: Extract<AuxiliaryClass, string[]>;
   systemAuxiliaryClass?: Extract<SystemAuxiliaryClass, string[]>;
@@ -54,7 +54,7 @@ export function mapClassAttributes({
   writeLog(`mapClassAttributes()`, { level: "trace" });
   const result: SchemaClassWithAttributes = {
     className: classObj.name!,
-    ldapName: classObj.lDAPDisplayName!,
+    lDAPDisplayName: classObj.lDAPDisplayName!,
     subClassOf: classObj.subClassOf!,
     originalClassFields: { ...classObj },
     originalAttributes: [],
