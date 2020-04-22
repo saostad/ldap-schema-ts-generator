@@ -19,6 +19,7 @@ import {
   generateRelationsFile,
   Types,
   mapClassAttributesIncludeInherited,
+  generateGraphQlTypeFiles,
 } from "./index";
 
 export async function main() {
@@ -56,16 +57,6 @@ export async function main() {
   const objectClasses = await getSchemaClasses({ schemaDn, options });
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  const data = mapClassAttributesIncludeInherited({
-    attributes: objectAttributes,
-    classes: objectClasses,
-  });
-  data.forEach((el) => {
-    console.log(
-      el.lDAPDisplayName,
-      el.attributes?.length,
-      el.originalAttributes?.length,
-    );
-  });
+  await generateGraphQlTypeFiles({ objectClasses, objectAttributes });
 }
 main();

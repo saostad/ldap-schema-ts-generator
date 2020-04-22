@@ -27,8 +27,52 @@ const jsTypeMap = {
 
 /** get ldap attributeSyntax and return js equivalent type */
 export function jsTypeMapper(attributeSyntax: string): string {
-  writeLog(`typeMapper()`, { level: "trace" });
+  writeLog(`jsTypeMapper()`, { level: "trace" });
   for (const [key, value] of Object.entries(jsTypeMap)) {
+    if (value.includes(attributeSyntax)) {
+      return key;
+    }
+  }
+
+  /** type not found */
+  writeLog(`type ${attributeSyntax} not found`, {
+    stdout: true,
+    level: "error",
+  });
+
+  /** default type */
+  return "string";
+}
+
+const graphqlTypeMap = {
+  /**@Note:
+   * - 2.5.5.11 is Date
+   */
+  String: [
+    "2.5.5.12",
+    "2.5.5.17",
+    "2.5.5.5",
+    "2.5.5.10",
+    "2.5.5.7",
+    "2.5.5.14",
+    "2.5.5.2",
+    "2.5.5.4",
+    "2.5.5.15",
+    "2.5.5.6",
+    "2.5.5.13",
+    "2.5.5.11",
+  ],
+  Boolean: ["2.5.5.8"],
+  Int: ["2.5.5.16", "2.5.5.9"],
+  /** @note:
+   * - for 2.5.5.1 : https://docs.microsoft.com/en-us/windows/win32/adschema/s-object-ds-dn */
+  ID: ["2.5.5.1"],
+};
+
+/** get ldap attributeSyntax and return graphql equivalent type */
+export function graphqlTypeMapper(attributeSyntax: string): string {
+  writeLog(`graphqlTypeMapper()`, { level: "trace" });
+  for (const [key, value] of Object.entries(graphqlTypeMap)) {
     if (value.includes(attributeSyntax)) {
       return key;
     }

@@ -6,6 +6,7 @@ import path from "path";
 
 interface WriteFileOptions {
   filePath: string;
+  /** run prettier at output before write to file. default false */
   prettierOptions?: Options;
 }
 
