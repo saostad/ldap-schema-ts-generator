@@ -27,7 +27,14 @@ export function generateGraphqlResolvers({
       ?.filter((el) => el.systemOnly !== true)
       .map(
         (el) =>
-          `${pascalCase(el.lDAPDisplayName!)}: ${
+          `"""
+          Admin DisplayName: ${el.adminDisplayName}
+          Description: ${el.adminDescription}
+          ldapDisplayName: ${el.lDAPDisplayName}
+          attributeSyntax: ${el.attributeSyntax}
+          attributeID: ${el.attributeID}          
+          """
+          ${pascalCase(el.lDAPDisplayName!)}: ${
             el.isSingleValued ? "" : "["
           }${graphqlTypeMapper(el.attributeSyntax)}${el.isRequired ? "!" : ""}${
             el.isSingleValued ? "" : "]"
