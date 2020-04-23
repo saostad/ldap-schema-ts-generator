@@ -5,9 +5,10 @@ import { writeLog } from "fast-node-logger";
 import { defaultGraphqlDir } from "./variables";
 import { mapClassAttributesIncludeInherited } from "./map-class-attributes-include-inherited";
 import { writeToFile } from "./write-to-file";
-import { Options } from "prettier";
 import { generateGraphqlType } from "../templates/generate-graphql-type";
 import { generateGraphqlResolvers } from "../templates/generate-graphql-resolvers";
+import { generateGraphqlEnumTypeMap } from "../templates/generate-graphql-enum-type-map";
+import { writeTsFile } from "./write-ts-file";
 
 interface GenerateInterfaceFilesFnInput {
   objectClasses: Partial<SchemaClass>[];
@@ -19,14 +20,17 @@ interface GenerateInterfaceFilesFnInput {
     fileExtension: "gql" | "graphql";
     /** generate basic CRUD graphql resolvers. default true */
     generateResolvers?: boolean;
+    /** type-map for lDAPDisplayName and graphql field names. default true
+     * @note ldap attributes can have characters that are illegal in graphql schema so instead we use pascal case of lDAPDisplayName. and here is the type map to track attributes. */
+    generateEnumTypeMaps?: boolean;
     /** use prettier to format generated files. default { parser: "graphql" } */
-    usePrettier?: Options;
+    usePrettier?: boolean;
   };
 }
 
 /** generate separate file for each class
  */
-export async function generateGraphQlTypeFiles({
+export async function generateGraphqlTypeFiles({
   objectClasses,
   objectAttributes,
   options,
@@ -38,7 +42,7 @@ export async function generateGraphQlTypeFiles({
     outDir = options.outputFolder;
   }
 
-  let usePrettier: Options = { parser: "graphql" };
+  let usePrettier = true;
   if (options && options.usePrettier) {
     usePrettier = options.usePrettier;
   }
@@ -53,6 +57,11 @@ export async function generateGraphQlTypeFiles({
     fileExtension = options.fileExtension;
   }
 
+  let generateEnumTypeMaps = true;
+  if (options && options.generateEnumTypeMaps) {
+    generateEnumTypeMaps = options.generateEnumTypeMaps;
+  }
+
   const promises: Promise<void>[] = [];
 
   const classesWithInheritedAttributes = mapClassAttributesIncludeInherited({
@@ -65,7 +74,7 @@ export async function generateGraphQlTypeFiles({
 
     const filePath = path.join(
       outDir,
-      `${pascalCase(classObj.lDAPDisplayName as string)}.${fileExtension}`,
+      `${pascalCase(classObj.lDAPDisplayName)}-Type.${fileExtension}`,
     );
 
     promises.push(
@@ -80,13 +89,29 @@ export async function generateGraphQlTypeFiles({
 
       const resolversFilePath = path.join(
         outDir,
-        `${pascalCase(classObj.lDAPDisplayName as string)}-Resolvers.gql`,
+        `${pascalCase(classObj.lDAPDisplayName)}-Resolvers.${fileExtension}`,
       );
 
       promises.push(
         writeToFile(rawResolversOutput, {
           filePath: resolversFilePath,
           prettierOptions: usePrettier ? { parser: "graphql" } : undefined,
+        }),
+      );
+    }
+
+    if (generateEnumTypeMaps) {
+      const rawEnumOutput = generateGraphqlEnumTypeMap({ data: classObj });
+
+      const resolversFilePath = path.join(
+        outDir,
+        `${pascalCase(classObj.lDAPDisplayName)}-TypeMap.ts`,
+      );
+
+      promises.push(
+        writeTsFile(rawEnumOutput, {
+          filePath: resolversFilePath,
+          usePrettier,
         }),
       );
     }

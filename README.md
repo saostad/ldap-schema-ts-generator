@@ -135,6 +135,7 @@ export interface Container extends Top, MsExchBaseClass {
 - [ ] generate Base DNs from RootDSE (List of DNs of all the naming contexts and application partitions maintained by the DC)
 - [ ] generate naming contexts fields from RootDSE (e.g. defaultNamingContext, configurationNamingContext, schemaNamingContext, rootNamingContext)
 - [ ] Active Directory create a functionality to fetch all meta data about server [ref](https://docs.microsoft.com/en-us/windows/win32/adschema/rootdse)
+- [ ] Active Directory [Group Type Flags](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/11972272-09ec-4a42-bf5e-3e99b321cf55) and [UserAccountControl flags](https://support.microsoft.com/en-us/help/305144/how-to-use-useraccountcontrol-to-manipulate-user-account-properties)
 - [ ] add option to customize generated file names with prefix/postfix (now it 's using Pascal case of ldap display name as interface and file name)
 - [ ] create out folders if not exist instead of throwing error
 - [x] generate graphql types and CRUD operations

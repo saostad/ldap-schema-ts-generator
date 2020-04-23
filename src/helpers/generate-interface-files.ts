@@ -64,7 +64,7 @@ export async function generateInterfaceFiles({
   await Promise.all(promises);
   writeLog(`interfaces has been created in dir ${outDir}`, { stdout: true });
 
-  /** create index file for output directory */
+  /** @step create index file for output directory */
   if (indexFile) {
     const indexFileContent = `${objectClasses
       .map(
