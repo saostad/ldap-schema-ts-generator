@@ -13,7 +13,9 @@ import {
 } from "./utils";
 
 type MapClassAttributesIncludeInheritedFnInput = {
+  /** all schema attributes */
   attributes: Partial<SchemaAttribute>[];
+  /** all schema classes */
   classes: Partial<SchemaClass>[];
   options?: {
     /** default true */

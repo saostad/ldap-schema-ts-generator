@@ -74,8 +74,13 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_services_link_id_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_services_link_id_.relation.html" class="tsd-kind-icon">Relation</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_services_link_id_.html#relation" class="tsd-kind-icon">Relation</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -85,6 +90,80 @@
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_services_link_id_.html#getrelations" class="tsd-kind-icon">get<wbr>Relations</a></li>
 							</ul>
 						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="relation" class="tsd-anchor"></a>
+					<h3>Relation</h3>
+					<div class="tsd-signature tsd-kind-icon">Relation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/52cda7f/src/services/link-id.ts#L77">services/link-id.ts:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>ldapName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-symbol">{ </span>backLink<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>backLinkDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>backLinkId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>forwardLink<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>forwardLinkDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>forwardLinkId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>isBackLink<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>back<wbr>Link<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Back Link Attribute LDAP Name (readonly)</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5>back<wbr>Link<wbr>Dn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Back Link Attribute Distinguished Name</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5>back<wbr>Link<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Back Link ID</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5>forward<wbr>Link<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Forward Link Attribute LDAP Name (writable)</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5>forward<wbr>Link<wbr>Dn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Forward Link Attribute Distinguished Name</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5>forward<wbr>Link<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Forward Link ID</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5>is<wbr>Back<wbr>Link<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -100,7 +179,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/fa75c6d/src/services/link-id.ts#L37">services/link-id.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/52cda7f/src/services/link-id.ts#L37">services/link-id.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -135,13 +214,13 @@
 					<a name="getrelations" class="tsd-anchor"></a>
 					<h3>get<wbr>Relations</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Relations<span class="tsd-signature-symbol">(</span>linkIds<span class="tsd-signature-symbol">: </span><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_services_link_id_.relation.html" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Relations<span class="tsd-signature-symbol">(</span>linkIds<span class="tsd-signature-symbol">: </span><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_services_link_id_.html#relation" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/fa75c6d/src/services/link-id.ts#L99">services/link-id.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/52cda7f/src/services/link-id.ts#L99">services/link-id.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -155,7 +234,7 @@
 									<h5>linkIds: <a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_services_link_id_.relation.html" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_services_link_id_.html#relation" class="tsd-signature-type">Relation</a><span class="tsd-signature-symbol">[]</span></h4>
 							<p>array of relations</p>
 						</li>
 					</ul>
@@ -179,10 +258,10 @@
 						<a href="../interfaces/_services_link_id_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_services_link_id_.relation.html" class="tsd-kind-icon">Relation</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_services_link_id_.html#relation" class="tsd-kind-icon">Relation</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_services_link_id_.html#getlinkids" class="tsd-kind-icon">get<wbr>Link<wbr>Ids</a>
@@ -203,7 +282,12 @@
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>

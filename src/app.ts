@@ -21,8 +21,9 @@ import {
   mapClassAttributesIncludeInherited,
   generateGraphqlTypeFiles,
   getStructuralSchemaClasses,
+  generateStructuralClassesFile,
 } from "./index";
-import { generateStructuralClassesFile } from "./templates/generate-structural-classes-file";
+import { StructuralClasses } from "./generated/StructuralClasses";
 
 export async function main() {
   const logger = await createLogger({
@@ -58,11 +59,22 @@ export async function main() {
   // const classes = await getStructuralSchemaClasses({ schemaDn, options });
   // await generateStructuralClassesFile({ classes });
 
-  // const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-  // const objectClasses = await getSchemaClasses({ schemaDn, options });
+  const objectAttributes = await getSchemaAttributes({ schemaDn, options });
+  const objectClasses = await getSchemaClasses({ schemaDn, options });
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  // await generateGraphqlTypeFiles({ objectClasses, objectAttributes });
+  // await generateGraphqlTypeFiles({
+  //   objectClasses,
+  //   objectAttributes,
+  // });
+
+  await generateGraphqlTypeFiles<typeof StructuralClasses>({
+    objectClasses,
+    objectAttributes,
+    options: {
+      justThisClasses: ["user", "group", "computer"],
+    },
+  });
 }
 main();

@@ -10,69 +10,83 @@ import { generateGraphqlResolvers } from "../templates/generate-graphql-resolver
 import { generateGraphqlEnumTypeMap } from "../templates/generate-graphql-enum-type-map";
 import { writeTsFile } from "./write-ts-file";
 
-type GenerateGraphqlTypeFilesFnInput = {
+type GenerateGraphqlTypeFilesFnInput<T = any> = {
   objectClasses: Partial<SchemaClass>[];
   objectAttributes: Partial<SchemaAttribute>[];
   options?: {
-    /** default generated folder of root directory of you project */
+    /** default folder named 'generated' in root directory of you project */
     outputFolder?: string;
     /** output extension. default .gql */
-    graphqlExtension: "gql" | "graphql";
+    graphqlExtension?: "gql" | "graphql";
     /** generate basic CRUD graphql resolvers. default true */
     generateResolvers?: boolean;
-    /** type-map for lDAPDisplayName and graphql field names. default true
+    /** typescript enum type-map for lDAPDisplayName and graphql field names. default true
      * @note ldap attributes can have characters that are illegal in graphql schema so instead we use pascal case of lDAPDisplayName. and here is the type map to track attributes. */
     generateEnumTypeMaps?: boolean;
-    /** use prettier to format generated files. default { parser: "graphql" } */
+    /** use prettier to format generated files.
+     * - for graphql files, default { parser: "graphql" }
+     * - for typescript files, default { parser: "typescript" }
+     */
     usePrettier?: boolean;
-    /** list of classes included classes
+    /** list of classes to generate classes
      * - if not provided it generate all structural classes
      */
-    includedClasses?: string[];
+    // justThisClasses?: string[];
+    justThisClasses?: Extract<keyof T, string>[];
   };
 };
 
-/** generate graphql schema files for each object class */
-export async function generateGraphqlTypeFiles({
+/** generate graphql schema files for each structural class */
+export async function generateGraphqlTypeFiles<StructuralClasses = any>({
   objectClasses,
   objectAttributes,
   options,
-}: GenerateGraphqlTypeFilesFnInput): Promise<void> {
+}: GenerateGraphqlTypeFilesFnInput<StructuralClasses>): Promise<void> {
   writeLog(`generateGraphqlTypeFiles()`, { level: "trace" });
-  /** place holder for output directory */
+
   let outDir = defaultGraphqlDir;
-  if (options && options.outputFolder) {
+  if (options?.outputFolder) {
     outDir = options.outputFolder;
   }
 
   let usePrettier = true;
-  if (options && options.usePrettier) {
+  if (options?.usePrettier) {
     usePrettier = options.usePrettier;
   }
 
   let generateResolvers = true;
-  if (options && options.generateResolvers) {
+  if (options?.generateResolvers) {
     generateResolvers = options.generateResolvers;
   }
 
   let graphqlExtension = "gql";
-  if (options && options.graphqlExtension) {
+  if (options?.graphqlExtension) {
     graphqlExtension = options.graphqlExtension;
   }
 
   let generateEnumTypeMaps = true;
-  if (options && options.generateEnumTypeMaps) {
+  if (options?.generateEnumTypeMaps) {
     generateEnumTypeMaps = options.generateEnumTypeMaps;
   }
 
   const promises: Promise<void>[] = [];
 
-  const classesWithInheritedAttributes = mapClassAttributesIncludeInherited({
+  let StructuralClassesWithMeta = mapClassAttributesIncludeInherited({
     attributes: objectAttributes,
     classes: objectClasses,
+    options: {
+      justStructuralClasses: true,
+    },
   });
 
-  classesWithInheritedAttributes.forEach((classObj) => {
+  if (options?.justThisClasses) {
+    StructuralClassesWithMeta = StructuralClassesWithMeta.filter((el) =>
+      // @ts-ignore
+      options.justThisClasses?.includes(el.lDAPDisplayName),
+    );
+  }
+
+  StructuralClassesWithMeta.forEach((classObj) => {
     const rawOutput = generateGraphqlType({ data: classObj });
 
     const typeFilePath = path.join(
