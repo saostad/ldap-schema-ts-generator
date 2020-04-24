@@ -12,14 +12,14 @@ import {
   mergeAttributes,
 } from "./utils";
 
-interface MapClassAttributesIncludeInheritedFnInput {
+type MapClassAttributesIncludeInheritedFnInput = {
   attributes: Partial<SchemaAttribute>[];
   classes: Partial<SchemaClass>[];
   options?: {
     /** default true */
     justStructuralClasses?: boolean;
   };
-}
+};
 /** @returns class attributes including inherited ones.
  * @summary:
  * 1. list auxiliary classes

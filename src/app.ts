@@ -19,8 +19,10 @@ import {
   generateRelationsFile,
   Types,
   mapClassAttributesIncludeInherited,
-  generateGraphQlTypeFiles,
+  generateGraphqlTypeFiles,
+  getStructuralSchemaClasses,
 } from "./index";
+import { generateStructuralClassesFile } from "./templates/generate-structural-classes-file";
 
 export async function main() {
   const logger = await createLogger({
@@ -53,10 +55,14 @@ export async function main() {
   // const policies = await getSchemaPolicies({ options });
   // await generatePoliciesFile({ policies });
 
-  const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-  const objectClasses = await getSchemaClasses({ schemaDn, options });
+  // const classes = await getStructuralSchemaClasses({ schemaDn, options });
+  // await generateStructuralClassesFile({ classes });
+
+  // const objectAttributes = await getSchemaAttributes({ schemaDn, options });
+  // const objectClasses = await getSchemaClasses({ schemaDn, options });
+
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  await generateGraphQlTypeFiles({ objectClasses, objectAttributes });
+  // await generateGraphqlTypeFiles({ objectClasses, objectAttributes });
 }
 main();

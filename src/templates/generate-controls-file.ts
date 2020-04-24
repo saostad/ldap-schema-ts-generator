@@ -17,6 +17,7 @@ type GenerateControlsFileFnInput = {
   };
 };
 
+/** generate typescript enum for defined control OIDs */
 export async function generateControlsFile({
   controls,
   options,

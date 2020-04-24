@@ -10,6 +10,7 @@ import { generatePoliciesFile } from "./templates/generate-policies-file";
 import { generateRelationsFile } from "./templates/generate-relations-file";
 import { mapClassAttributesIncludeInherited } from "./helpers/map-class-attributes-include-inherited";
 import { generateGraphqlTypeFiles } from "./helpers/generate-graphql-type-files";
+import { generateStructuralClassesFile } from "./templates/generate-structural-classes-file";
 
 export {
   generateInterfaceFiles,
@@ -19,5 +20,6 @@ export {
   generatePoliciesFile,
   generateRelationsFile,
   mapClassAttributesIncludeInherited,
-  generateGraphqlTypeFiles as generateGraphQlTypeFiles,
+  generateGraphqlTypeFiles,
+  generateStructuralClassesFile,
 };

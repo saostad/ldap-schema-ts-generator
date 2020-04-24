@@ -17,6 +17,7 @@ type GenerateCapabilitiesFileFnInput = {
   };
 };
 
+/** generate typescript enum for defined capability OIDs */
 export async function generateCapabilitiesFile({
   capabilities,
   options,

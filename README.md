@@ -4,11 +4,17 @@ It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP s
 
 ### Functionalities
 
-- generate typescript interface each object class
-- generate enum for supported controls, capabilities, extensions, policies
-- generate relations between classes in json format
-- generate graphql type for each object class
-- generate graphql basic CRUD resolvers for each object class
+- generate typescript interfaces for each object class
+- generate relations between attributes (json)
+- generate graphql schema:
+  - type for each object class
+  - basic CRUD operations for each object class
+- generate typescript enum for supported:
+  - controls
+  - capabilities
+  - extensions
+  - policies
+  - structural classes
 
 ### How to use
 

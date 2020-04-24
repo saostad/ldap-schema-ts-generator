@@ -4,11 +4,11 @@ import { writeLog } from "fast-node-logger";
 import { dirPathExist } from "./utils";
 import path from "path";
 
-interface WriteFileOptions {
+type WriteFileOptions = {
   filePath: string;
   /** run prettier at output before write to file. default false */
   prettierOptions?: Options;
-}
+};
 
 /** apply prettier write text to file */
 export async function writeToFile(

@@ -16,6 +16,7 @@ type GeneratePoliciesFileFnInput = {
   };
 };
 
+/** generate typescript enum for defined policies */
 export async function generatePoliciesFile({
   policies,
   options,

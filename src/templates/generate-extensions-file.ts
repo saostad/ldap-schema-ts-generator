@@ -17,6 +17,7 @@ type GenerateExtensionsFileFnInput = {
   };
 };
 
+/** generate typescript enum for defined extension OIDs */
 export async function generateExtensionsFile({
   extensions,
   options,

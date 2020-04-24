@@ -58,10 +58,10 @@ export interface SchemaClass
   systemPossSuperiors: SystemPossSuperiors;
 }
 
-interface GetSchemaClassesFnInput {
+type GetSchemaClassesFnInput = {
   schemaDn: string;
   options: Omit<IClientConfig, "baseDN">;
-}
+};
 /** get defined classSchema Objects in schema */
 export async function getSchemaClasses({
   schemaDn,
@@ -115,15 +115,15 @@ export async function getSchemaClasses({
   return objectClasses;
 }
 
-interface GetSchemaClassesFnInput {
+type GetStructuralSchemaClassesFnInput = {
   schemaDn: string;
   options: Omit<IClientConfig, "baseDN">;
-}
+};
 /** get defined classSchema Objects in schema where objectClassCategory=1 */
 export async function getStructuralSchemaClasses({
   schemaDn,
   options,
-}: GetSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
+}: GetStructuralSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
   options.logger?.trace("getSchemaClasses()");
   const client = new Client({
     user: options.user,
@@ -172,11 +172,11 @@ export async function getStructuralSchemaClasses({
   return objectClasses;
 }
 
-interface GetSchemaClassByLdapNameFnInput {
+type GetSchemaClassByLdapNameFnInput = {
   schemaDn: string;
   ldapName: string;
   options: Omit<IClientConfig, "baseDN">;
-}
+};
 export async function getSchemaClassByLdapName({
   options,
   schemaDn,

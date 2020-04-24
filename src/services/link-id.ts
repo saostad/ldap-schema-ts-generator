@@ -74,7 +74,7 @@ export async function getLinkIds({
   return linkIds;
 }
 
-export interface Relation {
+export type Relation = {
   [ldapName: string]: {
     isBackLink: boolean;
     /** Back Link Attribute LDAP Name (readonly) */
@@ -91,7 +91,7 @@ export interface Relation {
     forwardLinkId: number;
     /** boolean flag that shows attribute back link */
   };
-}
+};
 
 /** process linkIds
  * @return array of relations

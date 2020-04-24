@@ -15,7 +15,7 @@ import type {
   SystemAuxiliaryClass,
 } from "../typings/general/types";
 
-export interface AnalysedAttributeFields {
+export type AnalysedAttributeFields = {
   cn: CN;
   lDAPDisplayName: LDAPDisplayName;
   dn: DN;
@@ -26,9 +26,9 @@ export interface AnalysedAttributeFields {
   systemOnly?: boolean;
   adminDisplayName?: AdminDisplayName;
   adminDescription?: AdminDescription;
-}
+};
 
-export interface SchemaClassWithAttributes {
+export type SchemaClassWithAttributes = {
   className: Name;
   lDAPDisplayName: LDAPDisplayName;
   subClassOf: SubClassOf;
@@ -38,12 +38,12 @@ export interface SchemaClassWithAttributes {
   originalAttributes?: Partial<SchemaAttribute>[];
   /** attributes with meta data */
   attributes?: AnalysedAttributeFields[];
-}
+};
 
-interface MapClassAttributesFnInput {
+type MapClassAttributesFnInput = {
   classObj: Partial<SchemaClass>;
   attributes: Partial<SchemaAttribute>[];
-}
+};
 
 /** merge direct attributes addressed in fields mustContain, systemMustContain, mayContain, and systemMayContain with meta data.
  * @note does not add inherited attributes of classes named in auxiliaryClass and systemAuxiliaryClass fields or other type of inheritance. */

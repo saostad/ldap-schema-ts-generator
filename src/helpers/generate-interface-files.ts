@@ -7,7 +7,7 @@ import { writeTsFile } from "./write-ts-file";
 import { writeLog } from "fast-node-logger";
 import { defaultInterfacesDir } from "./variables";
 
-interface GenerateInterfaceFilesFnInput {
+type GenerateInterfaceFilesFnInput = {
   objectClasses: Partial<SchemaClass>[];
   objectAttributes: Partial<SchemaAttribute>[];
   options?: {
@@ -18,10 +18,9 @@ interface GenerateInterfaceFilesFnInput {
     /** create index file for output folder. default true */
     indexFile: boolean;
   };
-}
+};
 
-/** generate separate file for each class
- */
+/** generate separate typescript interface file for each object class */
 export async function generateInterfaceFiles({
   objectClasses,
   objectAttributes,
@@ -62,7 +61,7 @@ export async function generateInterfaceFiles({
   });
 
   await Promise.all(promises);
-  writeLog(`interfaces has been created in dir ${outDir}`, { stdout: true });
+  writeLog(`interfaces has been generated in dir ${outDir}`, { stdout: true });
 
   /** @step create index file for output directory */
   if (indexFile) {

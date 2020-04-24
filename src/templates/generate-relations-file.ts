@@ -16,6 +16,7 @@ type GenerateRelationsFileFnInput = {
   };
 };
 
+/** generate typescript enum for defined relations between attributes by process linkIds fields */
 export async function generateRelationsFile({
   relations,
   options,
