@@ -36,7 +36,9 @@ type GenerateGraphqlTypeFilesFnInput<T = any> = {
   };
 };
 
-/** generate graphql schema files for each structural class */
+/** generate graphql schema files for each structural class
+ * @template StructuralClasses A generic parameter that controls possible values of options.justThisClasses array
+ */
 export async function generateGraphqlTypeFiles<StructuralClasses = any>({
   objectClasses,
   objectAttributes,

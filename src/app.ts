@@ -72,13 +72,13 @@ export async function main() {
     objectAttributes,
   });
 
-  // await generateGraphqlTypeFiles<StructuralClasses>({
-  //   objectClasses,
-  //   objectAttributes,
-  //   options: {
-  //     justThisClasses: ["user", "group", "computer", "contact"],
-  //   },
-  // });
+  await generateGraphqlTypeFiles<StructuralClasses>({
+    objectClasses,
+    objectAttributes,
+    options: {
+      justThisClasses: ["user", "group", "computer", "contact"],
+    },
+  });
 
   // await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
   //   objectClasses,
