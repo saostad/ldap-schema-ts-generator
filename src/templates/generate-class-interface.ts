@@ -1,4 +1,4 @@
-import { pascalCase } from "pascal-case";
+import { pascalCase } from "change-case";
 import { writeLog } from "fast-node-logger";
 import { arrayToLines } from "../helpers/utils";
 import { jsTypeMapper } from "../helpers/type-map";

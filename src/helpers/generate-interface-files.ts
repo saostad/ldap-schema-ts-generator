@@ -2,7 +2,7 @@ import { SchemaClass, SchemaAttribute } from "../services";
 import { mapClassAttributes } from "./map-class-attributes";
 import { generateClassInterface } from "../templates/generate-class-interface";
 import path from "path";
-import { pascalCase } from "pascal-case";
+import { pascalCase } from "change-case";
 import { writeTsFile } from "./write-ts-file";
 import { writeLog } from "fast-node-logger";
 import { defaultInterfacesDir } from "./variables";

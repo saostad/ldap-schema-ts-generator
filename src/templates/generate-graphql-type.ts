@@ -1,4 +1,4 @@
-import { pascalCase } from "pascal-case";
+import { pascalCase } from "change-case";
 import { writeLog } from "fast-node-logger";
 import { graphqlTypeMapper } from "../helpers/type-map";
 import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";

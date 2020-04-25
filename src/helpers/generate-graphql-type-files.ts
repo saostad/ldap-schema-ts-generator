@@ -1,6 +1,6 @@
 import { SchemaClass, SchemaAttribute } from "../services";
 import path from "path";
-import { pascalCase } from "pascal-case";
+import { pascalCase } from "change-case";
 import { writeLog } from "fast-node-logger";
 import { defaultGraphqlDir } from "./variables";
 import { mapClassAttributesIncludeInherited } from "./map-class-attributes-include-inherited";
