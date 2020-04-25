@@ -35,10 +35,15 @@ export async function generateExtensionsFile({
   });
 
   const textToWriteToFile = `
+  /** all possible extensions defined in schema */
+    export type SchemaExtensions = ${oids
+      .map((el) => `"${el.oid}"`)
+      .join(" | ")} ;
+
     /**
     * Enum for schema extensions
     */
-    export enum SchemaExtensions {
+    export enum SchemaExtensionsEnum {
     ${oids
       .map(
         (el) => `

@@ -32,7 +32,7 @@ type GenerateGraphqlTypeFilesFnInput<T = any> = {
      * - if not provided it generate all structural classes
      */
     // justThisClasses?: string[];
-    justThisClasses?: Extract<keyof T, string>[];
+    justThisClasses?: T[];
   };
 };
 

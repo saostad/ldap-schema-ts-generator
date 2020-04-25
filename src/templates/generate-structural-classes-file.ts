@@ -24,11 +24,16 @@ export async function generateStructuralClassesFile({
   writeLog(`generateStructuralClassesFile()`, { level: "trace" });
 
   const textToWriteToFile = `
+  /** all possible Structural Classes defined in schema */
+    export type StructuralClasses = ${classes
+      .map((el) => `"${el.lDAPDisplayName}"`)
+      .join(" | ")} ;
+
     /**
     * Enum for schema classes
     * @note A structural class, which is the only type of class that can have instances in Active Directory Domain Services.
     */
-    export enum StructuralClasses {
+    export enum StructuralClassesEnum {
     ${classes
       .map(
         (el) => `

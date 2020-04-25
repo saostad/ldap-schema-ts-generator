@@ -35,10 +35,15 @@ export async function generateControlsFile({
   });
 
   const textToWriteToFile = `
+  /** all possible controls defined in schema */
+    export type SchemaControls = ${oids
+      .map((el) => `"${el.oid}"`)
+      .join(" | ")} ;
+
     /**
     * Enum for schema controls
     */
-    export enum SchemaControls {
+    export enum SchemaControlsEnum {
     ${oids
       .map(
         (el) => `

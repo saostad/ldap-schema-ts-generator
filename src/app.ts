@@ -23,7 +23,10 @@ import {
   getStructuralSchemaClasses,
   generateStructuralClassesFile,
 } from "./index";
-import { StructuralClasses } from "./generated/StructuralClasses";
+import {
+  StructuralClasses,
+  StructuralClassesEnum,
+} from "./generated/StructuralClasses";
 
 export async function main() {
   const logger = await createLogger({
@@ -59,8 +62,8 @@ export async function main() {
   // const classes = await getStructuralSchemaClasses({ schemaDn, options });
   // await generateStructuralClassesFile({ classes });
 
-  const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-  const objectClasses = await getSchemaClasses({ schemaDn, options });
+  // const objectAttributes = await getSchemaAttributes({ schemaDn, options });
+  // const objectClasses = await getSchemaClasses({ schemaDn, options });
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
@@ -69,12 +72,20 @@ export async function main() {
   //   objectAttributes,
   // });
 
-  await generateGraphqlTypeFiles<typeof StructuralClasses>({
-    objectClasses,
-    objectAttributes,
-    options: {
-      justThisClasses: ["user", "group", "computer"],
-    },
-  });
+  // await generateGraphqlTypeFiles<StructuralClasses>({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     justThisClasses: ["user", "group", "computer", "contact"],
+  //   },
+  // });
+
+  // await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     justThisClasses: ["user", "group", "computer", "contact"],
+  //   },
+  // });
 }
 main();

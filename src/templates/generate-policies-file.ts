@@ -36,10 +36,15 @@ export async function generatePoliciesFile({
   });
 
   const textToWriteToFile = `
+  /** all possible policies defined in schema */
+    export type SchemaPolicies = ${policiesWithMeta
+      .map((el) => `"${el.policy}"`)
+      .join(" | ")} ;
+
     /**
-    * Enum for schema policy
+    * Enum for schema policies
     */
-    export enum SchemaPolicies {
+    export enum SchemaPoliciesEnum {
     ${policiesWithMeta
       .map(
         (el) => `

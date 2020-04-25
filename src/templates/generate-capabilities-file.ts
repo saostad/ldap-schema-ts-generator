@@ -35,16 +35,22 @@ export async function generateCapabilitiesFile({
   });
 
   const textToWriteToFile = `
+  /** all possible capabilities defined in schema */
+    export type SchemaCapabilities = ${oids
+      .map((el) => `"${el.oid}"`)
+      .join(" | ")} ;
+
     /**
     * Enum for schema capabilities
     */
-    export enum SchemaCapabilities {
+    export enum SchemaCapabilitiesEnum {
     ${oids
       .map(
         (el) => `
     /** 
      * - Purpose: ${el.purpose} 
-     * - Source: ${el.source} */
+     * - Source: ${el.source} 
+     */
     "${el.oid}"= "${el.oid}",
     `,
       )
