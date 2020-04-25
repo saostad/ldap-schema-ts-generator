@@ -1,4 +1,4 @@
-import { pascalCase } from "change-case";
+import { pascalCase, camelCase } from "change-case";
 import { writeLog } from "fast-node-logger";
 import { graphqlTypeMapper } from "../helpers/type-map";
 import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
@@ -14,13 +14,21 @@ export function generateGraphqlResolvers({
 
   const result = `
   type Query {
-    ${pascalCase(data.lDAPDisplayName)}GetAll(criteria: String): [${pascalCase(
+    ${camelCase(data.lDAPDisplayName)}GetAll(criteria: String): [${pascalCase(
     data.lDAPDisplayName,
   )}]
-    ${pascalCase(data.lDAPDisplayName)}GetByDn(dn: ID!): ${pascalCase(
+    ${camelCase(data.lDAPDisplayName)}GetByDn(dn: ID!): ${pascalCase(
     data.lDAPDisplayName,
   )}
   }
+  
+  type Mutation {
+    ${camelCase(data.lDAPDisplayName)}Update(input: ${pascalCase(
+    data.lDAPDisplayName,
+  )}UpdateInput!): ${pascalCase(data.lDAPDisplayName)}
+    ${camelCase(data.lDAPDisplayName)}Delete(dn: ID!): Boolean
+  }
+
   input ${pascalCase(data.lDAPDisplayName)}UpdateInput {
     dn: ID!
     ${data.attributes
@@ -41,12 +49,6 @@ export function generateGraphqlResolvers({
           }`,
       )
       .join("\n")}
-  }
-  type Mutation {
-    ${pascalCase(data.lDAPDisplayName)}Update(input: ${pascalCase(
-    data.lDAPDisplayName,
-  )}UpdateInput!): ${pascalCase(data.lDAPDisplayName)}
-    ${pascalCase(data.lDAPDisplayName)}DeleteByDn(dn: ID!): Boolean
   }
   `;
 
