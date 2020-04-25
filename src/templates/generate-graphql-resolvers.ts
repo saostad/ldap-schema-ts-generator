@@ -14,7 +14,7 @@ export function generateGraphqlResolvers({
 
   const result = `
   type Query {
-    ${pascalCase(data.lDAPDisplayName)}GetAll: [${pascalCase(
+    ${pascalCase(data.lDAPDisplayName)}GetAll(criteria: String): [${pascalCase(
     data.lDAPDisplayName,
   )}]
     ${pascalCase(data.lDAPDisplayName)}GetByDn(dn: ID!): ${pascalCase(

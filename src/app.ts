@@ -62,15 +62,15 @@ export async function main() {
   // const classes = await getStructuralSchemaClasses({ schemaDn, options });
   // await generateStructuralClassesFile({ classes });
 
-  // const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-  // const objectClasses = await getSchemaClasses({ schemaDn, options });
+  const objectAttributes = await getSchemaAttributes({ schemaDn, options });
+  const objectClasses = await getSchemaClasses({ schemaDn, options });
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  // await generateGraphqlTypeFiles({
-  //   objectClasses,
-  //   objectAttributes,
-  // });
+  await generateGraphqlTypeFiles({
+    objectClasses,
+    objectAttributes,
+  });
 
   // await generateGraphqlTypeFiles<StructuralClasses>({
   //   objectClasses,
