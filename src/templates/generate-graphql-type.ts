@@ -1,4 +1,4 @@
-import { pascalCase } from "change-case";
+import { pascalCase, camelCase } from "change-case";
 import { writeLog } from "fast-node-logger";
 import { graphqlTypeMapper } from "../helpers/type-map";
 import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
@@ -24,7 +24,7 @@ export function generateGraphqlType({
           attributeSyntax: ${el.attributeSyntax}
           attributeID: ${el.attributeID}          
           """
-          ${pascalCase(el.lDAPDisplayName)}: ${
+          ${camelCase(el.lDAPDisplayName)}: ${
             el.isSingleValued ? "" : "["
           }${graphqlTypeMapper(el.attributeSyntax)}${el.isRequired ? "!" : ""}${
             el.isSingleValued ? "" : "]"

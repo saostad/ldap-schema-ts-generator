@@ -1,4 +1,4 @@
-import { pascalCase } from "change-case";
+import { pascalCase, camelCase } from "change-case";
 import { writeLog } from "fast-node-logger";
 import type { SchemaClassWithAttributes } from "../helpers/map-class-attributes";
 
@@ -28,7 +28,7 @@ export function generateGraphqlEnumTypeMap({
           * - attributeSyntax: ${el.attributeSyntax}
           * - attributeID: ${el.attributeID}          
           */
-          ${pascalCase(el.lDAPDisplayName)}= "${el.lDAPDisplayName}",`,
+          ${camelCase(el.lDAPDisplayName)}= "${el.lDAPDisplayName}",`,
       )
       .join("\n")}
   }
