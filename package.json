@@ -1,6 +1,6 @@
 {
   "name": "ldap-schema-ts-generator",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "Typescript typedef and meta-data generator for LDAP Schema. It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.",
   "repository": {
     "type": "git",
@@ -49,9 +49,9 @@
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.2",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
     "auto-changelog": "^2.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
@@ -61,13 +61,13 @@
     "nodemon": "^2.0.3",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^25.4.0",
-    "typedoc": "^0.17.4",
+    "typedoc": "^0.17.6",
     "typescript": "^3.8.3"
   },
   "dependencies": {
     "change-case": "^4.1.1",
     "fast-node-logger": "^1.4.0",
-    "ldap-query-generator": "^0.7.2",
+    "ldap-query-generator": "^0.8.0",
     "ldap-ts-client": "^0.10.2",
     "prettier": "^2.0.5"
   }

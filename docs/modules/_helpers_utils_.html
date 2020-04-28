@@ -73,8 +73,10 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#findclassfninput" class="tsd-kind-icon">Find<wbr>Class<wbr>FnInput</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#getallattributesfninput" class="tsd-kind-icon">Get<wbr>All<wbr>Attributes<wbr>FnInput</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#getlistofparentsfninput" class="tsd-kind-icon">Get<wbr>List<wbr>OfParents<wbr>FnInput</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#mergeandoverrideattributesfninput" class="tsd-kind-icon">Merge<wbr>And<wbr>Override<wbr>Attributes<wbr>FnInput</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#mergeattributesfninput" class="tsd-kind-icon">Merge<wbr>Attributes<wbr>FnInput</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#mergeattributesofauxiliaryclassesfninput" class="tsd-kind-icon">Merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<wbr>FnInput</a></li>
 							</ul>
 						</section>
@@ -84,11 +86,13 @@
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#arraytolines" class="tsd-kind-icon">array<wbr>ToLines</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#arrayifyprop" class="tsd-kind-icon">arrayify<wbr>Prop</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#dirpathexist" class="tsd-kind-icon">dir<wbr>Path<wbr>Exist</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#findclass" class="tsd-kind-icon">find<wbr>Class</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#getallattributes" class="tsd-kind-icon">get<wbr>All<wbr>Attributes</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#getlistofparents" class="tsd-kind-icon">get<wbr>List<wbr>OfParents</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#isodd" class="tsd-kind-icon">is<wbr>Odd</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#ldapbooleantojsboolean" class="tsd-kind-icon">ldap<wbr>Boolean<wbr>ToJs<wbr>Boolean</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#mergeattributes" class="tsd-kind-icon">merge<wbr>Attributes</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#mergeattributesofauxiliaryclasses" class="tsd-kind-icon">merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_helpers_utils_.html#mergeattributesofauxiliaryclasses" class="tsd-kind-icon">merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_helpers_utils_.html#stringifyprop" class="tsd-kind-icon">stringify<wbr>Prop</a></li>
 							</ul>
 						</section>
@@ -98,12 +102,54 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+					<a name="findclassfninput" class="tsd-anchor"></a>
+					<h3>Find<wbr>Class<wbr>FnInput</h3>
+					<div class="tsd-signature tsd-kind-icon">Find<wbr>Class<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>ldapDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L161">helpers/utils.ts:161</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>classes<wbr>With<wbr>Attributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>ldap<wbr>Display<wbr>Name<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+					<a name="getallattributesfninput" class="tsd-anchor"></a>
+					<h3>Get<wbr>All<wbr>Attributes<wbr>FnInput</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>All<wbr>Attributes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClass<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L227">helpers/utils.ts:227</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>classes<wbr>With<wbr>Attributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>target<wbr>Class<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
 					<a name="getlistofparentsfninput" class="tsd-anchor"></a>
 					<h3>Get<wbr>List<wbr>OfParents<wbr>FnInput</h3>
 					<div class="tsd-signature tsd-kind-icon">Get<wbr>List<wbr>OfParents<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>allClasses<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClassSubClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L82">helpers/utils.ts:82</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L82">helpers/utils.ts:82</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -116,7 +162,7 @@
 								<h5>target<wbr>Class<wbr>Sub<wbr>Class<wbr>Of<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
-										<p>ldapDisplayName of target class</p>
+										<p>ldapDisplayName of target class. this will use as first parent</p>
 									</div>
 								</div>
 							</li>
@@ -124,12 +170,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-					<a name="mergeandoverrideattributesfninput" class="tsd-anchor"></a>
-					<h3>Merge<wbr>And<wbr>Override<wbr>Attributes<wbr>FnInput</h3>
-					<div class="tsd-signature tsd-kind-icon">Merge<wbr>And<wbr>Override<wbr>Attributes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>extraAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>importantAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
+					<a name="mergeattributesfninput" class="tsd-anchor"></a>
+					<h3>Merge<wbr>Attributes<wbr>FnInput</h3>
+					<div class="tsd-signature tsd-kind-icon">Merge<wbr>Attributes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>extraAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>importantAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L123">helpers/utils.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L126">helpers/utils.ts:126</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -137,6 +183,11 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
 								<h5>extra<wbr>Attributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>these attributes will be overridden (less important to keep) in case same as extra attributes</p>
+									</div>
+								</div>
 							</li>
 							<li class="tsd-parameter">
 								<h5>important<wbr>Attributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></h5>
@@ -152,10 +203,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
 					<a name="mergeattributesofauxiliaryclassesfninput" class="tsd-anchor"></a>
 					<h3>Merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<wbr>FnInput</h3>
-					<div class="tsd-signature tsd-kind-icon">Merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClassLdapName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClass<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L156">helpers/utils.ts:156</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L179">helpers/utils.ts:179</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -165,7 +216,7 @@
 								<h5>classes<wbr>With<wbr>Attributes<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>target<wbr>Class<wbr>Ldap<wbr>Name<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a></h5>
+								<h5>target<wbr>Class<span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a></h5>
 							</li>
 						</ul>
 					</div>
@@ -183,7 +234,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L59">helpers/utils.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L59">helpers/utils.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L38">helpers/utils.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L38">helpers/utils.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,7 +290,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L68">helpers/utils.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L68">helpers/utils.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -258,6 +309,114 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="findclass" class="tsd-anchor"></a>
+					<h3>find<wbr>Class</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Class<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>ldapDisplayName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L165">helpers/utils.ts:165</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>ldapDisplayName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>classes<wbr>With<wbr>Attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>ldap<wbr>Display<wbr>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getallattributes" class="tsd-anchor"></a>
+					<h3>get<wbr>All<wbr>Attributes</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Attributes<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L237">helpers/utils.ts:237</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>merge direct attributes with in auxiliaryClass and systemAuxiliaryClass fields to target class respecting inheritance.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>note</dt>
+									<dd><p>:</p>
+										<ul>
+											<li>it includes inherited attributes of parent classes</li>
+											<li>auxiliary classes can be subClassOf other auxiliary classes</li>
+											<li>auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes.</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>classes<wbr>With<wbr>Attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>target<wbr>Class<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></h5>
+											<ul class="tsd-parameters">
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></h5>
+													<div class="tsd-comment tsd-typography">
+														<div class="lead">
+															<p>attributes with meta data</p>
+														</div>
+													</div>
+												</li>
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> auxiliary<wbr>Class<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>class<wbr>Name<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>lDAPDisplay<wbr>Name<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> original<wbr>Attributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>original<wbr>Class<wbr>Fields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>sub<wbr>Class<wbr>Of<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> system<wbr>Auxiliary<wbr>Class<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="getlistofparents" class="tsd-anchor"></a>
 					<h3>get<wbr>List<wbr>OfParents</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -267,12 +426,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L90">helpers/utils.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L91">helpers/utils.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>follow subClassOf field in class schema to gets to the top class</p>
+									<p>follow subClassOf field of schema class object to gets to the top class</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -304,7 +463,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L74">helpers/utils.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L74">helpers/utils.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,7 +491,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L50">helpers/utils.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L50">helpers/utils.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -360,7 +519,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L129">helpers/utils.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L133">helpers/utils.ts:133</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -386,67 +545,78 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 					<a name="mergeattributesofauxiliaryclasses" class="tsd-anchor"></a>
 					<h3>merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClassLdapName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a></li>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L176">helpers/utils.ts:176</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L189">helpers/utils.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>merge direct attributes with in auxiliaryClass and systemAuxiliaryClass fields to target class.</p>
+									<p>merge direct attributes of targetClass with attributes of auxiliaryClass &amp; systemAuxiliaryClass classes</p>
 								</div>
 								<dl class="tsd-comment-tags">
-									<dt>note</dt>
-									<dd><p>:</p>
-										<ul>
-											<li>it includes inherited attributes of parent classes</li>
-											<li>it ignores attributes of &#39;top&#39; class</li>
+									<dt>note:</dt>
+									<dd><ul>
+											<li>// TODO at this point it does not follow auxiliaryClass &amp; systemAuxiliaryClass attributes of other auxiliary classes. (auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes)</li>
+											<li>// TODO at this point it does not follow subClassOf field. (auxiliary classes can be subClassOf other auxiliary classes)</li>
 										</ul>
-									</dd>
-									<dt>note</dt>
-									<dd><p>:</p>
-										<ul>
-											<li>auxiliary classes can be subClassOf other auxiliary classes</li>
-											<li>auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes</li>
-										</ul>
-									</dd>
-									<dt>plan</dt>
-									<dd><p>for getting attributes of auxiliaryClass and systemAuxiliaryClass classes:</p>
-										<ol>
-											<li>get directAttributes of target class</li>
-											<li>get auxiliary classes of target class</li>
-											<li>get direct attributes of that auxiliary class</li>
-											<li>merge it with attributes place holder already named auxiliaryAttributes array</li>
-											<li>get parent classes and filter-out &#39;top&#39; and class name itself (some classes are subClassOf themselves!)</li>
-											<li>do the same steps above for parents classes recursively</li>
-											<li>merge auxiliaryAttributes with directAttributes (override directAttributes)</li>
-										</ol>
 									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClassLdapName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>classesWithAttributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>targetClass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>classes<wbr>With<wbr>Attributes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h5>
 										</li>
 										<li class="tsd-parameter">
-											<h5>target<wbr>Class<wbr>Ldap<wbr>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<h5>target<wbr>Class<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>auxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>className<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a><span class="tsd-signature-symbol">; </span>lDAPDisplayName<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a><span class="tsd-signature-symbol">; </span>originalAttributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>originalClassFields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>subClassOf<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a><span class="tsd-signature-symbol">; </span>systemAuxiliaryClass<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></h5>
+											<ul class="tsd-parameters">
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> attributes<span class="tsd-signature-symbol">?: </span><a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></h5>
+													<div class="tsd-comment tsd-typography">
+														<div class="lead">
+															<p>attributes with meta data</p>
+														</div>
+													</div>
+												</li>
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> auxiliary<wbr>Class<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#auxiliaryclass" class="tsd-signature-type">AuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>class<wbr>Name<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#name" class="tsd-signature-type">Name</a></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>lDAPDisplay<wbr>Name<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#ldapdisplayname" class="tsd-signature-type">LDAPDisplayName</a></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> original<wbr>Attributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>original<wbr>Class<wbr>Fields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_class_.schemaclass.html" class="tsd-signature-type">SchemaClass</a><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5>sub<wbr>Class<wbr>Of<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#subclassof" class="tsd-signature-type">SubClassOf</a></h5>
+												</li>
+												<li class="tsd-parameter">
+													<h5><span class="tsd-flag ts-flagOptional">Optional</span> system<wbr>Auxiliary<wbr>Class<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Extract</span><span class="tsd-signature-symbol">&lt;</span><a href="_typings_general_types_.html#systemauxiliaryclass" class="tsd-signature-type">SystemAuxiliaryClass</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+											</ul>
 										</li>
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_helpers_map_class_attributes_.html#schemaclasswithattributes" class="tsd-signature-type">SchemaClassWithAttributes</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_helpers_map_class_attributes_.html#analysedattributefields" class="tsd-signature-type">AnalysedAttributeFields</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -460,7 +630,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5521425/src/helpers/utils.ts#L15">helpers/utils.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/helpers/utils.ts#L15">helpers/utils.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -498,10 +668,16 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_helpers_utils_.html#findclassfninput" class="tsd-kind-icon">Find<wbr>Class<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_helpers_utils_.html#getallattributesfninput" class="tsd-kind-icon">Get<wbr>All<wbr>Attributes<wbr>FnInput</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_helpers_utils_.html#getlistofparentsfninput" class="tsd-kind-icon">Get<wbr>List<wbr>OfParents<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_helpers_utils_.html#mergeandoverrideattributesfninput" class="tsd-kind-icon">Merge<wbr>And<wbr>Override<wbr>Attributes<wbr>FnInput</a>
+						<a href="_helpers_utils_.html#mergeattributesfninput" class="tsd-kind-icon">Merge<wbr>Attributes<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_helpers_utils_.html#mergeattributesofauxiliaryclassesfninput" class="tsd-kind-icon">Merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes<wbr>FnInput</a>
@@ -516,6 +692,12 @@
 						<a href="_helpers_utils_.html#dirpathexist" class="tsd-kind-icon">dir<wbr>Path<wbr>Exist</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_helpers_utils_.html#findclass" class="tsd-kind-icon">find<wbr>Class</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_helpers_utils_.html#getallattributes" class="tsd-kind-icon">get<wbr>All<wbr>Attributes</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_helpers_utils_.html#getlistofparents" class="tsd-kind-icon">get<wbr>List<wbr>OfParents</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
@@ -527,7 +709,7 @@
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_helpers_utils_.html#mergeattributes" class="tsd-kind-icon">merge<wbr>Attributes</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_helpers_utils_.html#mergeattributesofauxiliaryclasses" class="tsd-kind-icon">merge<wbr>Attributes<wbr>OfAuxiliary<wbr>Classes</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
