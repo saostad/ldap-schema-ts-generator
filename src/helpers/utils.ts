@@ -81,7 +81,7 @@ export function isOdd(input: number): boolean {
 
 type GetListOfParentsFnInput = {
   allClasses: Partial<SchemaClass>[];
-  /** ldapDisplayName of target class */
+  /** ldapDisplayName of target class. this will use as first parent */
   targetClassSubClassOf: LDAPDisplayName;
 };
 /** follow subClassOf field in class schema to gets to the top class
@@ -117,7 +117,8 @@ export function getListOfParents({
   /** add "top" as last parent */
   superClasses.push(parentLdapName);
 
-  return superClasses;
+  /** @note reverse() required in order to make sure the order of items is the way that 'top' is always in the top. it's required for override attributes when following subClassOf field. */
+  return superClasses.reverse();
 }
 
 type MergeAndOverrideAttributesFnInput = {
@@ -155,121 +156,119 @@ export function mergeAttributes({
 
 type MergeAttributesOfAuxiliaryClassesFnInput = {
   classesWithAttributes: SchemaClassWithAttributes[];
-  targetClassLdapName: LDAPDisplayName;
+  targetClass: SchemaClassWithAttributes;
 };
 /** merge direct attributes with in auxiliaryClass and systemAuxiliaryClass fields to target class.
  * @note :
  *  - it includes inherited attributes of parent classes
- *  - it ignores attributes of 'top' class
+ *  - for auxiliary classes it ignores 'top' in parent classes to prevent processing it multiple times
  * @note :
  * - auxiliary classes can be subClassOf other auxiliary classes
  * - auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes
  * @plan for getting attributes of auxiliaryClass and systemAuxiliaryClass classes:
- * 1. get directAttributes of target class
+ * 1. get direct Attributes of target class
  * 2. get auxiliary classes of target class
- * 3. get direct attributes of that auxiliary class
- * 4. merge it with attributes place holder already named auxiliaryAttributes array
+ *    2.1 process each auxiliary class
+ *    2.2 get direct attributes of that auxiliary class
+ *
+ *
+ * 4. merge it with attributes place holder named auxiliaryAttributes
  * 5. get parent classes and filter-out 'top' and class name itself (some classes are subClassOf themselves!)
  * 6. do the same steps above for parents classes recursively
  * 7. merge auxiliaryAttributes with directAttributes (override directAttributes)
  */
-export function mergeAttributesOfAuxiliaryClasses({
-  targetClassLdapName,
+
+type FindClassFnInput = {
+  classesWithAttributes: SchemaClassWithAttributes[];
+  ldapDisplayName: LDAPDisplayName;
+};
+export function findClass({
   classesWithAttributes,
-}: MergeAttributesOfAuxiliaryClassesFnInput): SchemaClassWithAttributes {
-  const targetClass = classesWithAttributes.find(
-    (el) => el.lDAPDisplayName === targetClassLdapName,
+  ldapDisplayName,
+}: FindClassFnInput): SchemaClassWithAttributes {
+  const classObj = classesWithAttributes.find(
+    (el) => el.lDAPDisplayName === ldapDisplayName,
   );
-  if (!targetClass) {
-    throw new Error(`class ${targetClass} not found!`);
+  if (!classObj) {
+    throw new Error(`class ${ldapDisplayName} not found!`);
+  }
+  return classObj;
+}
+
+function mergeAttributesOfAuxiliaryClasses({
+  targetClass,
+  classesWithAttributes,
+}: MergeAttributesOfAuxiliaryClassesFnInput): AnalysedAttributeFields[] {
+  /** placeholder for ldap name of all classes that this class gets its attributes from */
+  const attributeClasses: string[] = [];
+
+  /**@step merge auxiliaryClass & systemAuxiliaryClass classes */
+  if (targetClass.auxiliaryClass) {
+    attributeClasses.push(...targetClass.auxiliaryClass);
+  }
+  if (targetClass.systemAuxiliaryClass) {
+    attributeClasses.push(...targetClass.systemAuxiliaryClass);
   }
 
-  /** place holder for all auxiliary attributes including inherited */
-  let auxiliaryAttributes: AnalysedAttributeFields[] = [];
+  /** placeholder for all attributes */
+  let classAttributes: AnalysedAttributeFields[] = [];
 
-  /** @step process auxiliaryClass */
-  targetClass.auxiliaryClass?.forEach((ldapDisplayName) => {
-    const auxiliaryClassObj = classesWithAttributes.find(
-      (el) => el.lDAPDisplayName === ldapDisplayName,
-    );
-    if (!auxiliaryClassObj) {
-      throw new Error(`class ${ldapDisplayName} not found!`);
-    }
+  /**@step get attributes of attributeClasses */
+  attributeClasses.forEach((ldapDisplayName) => {
+    const classObj = findClass({ classesWithAttributes, ldapDisplayName });
 
-    /** @step merge direct attributes with auxiliary attributes */
-    auxiliaryAttributes = mergeAttributes({
-      extraAttributes: auxiliaryClassObj.attributes ?? [],
-      importantAttributes: auxiliaryAttributes,
-    });
-
-    /** parents of each auxiliary class filter-out 'top' and itself */
-    const parentClasses = getListOfParents({
-      targetClassSubClassOf: ldapDisplayName,
-      allClasses: classesWithAttributes,
-    }).filter((el) => el !== "top" || el);
-
-    /** I know recursive programing is not good for performance,
-     * but at this point I want to finish this part!
-     * // TODO: get rid of recursive
-     */
-    parentClasses.forEach((parentLdapName) => {
-      const parentClassWithAllAttributes = mergeAttributesOfAuxiliaryClasses({
-        classesWithAttributes,
-        targetClassLdapName: parentLdapName,
-      });
-      /** @step merge parent attributes */
-      auxiliaryAttributes = mergeAttributes({
-        importantAttributes: auxiliaryAttributes,
-        extraAttributes: parentClassWithAllAttributes.attributes ?? [],
-      });
+    classAttributes = mergeAttributes({
+      importantAttributes: classAttributes,
+      extraAttributes: classObj.attributes ?? [],
     });
   });
 
-  /** @step process systemAuxiliaryClass */
-  targetClass.systemAuxiliaryClass?.forEach((ldapDisplayName) => {
-    const systemAuxiliaryClass = classesWithAttributes.find(
-      (el) => el.lDAPDisplayName === ldapDisplayName,
-    );
-    if (!systemAuxiliaryClass) {
-      throw new Error(`class ${ldapDisplayName} not found!`);
-    }
-
-    /** @step merge direct attributes with systemAuxiliaryClass attributes */
-    auxiliaryAttributes = mergeAttributes({
-      extraAttributes: systemAuxiliaryClass.attributes ?? [],
-      importantAttributes: auxiliaryAttributes,
-    });
-
-    /** parents of each auxiliary class filter-out 'top' and itself */
-    const parentClasses = getListOfParents({
-      targetClassSubClassOf: ldapDisplayName,
-      allClasses: classesWithAttributes,
-    }).filter((el) => el !== "top" || el);
-
-    /** I know recursive programing is not good for performance,
-     * but at this point I want to finish this part!
-     * // TODO: get rid of recursive
-     */
-    parentClasses.forEach((parentLdapName) => {
-      const parentClassWithAllAttributes = mergeAttributesOfAuxiliaryClasses({
-        classesWithAttributes,
-        targetClassLdapName: parentLdapName,
-      });
-      /** @step merge parent attributes */
-      auxiliaryAttributes = mergeAttributes({
-        importantAttributes: auxiliaryAttributes,
-        extraAttributes: parentClassWithAllAttributes.attributes ?? [],
-      });
-    });
-  });
-
-  /** @step merge target direct attributes with all inherited auxiliary attributes */
-  const allAttributes = mergeAttributes({
+  const allAttributes: AnalysedAttributeFields[] = mergeAttributes({
     importantAttributes: targetClass.attributes ?? [],
-    extraAttributes: auxiliaryAttributes,
+    extraAttributes: classAttributes,
   });
-  return {
-    ...targetClass,
-    attributes: allAttributes,
-  };
+
+  return allAttributes;
+}
+
+type GetAllAttributesFnInput = {
+  classesWithAttributes: SchemaClassWithAttributes[];
+  targetClass: SchemaClassWithAttributes;
+};
+export function getAllAttributes({
+  targetClass,
+  classesWithAttributes,
+}: GetAllAttributesFnInput): AnalysedAttributeFields[] {
+  const directAttributes = mergeAttributesOfAuxiliaryClasses({
+    classesWithAttributes,
+    targetClass,
+  });
+
+  let allAttributes: AnalysedAttributeFields[] = [];
+
+  const parents = getListOfParents({
+    allClasses: classesWithAttributes,
+    targetClassSubClassOf: targetClass.subClassOf,
+  });
+
+  /**@step merge attributes of all parent classes */
+  parents.forEach((ldapDisplayName) => {
+    const newTarget = findClass({ ldapDisplayName, classesWithAttributes });
+    const attributes = mergeAttributesOfAuxiliaryClasses({
+      classesWithAttributes,
+      targetClass: newTarget,
+    });
+    allAttributes = mergeAttributes({
+      extraAttributes: allAttributes,
+      importantAttributes: attributes,
+    });
+  });
+
+  /**@step merge direct attributes of target class */
+  const result = mergeAttributes({
+    extraAttributes: allAttributes,
+    importantAttributes: directAttributes,
+  });
+
+  return result;
 }

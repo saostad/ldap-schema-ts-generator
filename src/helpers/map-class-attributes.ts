@@ -81,7 +81,7 @@ export function mapClassAttributes({
    * items to do search operation just one time */
   const combinedRawAttributes: Array<{
     isRequired: boolean;
-    /** true when source of attribute is systemMustContain or systemMayContain (attribute should be readonly) */
+    /** true when source of attribute is systemMustContain or systemMayContain (attribute is readonly) */
     isSystemProp: boolean;
     attributeToFind: string;
   }> = [];

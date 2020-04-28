@@ -3,14 +3,8 @@ import { writeLog } from "fast-node-logger";
 import {
   mapClassAttributes,
   SchemaClassWithAttributes,
-  AnalysedAttributeFields,
 } from "./map-class-attributes";
-import { LDAPDisplayName } from "../typings/general/types";
-import {
-  getListOfParents,
-  mergeAttributesOfAuxiliaryClasses,
-  mergeAttributes,
-} from "./utils";
+import { getAllAttributes, findClass } from "./utils";
 
 type MapClassAttributesIncludeInheritedFnInput = {
   /** all schema attributes */
@@ -20,6 +14,10 @@ type MapClassAttributesIncludeInheritedFnInput = {
   options?: {
     /** default true */
     justStructuralClasses?: boolean;
+    /** list of classes to generate classes
+     * - if not provided it generate all structural classes
+     */
+    justThisClasses?: string[];
   };
 };
 /** @returns class attributes including inherited ones.
@@ -40,7 +38,8 @@ export function mapClassAttributesIncludeInherited({
 }: MapClassAttributesIncludeInheritedFnInput): SchemaClassWithAttributes[] {
   writeLog(`mapClassAttributesIncludeInherited()`, { level: "trace" });
 
-  const classesWithDirectAttributes = classes.map((classObj) => {
+  /** all classes with direct attributes */
+  const classesWithAttributes = classes.map((classObj) => {
     return mapClassAttributes({ attributes, classObj });
   });
 
@@ -49,74 +48,47 @@ export function mapClassAttributesIncludeInherited({
     justStructuralClasses = options.justStructuralClasses;
   }
 
+  if (options && options.justThisClasses?.length === 0) {
+    throw new Error("justThisClasses can't be empty array!");
+  }
+
   if (justStructuralClasses) {
     const structuralClasses = classes.filter(
       (el) => el.objectClassCategory === "1",
     );
 
-    const structuralClassesWithParents = structuralClasses.map(
-      (
-        /** original raw structural class (attributes not processed)*/
-        originalStructuralClass,
-      ) => {
-        /** placeholder for list of parents. */
-        const superClasses: LDAPDisplayName[] = getListOfParents({
-          targetClassSubClassOf: originalStructuralClass.subClassOf!,
-          allClasses: classesWithDirectAttributes,
-        });
-
-        /** placeholder for all auxiliary attributes including inherited ones. */
-        const mergedAuxiliaryAttributes: AnalysedAttributeFields[] = [];
-
-        superClasses.forEach((parentLdapName) => {
-          const parentClassItem = classesWithDirectAttributes.find(
-            (el) => el.lDAPDisplayName === parentLdapName,
-          );
-
-          if (!parentClassItem) {
-            throw new Error(`class ${parentClassItem} not found!`);
-          }
-
-          /** @step merge direct attributes of parent classes with it's auxiliary attributes */
-
-          /** */
-          const parentClassWithAllAttributes = mergeAttributesOfAuxiliaryClasses(
-            {
-              targetClassLdapName: parentClassItem.lDAPDisplayName,
-              classesWithAttributes: classesWithDirectAttributes,
-            },
-          );
-
-          if (parentClassWithAllAttributes.attributes) {
-            mergedAuxiliaryAttributes.push(
-              ...parentClassWithAllAttributes.attributes,
-            );
-          }
-        });
-
-        /** @step override parent attributes with direct attributes if there are same ones */
-
-        /** Original Structural Class with Direct Attributes */
-        const origClassObj = classesWithDirectAttributes.find(
-          (el) =>
-            el.lDAPDisplayName === originalStructuralClass.lDAPDisplayName!,
-        );
-
-        if (!origClassObj) {
-          throw new Error(`class ${origClassObj} not found!`);
+    /** this is the result of operation */
+    const structuralClassesWithParents = structuralClasses
+      .filter((el) => {
+        if (options && options.justThisClasses) {
+          return options.justThisClasses.includes(el.lDAPDisplayName!);
         }
 
-        const resultAttributes = mergeAttributes({
-          importantAttributes: origClassObj.attributes ?? [],
-          extraAttributes: mergedAuxiliaryAttributes,
-        });
+        /** default process all */
+        return true;
+      })
+      .map(
+        (
+          /** original raw structural class (attributes not processed)*/
+          rawClass,
+        ) => {
+          /** Original Structural Class with Direct Attributes */
+          const origClassObj = findClass({
+            classesWithAttributes,
+            ldapDisplayName: rawClass.lDAPDisplayName!,
+          });
 
-        return {
-          ...origClassObj,
-          attributes: resultAttributes,
-        };
-      },
-    );
+          const resultAttributes = getAllAttributes({
+            classesWithAttributes,
+            targetClass: origClassObj,
+          });
+
+          return {
+            ...origClassObj,
+            attributes: resultAttributes,
+          };
+        },
+      );
     return structuralClassesWithParents;
   } else {
     // TODO: take care of non structural part in-case needed in future.
