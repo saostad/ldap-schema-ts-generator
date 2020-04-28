@@ -67,19 +67,22 @@ export async function main() {
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  // await generateGraphqlTypeFiles({
-  //   objectClasses,
-  //   objectAttributes,
-  // });
-
-  await generateGraphqlTypeFiles<StructuralClasses>({
+  await generateGraphqlTypeFiles({
     objectClasses,
     objectAttributes,
     options: {
-      justThisClasses: ["user"],
       generateClientSideDocuments: true,
     },
   });
+
+  // await generateGraphqlTypeFiles<StructuralClasses>({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     justThisClasses: ["user"],
+  //     generateClientSideDocuments: true,
+  //   },
+  // });
 
   // await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
   //   objectClasses,

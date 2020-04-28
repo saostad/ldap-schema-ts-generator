@@ -84,13 +84,15 @@ type GetListOfParentsFnInput = {
   /** ldapDisplayName of target class. this will use as first parent */
   targetClassSubClassOf: LDAPDisplayName;
 };
-/** follow subClassOf field in class schema to gets to the top class
+
+/** follow subClassOf field of schema class object to gets to the top class
  * @returns array of ldapDisplayName
  */
 export function getListOfParents({
   allClasses,
   targetClassSubClassOf,
 }: GetListOfParentsFnInput): LDAPDisplayName[] {
+  writeLog(`getListOfParents()`, { level: "trace" });
   /** placeholder for list of parents. */
   const superClasses: LDAPDisplayName[] = [];
 
@@ -121,16 +123,18 @@ export function getListOfParents({
   return superClasses.reverse();
 }
 
-type MergeAndOverrideAttributesFnInput = {
+type MergeAttributesFnInput = {
   /** keep these attributes in case same as extra attributes */
   importantAttributes: AnalysedAttributeFields[];
+  /** these attributes will be overridden (less important to keep) in case same as extra attributes */
   extraAttributes: AnalysedAttributeFields[];
 };
 /** Merge And Override Attributes */
 export function mergeAttributes({
   importantAttributes,
   extraAttributes,
-}: MergeAndOverrideAttributesFnInput): AnalysedAttributeFields[] {
+}: MergeAttributesFnInput): AnalysedAttributeFields[] {
+  writeLog(`mergeAttributes()`, { level: "trace" });
   /**
    * - this is an object that each field represent one attribute.
    * - this structure prevents us from having duplicate attribute and also makes override easier.
@@ -154,30 +158,6 @@ export function mergeAttributes({
   return Object.values(mergedAttributes);
 }
 
-type MergeAttributesOfAuxiliaryClassesFnInput = {
-  classesWithAttributes: SchemaClassWithAttributes[];
-  targetClass: SchemaClassWithAttributes;
-};
-/** merge direct attributes with in auxiliaryClass and systemAuxiliaryClass fields to target class.
- * @note :
- *  - it includes inherited attributes of parent classes
- *  - for auxiliary classes it ignores 'top' in parent classes to prevent processing it multiple times
- * @note :
- * - auxiliary classes can be subClassOf other auxiliary classes
- * - auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes
- * @plan for getting attributes of auxiliaryClass and systemAuxiliaryClass classes:
- * 1. get direct Attributes of target class
- * 2. get auxiliary classes of target class
- *    2.1 process each auxiliary class
- *    2.2 get direct attributes of that auxiliary class
- *
- *
- * 4. merge it with attributes place holder named auxiliaryAttributes
- * 5. get parent classes and filter-out 'top' and class name itself (some classes are subClassOf themselves!)
- * 6. do the same steps above for parents classes recursively
- * 7. merge auxiliaryAttributes with directAttributes (override directAttributes)
- */
-
 type FindClassFnInput = {
   classesWithAttributes: SchemaClassWithAttributes[];
   ldapDisplayName: LDAPDisplayName;
@@ -186,6 +166,7 @@ export function findClass({
   classesWithAttributes,
   ldapDisplayName,
 }: FindClassFnInput): SchemaClassWithAttributes {
+  writeLog(`findClass()`, { level: "trace" });
   const classObj = classesWithAttributes.find(
     (el) => el.lDAPDisplayName === ldapDisplayName,
   );
@@ -195,10 +176,22 @@ export function findClass({
   return classObj;
 }
 
+type MergeAttributesOfAuxiliaryClassesFnInput = {
+  classesWithAttributes: SchemaClassWithAttributes[];
+  targetClass: SchemaClassWithAttributes;
+};
+
+/** merge direct attributes of targetClass with attributes of auxiliaryClass & systemAuxiliaryClass classes
+ * @note:
+ * - // TODO at this point it does not follow auxiliaryClass & systemAuxiliaryClass attributes of other auxiliary classes. (auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes)
+ * - // TODO at this point it does not follow subClassOf field. (auxiliary classes can be subClassOf other auxiliary classes)
+ */
 function mergeAttributesOfAuxiliaryClasses({
   targetClass,
   classesWithAttributes,
 }: MergeAttributesOfAuxiliaryClassesFnInput): AnalysedAttributeFields[] {
+  writeLog(`mergeAttributesOfAuxiliaryClasses()`, { level: "trace" });
+
   /** placeholder for ldap name of all classes that this class gets its attributes from */
   const attributeClasses: string[] = [];
 
@@ -235,10 +228,18 @@ type GetAllAttributesFnInput = {
   classesWithAttributes: SchemaClassWithAttributes[];
   targetClass: SchemaClassWithAttributes;
 };
+/** merge direct attributes with in auxiliaryClass and systemAuxiliaryClass fields to target class respecting inheritance.
+ * @note :
+ * - it includes inherited attributes of parent classes
+ * - auxiliary classes can be subClassOf other auxiliary classes
+ * - auxiliary classes can have auxiliaryClass and systemAuxiliaryClass fields that reference to other auxiliary classes.
+ */
 export function getAllAttributes({
   targetClass,
   classesWithAttributes,
 }: GetAllAttributesFnInput): AnalysedAttributeFields[] {
+  writeLog(`getAllAttributes()`, { level: "trace" });
+
   const directAttributes = mergeAttributesOfAuxiliaryClasses({
     classesWithAttributes,
     targetClass,
