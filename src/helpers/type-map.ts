@@ -47,6 +47,7 @@ export function jsTypeMapper(attributeSyntax: string): string {
 const graphqlTypeMap = {
   /**@Note:
    * - 2.5.5.11 is Date
+   * - 2.5.5.16 is the OID for LargeInteger. in Microsoft Active Directory Syntax is restricted to 64-bit integers.
    */
   String: [
     "2.5.5.12",
@@ -61,9 +62,10 @@ const graphqlTypeMap = {
     "2.5.5.6",
     "2.5.5.13",
     "2.5.5.11",
+    "2.5.5.16",
   ],
   Boolean: ["2.5.5.8"],
-  Int: ["2.5.5.16", "2.5.5.9"],
+  Int: ["2.5.5.9"],
   /** @note:
    * - for 2.5.5.1 : https://docs.microsoft.com/en-us/windows/win32/adschema/s-object-ds-dn */
   ID: ["2.5.5.1"],

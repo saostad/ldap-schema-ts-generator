@@ -24,11 +24,9 @@ export function generateGraphqlType({
           attributeSyntax: ${el.attributeSyntax}
           attributeID: ${el.attributeID}          
           """
-          ${camelCase(el.lDAPDisplayName)}: ${
-            el.isSingleValued ? "" : "["
-          }${graphqlTypeMapper(el.attributeSyntax)}${el.isRequired ? "!" : ""}${
-            el.isSingleValued ? "" : "]"
-          }`,
+          ${camelCase(el.lDAPDisplayName)}: [${graphqlTypeMapper(
+            el.attributeSyntax,
+          )}${el.isRequired ? "!" : ""}]`,
       )
       .join("\n")}
   }
