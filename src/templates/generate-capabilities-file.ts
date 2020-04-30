@@ -70,7 +70,7 @@ export async function generateCapabilitiesFile({
     filePath,
     usePrettier,
   });
-  writeLog(`SchemaCapabilities has been created in ${filePath}`, {
+  writeLog(`Schema Capabilities has been generated in ${filePath}`, {
     stdout: true,
   });
 }

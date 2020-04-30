@@ -22,6 +22,7 @@ import {
   generateGraphqlTypeFiles,
   getStructuralSchemaClasses,
   generateStructuralClassesFile,
+  generateAttributesMeta,
 } from "./index";
 import {
   StructuralClasses,
@@ -63,17 +64,25 @@ export async function main() {
   // await generateStructuralClassesFile({ classes });
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-  const objectClasses = await getSchemaClasses({ schemaDn, options });
+  // const objectClasses = await getSchemaClasses({ schemaDn, options });
+
+  await generateAttributesMeta({
+    attributes: objectAttributes,
+    options: {
+      generateJsonFile: true,
+      generateTsFile: true,
+    },
+  });
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  await generateGraphqlTypeFiles({
-    objectClasses,
-    objectAttributes,
-    options: {
-      generateClientSideDocuments: true,
-    },
-  });
+  // await generateGraphqlTypeFiles({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     generateClientSideDocuments: true,
+  //   },
+  // });
 
   // await generateGraphqlTypeFiles<StructuralClasses>({
   //   objectClasses,

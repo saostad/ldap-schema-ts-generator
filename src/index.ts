@@ -11,6 +11,7 @@ import { generateRelationsFile } from "./templates/generate-relations-file";
 import { mapClassAttributesIncludeInherited } from "./helpers/map-class-attributes-include-inherited";
 import { generateGraphqlTypeFiles } from "./helpers/generate-graphql-type-files";
 import { generateStructuralClassesFile } from "./templates/generate-structural-classes-file";
+import { generateAttributesMeta } from "./templates/generate-attributes-meta-file";
 
 export {
   generateInterfaceFiles,
@@ -22,4 +23,5 @@ export {
   mapClassAttributesIncludeInherited,
   generateGraphqlTypeFiles,
   generateStructuralClassesFile,
+  generateAttributesMeta,
 };

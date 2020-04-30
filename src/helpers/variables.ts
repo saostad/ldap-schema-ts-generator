@@ -6,3 +6,4 @@ export const defaultEnumsDir = path.join(defaultOutDir, "enums");
 export const defaultJsonDir = path.join(defaultOutDir, "json");
 export const defaultGraphqlDir = path.join(defaultOutDir, "graphql");
 export const defaultGraphqlClientDir = path.join(defaultGraphqlDir, "client");
+export const defaultMetaDir = path.join(defaultOutDir, "meta");

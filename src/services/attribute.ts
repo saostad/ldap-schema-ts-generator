@@ -15,10 +15,10 @@ import type {
   ObjectCategory,
 } from "../typings/general/types";
 
-interface GetSchemaAttributesFnInput {
+type GetSchemaAttributesFnInput = {
   schemaDn: string;
   options: Omit<IClientConfig, "baseDN">;
-}
+};
 export interface SchemaAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
   cn: CN;
@@ -35,12 +35,11 @@ export interface SchemaAttribute
   objectCategory: ObjectCategory;
 }
 
-type GetSchemaAttributesFnOutput = Promise<Partial<SchemaAttribute>[]>;
 /** get defined an attribute objects in the schema. */
 export async function getSchemaAttributes({
   schemaDn,
   options,
-}: GetSchemaAttributesFnInput): GetSchemaAttributesFnOutput {
+}: GetSchemaAttributesFnInput): Promise<Partial<SchemaAttribute>[]> {
   options.logger?.trace("getSchemaAttributes()");
   const client = new Client({
     user: options.user,

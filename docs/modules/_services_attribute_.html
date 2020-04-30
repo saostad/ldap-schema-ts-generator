@@ -73,14 +73,13 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_services_attribute_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-kind-icon">Schema<wbr>Attribute</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_services_attribute_.html#getschemaattributesfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnOutput</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_services_attribute_.html#getschemaattributesfninput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -95,14 +94,25 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-					<a name="getschemaattributesfnoutput" class="tsd-anchor"></a>
-					<h3>Get<wbr>Schema<wbr>Attributes<wbr>FnOutput</h3>
-					<div class="tsd-signature tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnOutput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="getschemaattributesfninput" class="tsd-anchor"></a>
+					<h3>Get<wbr>Schema<wbr>Attributes<wbr>FnInput</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IClientConfig</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"baseDN"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>schemaDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/services/attribute.ts#L38">services/attribute.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/efed2da/src/services/attribute.ts#L18">services/attribute.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IClientConfig</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"baseDN"</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>schema<wbr>Dn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -111,13 +121,13 @@
 					<a name="getschemaattributes" class="tsd-anchor"></a>
 					<h3>get<wbr>Schema<wbr>Attributes</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Schema<wbr>Attributes<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>schemaDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_services_attribute_.html#getschemaattributesfnoutput" class="tsd-signature-type">GetSchemaAttributesFnOutput</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Schema<wbr>Attributes<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>schemaDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/e06f5ef/src/services/attribute.ts#L40">services/attribute.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/efed2da/src/services/attribute.ts#L39">services/attribute.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -141,7 +151,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_services_attribute_.html#getschemaattributesfnoutput" class="tsd-signature-type">GetSchemaAttributesFnOutput</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-signature-type">SchemaAttribute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -160,14 +170,11 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../interfaces/_services_attribute_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_services_attribute_.schemaattribute.html" class="tsd-kind-icon">Schema<wbr>Attribute</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_services_attribute_.html#getschemaattributesfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnOutput</a>
+						<a href="_services_attribute_.html#getschemaattributesfninput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_services_attribute_.html#getschemaattributes" class="tsd-kind-icon">get<wbr>Schema<wbr>Attributes</a>
