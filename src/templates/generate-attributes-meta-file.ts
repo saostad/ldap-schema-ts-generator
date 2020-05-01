@@ -3,8 +3,9 @@ import { defaultMetaDir, defaultJsonDir } from "../helpers/variables";
 import path from "path";
 import { writeToFile } from "../helpers/write-to-file";
 import type { SchemaAttribute } from "../services/attribute";
-import { ldapBooleanToJsBoolean } from "../helpers/utils";
+import { ldapBooleanToJsBoolean, escapeString } from "../helpers/utils";
 import { writeLog } from "fast-node-logger";
+import { jsTypeMapper, graphqlTypeMapper } from "../helpers/type-map";
 
 type GenerateAttributesMetaFnInput = {
   attributes: Partial<SchemaAttribute>[];
@@ -52,6 +53,7 @@ export async function generateAttributesMeta({
         "cn": "${el.cn}", 
         "dn": "${el.dn}",
         "adminDisplayName": "${el.adminDisplayName}",
+        "adminDescription": "${escapeString(el.adminDescription ?? "")}",
         "attributeID": "${el.attributeID}", 
         "attributeSyntax": "${el.attributeSyntax}",
         "systemOnly": ${ldapBooleanToJsBoolean(el.systemOnly!)},
@@ -60,6 +62,8 @@ export async function generateAttributesMeta({
             ? ldapBooleanToJsBoolean(el.showInAdvancedViewOnly)
             : false
         },
+        "jsType": "${jsTypeMapper(el.attributeSyntax!)}",
+        "gqlType": "${graphqlTypeMapper(el.attributeSyntax!)}",
       }`,
       )
       .join(",")}}`;

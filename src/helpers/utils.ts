@@ -273,3 +273,40 @@ export function getAllAttributes({
 
   return result;
 }
+
+/**
+ * - Escape all characters not included in SingleStringCharacters and
+DoubleStringCharacters on  http://www.ecma-international.org/ecma-262/5.1/#sec-7.8.4
+ - maybe it need to improve to cover [source](https://www.freeformatter.com/javascript-escape.html):
+    -  Horizontal Tab is replaced with \t
+    -  Vertical Tab is replaced with \v
+    -  Nul char is replaced with \0
+    -  Backspace is replaced with \b
+    -  Form feed is replaced with \f
+    -  Newline is replaced with \n
+    -  Carriage return is replaced with \r
+    -  Single quote is replaced with \'
+    -  Double quote is replaced with \"
+    -  Backslash is replaced with \\
+ */
+export function escapeString(string: string): string {
+  return ("" + string).replace(/["'\\\n\r\u2028\u2029]/g, (character) => {
+    switch (character) {
+      case '"':
+      case "'":
+      case "\\":
+        return "\\" + character;
+      // Four possible LineTerminator characters need to be escaped:
+      case "\n":
+        return "\\n";
+      case "\r":
+        return "\\r";
+      case "\u2028":
+        return "\\u2028";
+      case "\u2029":
+        return "\\u2029";
+      default:
+        return "";
+    }
+  });
+}
