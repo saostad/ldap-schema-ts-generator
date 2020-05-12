@@ -47,7 +47,7 @@ export function jsTypeMapper(attributeSyntax: string): string {
 /** [source](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7cda533e-d7a4-4aec-a517-91d02ff4a1aa) */
 const graphqlTypeMap = {
   /**@Note:
-   * - 2.5.5.16 is the OID for LargeInteger. in Microsoft Active Directory Syntax is restricted to 64-bit integers, but here I put it as string because javascript doesn't support 64bit int.
+   * - 2.5.5.16 is the OID for LargeInteger. in Microsoft Active Directory Syntax is restricted to 64-bit integers, but here I put it as string because graphql doesn't support 64bit int.
    * - 2.5.5.14 is Object(DN-String)
    */
   String: [
