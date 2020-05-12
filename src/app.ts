@@ -44,38 +44,39 @@ export async function main() {
 
   const schemaDn = await getSchemaNamingContext({ options });
 
-  const linkIds = await getLinkIds({ options, schemaDn });
-  const relations = getRelations(linkIds);
-  await generateRelationsFile({ relations });
+  // const linkIds = await getLinkIds({ options, schemaDn });
+  // const relations = getRelations(linkIds);
+  // await generateRelationsFile({ relations });
 
-  const controls = await getSchemaControls({ options });
-  await generateControlsFile({ controls });
+  // const controls = await getSchemaControls({ options });
+  // await generateControlsFile({ controls });
 
-  const extensions = await getSchemaExtensions({ options });
-  await generateExtensionsFile({ extensions });
+  // const extensions = await getSchemaExtensions({ options });
+  // await generateExtensionsFile({ extensions });
 
-  const capabilities = await getSchemaCapabilities({ options });
-  await generateCapabilitiesFile({ capabilities });
+  // const capabilities = await getSchemaCapabilities({ options });
+  // await generateCapabilitiesFile({ capabilities });
 
-  const policies = await getSchemaPolicies({ options });
-  await generatePoliciesFile({ policies });
+  // const policies = await getSchemaPolicies({ options });
+  // await generatePoliciesFile({ policies });
 
-  const classes = await getStructuralSchemaClasses({ schemaDn, options });
-  await generateStructuralClassesFile({ classes });
+  // const classes = await getStructuralSchemaClasses({ schemaDn, options });
+  // await generateStructuralClassesFile({ classes });
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
   const objectClasses = await getSchemaClasses({ schemaDn, options });
 
-  await generateAttributesMeta({
-    attributes: objectAttributes,
-    options: {
-      generateJsonFile: true,
-      generateTsFile: true,
-    },
-  });
+  // await generateAttributesMeta({
+  //   attributes: objectAttributes,
+  //   options: {
+  //     generateJsonFile: true,
+  //     generateTsFile: true,
+  //   },
+  // });
 
-  await generateInterfaceFiles({ objectAttributes, objectClasses });
+  // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
+  // test without generic type
   await generateGraphqlTypeFiles({
     objectClasses,
     objectAttributes,
@@ -84,21 +85,33 @@ export async function main() {
     },
   });
 
-  await generateGraphqlTypeFiles<StructuralClasses>({
-    objectClasses,
-    objectAttributes,
-    options: {
-      justThisClasses: ["user"],
-      generateClientSideDocuments: true,
-    },
-  });
+  // // test without generic type but limited classes
+  // await generateGraphqlTypeFiles({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     justThisClasses: ["user"],
+  //     generateClientSideDocuments: true,
+  //   },
+  // });
 
-  await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
-    objectClasses,
-    objectAttributes,
-    options: {
-      justThisClasses: ["user", "group", "computer", "contact", "container"],
-    },
-  });
+  // // test with type
+  // await generateGraphqlTypeFiles<StructuralClasses>({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     justThisClasses: ["user"],
+  //     generateClientSideDocuments: true,
+  //   },
+  // });
+
+  // // test with enum type
+  // await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     justThisClasses: ["user", "group", "computer", "contact", "container"],
+  //   },
+  // });
 }
 main();
