@@ -66,24 +66,24 @@ export async function main() {
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
   const objectClasses = await getSchemaClasses({ schemaDn, options });
 
-  await generateAttributesMeta({
-    attributes: objectAttributes,
-    options: {
-      generateJsonFile: true,
-      generateTsFile: true,
-    },
-  });
+  // await generateAttributesMeta({
+  //   attributes: objectAttributes,
+  //   options: {
+  //     generateJsonFile: true,
+  //     generateTsFile: true,
+  //   },
+  // });
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
   // test without generic type
-  // await generateGraphqlTypeFiles({
-  //   objectClasses,
-  //   objectAttributes,
-  //   options: {
-  //     generateClientSideDocuments: true,
-  //   },
-  // });
+  await generateGraphqlTypeFiles({
+    objectClasses,
+    objectAttributes,
+    options: {
+      generateClientSideDocuments: true,
+    },
+  });
 
   // // test without generic type but limited classes
   // await generateGraphqlTypeFiles({

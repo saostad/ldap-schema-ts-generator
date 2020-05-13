@@ -1,4 +1,5 @@
 import { writeLog } from "fast-node-logger";
+import { AnalysedAttributeFields } from "./map-class-attributes";
 
 /** for more info look at links below:
  * - https://social.technet.microsoft.com/wiki/contents/articles/52570.active-directory-syntaxes-of-attributes.aspx
@@ -75,21 +76,52 @@ const graphqlTypeMap = {
   Date: ["2.5.5.11"],
 };
 
+/** map OID to correct type */
+const graphqlTypeMapExceptions = {
+  Date: [
+    "1.2.840.113556.1.4.159", // accountExpires
+    "1.2.840.113556.1.4.49", // badPasswordTime
+    "1.2.840.113556.1.4.51", // lastLogoff
+    "1.2.840.113556.1.4.52", // lastLogon
+    "1.2.840.113556.1.4.1696", // lastLogonTimestamp
+    "1.2.840.113556.1.4.60", // lockoutDuration
+    "1.2.840.113556.1.4.61", // lockOutObservationWindow
+    "1.2.840.113556.1.4.662", // lockoutTime
+    "1.2.840.113556.1.4.74", // maxPwdAge
+    "1.2.840.113556.1.4.78", // minPwdAge
+    "1.2.840.113556.1.4.1971", // msDS-LastFailedInteractiveLogonTime
+    "1.2.840.113556.1.4.1970", // ms-DS-Last-Successful-Interactive-Logon-Time
+    "1.2.840.113556.1.4.1996", // msDS-UserPasswordExpiryTimeComputed
+    "1.2.840.113556.1.4.96", // pwdLastSet
+  ],
+};
+
 /** get ldap attributeSyntax and return graphql equivalent type */
-export function graphqlTypeMapper(attributeSyntax: string): string {
+export function graphqlTypeMapper(
+  attribute: Pick<AnalysedAttributeFields, "attributeID" | "attributeSyntax">,
+): string {
   writeLog(`graphqlTypeMapper()`, { level: "trace" });
+
+  /**@step first look at exceptions type-map object */
+  for (const [key, value] of Object.entries(graphqlTypeMapExceptions)) {
+    if (value.includes(attribute.attributeID)) {
+      return key;
+    }
+  }
+
+  /**@step look at normal type-map object */
   for (const [key, value] of Object.entries(graphqlTypeMap)) {
-    if (value.includes(attributeSyntax)) {
+    if (value.includes(attribute.attributeSyntax)) {
       return key;
     }
   }
 
   /** type not found */
-  writeLog(`type ${attributeSyntax} not found`, {
+  writeLog(`type ${attribute} not found`, {
     stdout: true,
     level: "error",
   });
 
   /** default type */
-  return "string";
+  return "String";
 }

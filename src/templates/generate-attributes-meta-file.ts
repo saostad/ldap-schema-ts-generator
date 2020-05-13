@@ -63,7 +63,10 @@ export async function generateAttributesMeta({
             : false
         },
         "jsType": "${jsTypeMapper(el.attributeSyntax!)}",
-        "gqlType": "${graphqlTypeMapper(el.attributeSyntax!)}",
+        "gqlType": "${graphqlTypeMapper({
+          attributeID: el.attributeID!,
+          attributeSyntax: el.attributeSyntax!,
+        })}",
       }`,
       )
       .join(",")}}`;
