@@ -82,6 +82,8 @@ export async function main() {
     objectAttributes,
     options: {
       generateClientSideDocuments: true,
+      generateEnumTypeMaps: false,
+      justThisClasses: ["user"],
     },
   });
 

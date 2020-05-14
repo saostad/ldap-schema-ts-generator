@@ -70,12 +70,12 @@ export async function generateGraphqlTypeFiles<
   }
 
   let usePrettier = true;
-  if (options?.usePrettier) {
+  if (typeof options?.usePrettier === "boolean") {
     usePrettier = options.usePrettier;
   }
 
   let generateResolvers = true;
-  if (options?.generateResolvers) {
+  if (typeof options?.generateResolvers === "boolean") {
     generateResolvers = options.generateResolvers;
   }
 
@@ -85,11 +85,11 @@ export async function generateGraphqlTypeFiles<
   }
 
   let generateEnumTypeMaps = true;
-  if (options?.generateEnumTypeMaps) {
+  if (typeof options?.generateEnumTypeMaps === "boolean") {
     generateEnumTypeMaps = options.generateEnumTypeMaps;
   }
   let generateClientSideDocuments = false;
-  if (options?.generateClientSideDocuments) {
+  if (typeof options?.generateClientSideDocuments === "boolean") {
     generateClientSideDocuments = options.generateClientSideDocuments;
   }
 
