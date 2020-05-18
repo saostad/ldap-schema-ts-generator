@@ -10,7 +10,10 @@ type WriteFileOptions = {
   prettierOptions?: Options;
 };
 
-/** apply prettier write text to file */
+/** write text to file
+ * - over-write if file exist
+ * - apply prettier base on config
+ */
 export async function writeToFile(
   rawText: string,
   { filePath, prettierOptions }: WriteFileOptions,
@@ -36,7 +39,7 @@ export async function writeToFile(
   /** write to file.
    * over-write if file exist
    */
-  promises.writeFile(filePath, textToWriteToFile, {
+  return promises.writeFile(filePath, textToWriteToFile, {
     encoding: "utf8",
     flag: "w",
   });

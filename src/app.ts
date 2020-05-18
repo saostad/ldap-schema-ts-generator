@@ -76,16 +76,16 @@ export async function main() {
 
   // await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  // test without generic type
-  await generateGraphqlTypeFiles({
-    objectClasses,
-    objectAttributes,
-    options: {
-      generateClientSideDocuments: true,
-      generateEnumTypeMaps: false,
-      // justThisClasses: ["user"],
-    },
-  });
+  // // test without generic type
+  // await generateGraphqlTypeFiles({
+  //   objectClasses,
+  //   objectAttributes,
+  //   options: {
+  //     generateClientSideDocuments: true,
+  //     generateEnumTypeMaps: false,
+  //     justThisClasses: ["user"],
+  //   },
+  // });
 
   // // test without generic type but limited classes
   // await generateGraphqlTypeFiles({
@@ -107,13 +107,14 @@ export async function main() {
   //   },
   // });
 
-  // // test with enum type
-  // await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
-  //   objectClasses,
-  //   objectAttributes,
-  //   options: {
-  //     justThisClasses: ["user", "group", "computer", "contact", "container"],
-  //   },
-  // });
+  // test with enum type
+  await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
+    objectClasses,
+    objectAttributes,
+    options: {
+      generateClientSideDocuments: true,
+      // justThisClasses: ["user", "group", "computer", "contact", "container"],
+    },
+  });
 }
 main();

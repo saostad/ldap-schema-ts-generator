@@ -64,10 +64,17 @@ export function arrayToLines(data?: string[]): string {
   return data.join("\n");
 }
 
-/** check if directory exist */
-export async function dirPathExist(targetPath: string) {
+/** make sure directory exist */
+export async function dirPathExist(targetPath: string): Promise<boolean> {
   writeLog(`dirPathExist()`, { level: "trace" });
-  return promisify(fs.exists)(path.dirname(targetPath));
+  const targetDir = path.dirname(targetPath);
+  const pathExist = await promisify(fs.exists)(targetDir);
+  if (pathExist) {
+    return true;
+  } else {
+    await promisify(fs.mkdir)(targetDir);
+    return true;
+  }
 }
 
 /** check if number odd */
