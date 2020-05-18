@@ -146,7 +146,7 @@ export interface Container extends Top, MsExchBaseClass {
 - [ ] create out folders if not exist instead of throwing error
 - [x] generate graphql types and CRUD operations
   - [x] generate Type for each objectClass in schema
-    - [ ] generate custom scalar Date type
+    - [x] generate custom scalar types (e.g. Date)
     - [x] respect inheritance
     - [ ] respect relations by linkID attribute
   - [x] use dn as identification field
