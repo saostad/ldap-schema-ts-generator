@@ -66,7 +66,7 @@
   },
   "dependencies": {
     "change-case": "^4.1.1",
-    "fast-node-logger": "^1.4.0",
+    "fast-node-logger": "^1.4.1",
     "ldap-query-generator": "^0.8.0",
     "ldap-ts-client": "^0.10.2",
     "prettier": "^2.0.5"
