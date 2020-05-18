@@ -2,7 +2,11 @@ import { SchemaClass, SchemaAttribute } from "../services";
 import path from "path";
 import { pascalCase } from "change-case";
 import { writeLog } from "fast-node-logger";
-import { defaultGraphqlDir, defaultGraphqlClientDir } from "./variables";
+import {
+  defaultGraphqlDir,
+  defaultGraphqlClientDir,
+  defaultGraphqlScalarDir,
+} from "./variables";
 import { mapClassAttributesIncludeInherited } from "./map-class-attributes-include-inherited";
 import { writeToFile } from "./write-to-file";
 import { generateGraphqlType } from "../templates/generate-graphql-type";
@@ -15,7 +19,7 @@ type GenerateGraphqlTypeFilesFnInput<T extends string> = {
   objectClasses: Partial<SchemaClass>[];
   objectAttributes: Partial<SchemaAttribute>[];
   options?: {
-    /** default folder named 'generated' in root directory of you project */
+    /** output dir for schema, default folder named 'generated' in root directory of you project */
     outputFolder?: string;
     /** output extension. default .gql */
     graphqlExtension?: "gql" | "graphql";
@@ -170,6 +174,28 @@ export async function generateGraphqlTypeFiles<
     }
   });
 
+  /**@step generate custom scalars e.g. Date */
+  /** */
+  let customScalarOutDir = defaultGraphqlScalarDir;
+  /** because this is part of schema, it will generate same directory but in separate sub-dir to prevent from name conflict */
+  if (options?.outputFolder) {
+    customScalarOutDir = path.join(options.outputFolder, "scalar");
+  }
+
+  const customScalarOutDirPath = path.join(
+    customScalarOutDir,
+    `custom-scalar.${graphqlExtension}`,
+  );
+  const customScalars = `scalar Date`;
+
+  promises.push(
+    writeToFile(customScalars, {
+      filePath: customScalarOutDirPath,
+      prettierOptions: usePrettier ? { parser: "graphql" } : undefined,
+    }),
+  );
+
+  /** @step generate all files */
   await Promise.all(promises);
   writeLog(`graphql types has been generated in dir ${outDir}`, {
     stdout: true,
