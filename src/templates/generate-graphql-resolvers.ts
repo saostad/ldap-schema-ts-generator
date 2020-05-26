@@ -41,9 +41,7 @@ export function generateGraphqlResolvers({
           attributeSyntax: ${el.attributeSyntax}
           attributeID: ${el.attributeID}          
           """
-          ${camelCase(el.lDAPDisplayName!)}: ${
-            el.isSingleValued ? "" : "["
-          }${graphqlTypeMapper(el)}${el.isRequired ? "!" : ""}${
+          ${camelCase(el.lDAPDisplayName!)}: ${el.isSingleValued ? "" : "["}${
             el.isSingleValued ? "" : "]"
           }`,
       )
