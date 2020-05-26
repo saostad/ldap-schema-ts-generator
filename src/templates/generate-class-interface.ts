@@ -50,8 +50,8 @@ export function generateClassInterface({
   /**  - object class: ${data.lDAPDisplayName}
    *  - child of class: ${data.subClassOf}
    *  - dn: ${data.originalClassFields.dn}
-  */  
- // @ts-ignore
+  */
+  // @ts-expect-error
   export interface ${pascalCase(data.lDAPDisplayName)} ${
     data.lDAPDisplayName !== "top"
       ? `extends ${parentClasses.map((el) => pascalCase(el)).join()}`
@@ -67,11 +67,9 @@ export function generateClassInterface({
            *   - adminDescription: ${el.adminDescription}
            *   - dn: ${el.dn} 
           */
-          ${el.systemOnly ? "readonly" : ""} "${el.lDAPDisplayName}" ${
-            el.isRequired ? "" : "?"
-          }: ${jsTypeMapper(el.attributeSyntax)} ${
-            el.isSingleValued ? "" : "[]"
-          };`;
+          "${el.lDAPDisplayName}" ${el.isRequired ? "" : "?"}: ${jsTypeMapper(
+            el.attributeSyntax,
+          )} ${el.isSingleValued ? "" : "[]"};`;
         }),
     )}
   }

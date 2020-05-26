@@ -32,8 +32,7 @@ export function generateGraphqlResolvers({
   input ${pascalCase(data.lDAPDisplayName)}UpdateInput {
     dn: ID!
     ${data.attributes
-      ?.filter((el) => el.systemOnly !== true)
-      .map(
+      ?.map(
         (el) =>
           `"""
           Admin DisplayName: ${el.adminDisplayName}
