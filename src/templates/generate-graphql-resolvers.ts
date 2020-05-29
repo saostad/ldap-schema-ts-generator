@@ -17,24 +17,26 @@ export function generateGraphqlResolvers({
     ${camelCase(data.lDAPDisplayName)}GetAll(criteria: String): [${pascalCase(
     data.lDAPDisplayName,
   )}]
-    ${camelCase(data.lDAPDisplayName)}GetByDn(dn: ID!): ${pascalCase(
+      ${camelCase(data.lDAPDisplayName)}GetByDn(dn: ID!): ${pascalCase(
     data.lDAPDisplayName,
   )}
-  }
-  
-  type Mutation {
-    ${camelCase(data.lDAPDisplayName)}Update(input: ${pascalCase(
+      }
+      
+      type Mutation {
+        ${camelCase(data.lDAPDisplayName)}Update(input: ${pascalCase(
     data.lDAPDisplayName,
   )}UpdateInput!): ${pascalCase(data.lDAPDisplayName)}
-    ${camelCase(data.lDAPDisplayName)}Delete(dn: ID!): Boolean
-  }
-
-  input ${pascalCase(data.lDAPDisplayName)}UpdateInput {
-    dn: ID!
-    ${data.attributes
-      ?.map(
-        (el) =>
-          `"""
+          ${camelCase(data.lDAPDisplayName)}Delete(dn: ID!): Boolean
+        }
+        
+        input ${pascalCase(data.lDAPDisplayName)}UpdateInput {
+          dn: ID!
+          ${data.attributes
+            /**@step distinguishedName is not editable. it can be modify by entryModifyDn function */
+            ?.filter((el) => el.lDAPDisplayName !== "distinguishedName")
+            .map(
+              (el) =>
+                `"""
           Admin DisplayName: ${el.adminDisplayName}
           Description: ${el.adminDescription}
           ldapDisplayName: ${el.lDAPDisplayName}
@@ -42,10 +44,10 @@ export function generateGraphqlResolvers({
           attributeID: ${el.attributeID}          
           """
           ${camelCase(el.lDAPDisplayName!)}: ${
-            el.isSingleValued ? "" : "["
-          }${graphqlTypeMapper(el)}${el.isSingleValued ? "" : "]"}`,
-      )
-      .join("\n")}
+                  el.isSingleValued ? "" : "["
+                }${graphqlTypeMapper(el)}${el.isSingleValued ? "" : "]"}`,
+            )
+            .join("\n")}
   }
   `;
 
