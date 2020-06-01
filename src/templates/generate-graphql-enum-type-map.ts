@@ -6,6 +6,8 @@ type GenerateGraphqlEnumTypeMapFnInput = {
   data: SchemaClassWithAttributes;
 };
 
+/** @note ldap attributes can have characters that are illegal in graphql schema so instead we use pascal case of lDAPDisplayName.
+ */
 export function generateGraphqlEnumTypeMap({
   data,
 }: GenerateGraphqlEnumTypeMapFnInput): string {

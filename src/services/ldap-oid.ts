@@ -20,7 +20,8 @@ export async function getLdapOids({
     __dirname,
     "..",
     "..",
-    "cache",
+    "lib",
+    "json",
     "ldap-oids.json",
   );
   if (useCache) {

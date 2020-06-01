@@ -20,7 +20,8 @@ export async function getLdapPolicies({
     __dirname,
     "..",
     "..",
-    "cache",
+    "lib",
+    "json",
     "ldap-policies.json",
   );
   if (useCache) {

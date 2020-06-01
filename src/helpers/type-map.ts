@@ -48,24 +48,28 @@ export function jsTypeMapper(attributeSyntax: string): string {
 /** [source](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7cda533e-d7a4-4aec-a517-91d02ff4a1aa) */
 const graphqlTypeMap = {
   /**@Note:
-   * - 2.5.5.16 is the OID for LargeInteger. in Microsoft Active Directory Syntax is restricted to 64-bit integers, but here I put it as string because graphql doesn't support 64bit int.
+   * - 2.5.5.5 is the OID for an IA5 String or Printable String
+   * - 2.5.5.12 is a case-insensitive Unicode String
    * - 2.5.5.14 is Object(DN-String)
+   * - 2.5.5.16 is the OID for LargeInteger. in Microsoft Active Directory Syntax is restricted to 64-bit integers, but here I put it as string because graphql doesn't support 64bit int.
    */
   String: [
-    "2.5.5.12",
-    "2.5.5.17",
-    "2.5.5.5",
-    "2.5.5.10",
-    "2.5.5.7",
-    "2.5.5.14",
     "2.5.5.2",
     "2.5.5.4",
-    "2.5.5.15",
+    "2.5.5.5",
     "2.5.5.6",
+    "2.5.5.7",
+    "2.5.5.10",
+    "2.5.5.12",
     "2.5.5.13",
+    "2.5.5.14",
+    "2.5.5.15",
     "2.5.5.16",
+    "2.5.5.17",
   ],
+  /** Section 6.4 of RFC 2252 */
   Boolean: ["2.5.5.8"],
+  /** - 2.5.5.9 INTEGER Section 6.16 of RFC 2252 */
   Int: ["2.5.5.9"],
   /** @note:
    * - Object(DS-DN) for 2.5.5.1 : https://docs.microsoft.com/en-us/windows/win32/adschema/s-object-ds-dn */

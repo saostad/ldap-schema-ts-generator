@@ -48,6 +48,13 @@ type GenerateGraphqlTypeFilesFnInput<T extends string> = {
      * - if not provided it generate all structural classes
      */
     justThisClasses?: T[];
+    /** enums are pre-defined list of values and are different in each server implementation. [source](https://stackoverflow.com/questions/61900587/ldap-get-defined-enums-and-their-values-from-schema/61903016#61903016).
+     *
+     *
+     * this flag generates graphql types based on active directory enums.
+     * - it generate graphql enums in separate file and reference those in generated type and resolver files
+     */
+    // TODO: generateAdEnums?: boolean;
   };
 };
 
@@ -92,6 +99,7 @@ export async function generateGraphqlTypeFiles<
   if (typeof options?.generateEnumTypeMaps === "boolean") {
     generateEnumTypeMaps = options.generateEnumTypeMaps;
   }
+
   let generateClientSideDocuments = false;
   if (typeof options?.generateClientSideDocuments === "boolean") {
     generateClientSideDocuments = options.generateClientSideDocuments;

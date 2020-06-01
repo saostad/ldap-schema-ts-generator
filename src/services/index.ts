@@ -9,3 +9,4 @@ export * from "./naming-context";
 export * from "./policy";
 export * from "./root-dse";
 export * from "./sasl-mechanism";
+export * from "./country-iso-codes";

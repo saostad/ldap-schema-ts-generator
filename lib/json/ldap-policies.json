@@ -1,0 +1,107 @@
+[
+  {
+    "Policy name": "MaxActiveQueries",
+    "Default value": "20",
+    "Description": "The maximum number of concurrent LDAP search operations that are permitted to run at the same time on a DC. When this limit is reached, the DC returns a busy / ERROR_DS_ADMIN_LIMIT_EXCEEDED error."
+  },
+  {
+    "Policy name": "InitRecvTimeout",
+    "Default value": "120",
+    "Description": "The maximum time, in seconds, that a DC waits for the client to send the first request after the DC receives a new connection. If the client does not send the first request in this amount of time, the server disconnects the client."
+  },
+  {
+    "Policy name": "MaxConnections",
+    "Default value": "5000",
+    "Description": "The maximum number of simultaneous LDAP connections that a DC will accept. If a connection comes in after the DC reaches this limit, the DC will drop another connection. The connection that is selected to drop is not constrained by the protocol and is determined based on the implementation."
+  },
+  {
+    "Policy name": "MaxConnIdleTime",
+    "Default value": "900",
+    "Description": "The maximum time, in seconds, that the client can be idle before the DC closes the connection. If a connection is idle for more than this time, the DC disconnects the client."
+  },
+  {
+    "Policy name": "MaxDatagramRecv",
+    "Default value": "4096",
+    "Description": "The maximum size, in bytes, of a UDP datagram request that a DC will process. Requests that are larger than this value are ignored by the DC."
+  },
+  {
+    "Policy name": "MaxNotificationPerConn",
+    "Default value": "5",
+    "Description": "The maximum number of outstanding notification search requests (using the LDAP_SERVER_NOTIFICATION_OID control) that the DC permits on a single connection. When this limit is reached, the server returns an adminLimitExceeded / ERROR_DS_ADMIN_LIMIT_EXCEEDED error  to any new notification searches that are requested on that connection."
+  },
+  {
+    "Policy name": "MaxPoolThreads",
+    "Default value": "4",
+    "Description": "The maximum number of threads per processor that a DC dedicates to listening for network input or output. This value also determines the maximum number of threads per processor that can work on LDAP requests at the same time."
+  },
+  {
+    "Policy name": "MaxReceiveBuffer",
+    "Default value": "10,485,760",
+    "Description": "The maximum size, in bytes, of a request that the server will accept. If the server receives a request that is larger than this, it will drop the connection."
+  },
+  {
+    "Policy name": "MaxPageSize",
+    "Default value": "1000",
+    "Description": "The maximum number of objects that are returned in a single search result, independent of how large each returned object is. To perform a search where the result might exceed this number of objects, the client must specify the paged search control."
+  },
+  {
+    "Policy name": "MaxQueryDuration",
+    "Default value": "120",
+    "Description": "The maximum time, in seconds, that a DC will spend on a single search or batched LDAP extended operation (in Windows Server 2012 and later). When this limit is reached, the DC returns a timeLimitExceeded / ERROR_INVALID_PARAMETER error."
+  },
+  {
+    "Policy name": "MaxResultSetSize",
+    "Default value": "262,144",
+    "Description": "The maximum number of bytes that a DC stores to optimize the individual searches that make up a paged search. The data that is stored is outside the state model and is implementation-specific."
+  },
+  {
+    "Policy name": "MaxTempTableSize",
+    "Default value": "10,000",
+    "Description": "The maximum number of rows that a DC will create in a temporary database table to hold intermediate results during query processing."
+  },
+  {
+    "Policy name": "MaxValRange",
+    "Default value": "1500",
+    "Description": "The maximum number of values that can be retrieved from a multivalued attribute in a single search request. Windows 2000 DCs do not support this policy and instead always use a setting of 1000 values."
+  },
+  {
+    "Policy name": "MaxResultSetsPerConn",
+    "Default value": "10",
+    "Description": "The maximum number of individual paged searches per LDAP connection for which a DC will store optimization data. The data that is stored is outside the state model and is implementation-specific."
+  },
+  {
+    "Policy name": "MinResultSets",
+    "Default value": "3",
+    "Description": "The minimum number of individual paged searches for which a DC will store optimization data. The data that is stored is outside the state model and is implementation-specific."
+  },
+  {
+    "Policy name": "MaxBatchReturnMessages",
+    "Default value": "1100",
+    "Description": "The maximum number of messages that can be returned when processing an LDAP_SERVER_BATCH_REQUEST_OID extended operation (section 3.1.1.3.4.2.5)."
+  },
+  {
+    "Policy name": "MaxPercentDirSyncRequests",
+    "Default value": "100",
+    "Description": "The maximum percentage of LDAP threads that can be performing a search using the LDAP_SERVER_DIRSYNC_OID or LDAP_SERVER_DIRSYNC_EX_OID at one time."
+  },
+  {
+    "Policy name": "MaxValRangeTransitive",
+    "Default value": "none",
+    "Description": "This policy has no significance."
+  },
+  {
+    "Policy name": "ThreadMemoryLimit",
+    "Default value": "none",
+    "Description": "This policy affects implementation-specific memory allocation and limits."
+  },
+  {
+    "Policy name": "SystemMemoryLimitPercent",
+    "Default value": "none",
+    "Description": "This policy affects implementation-specific memory allocation and limits."
+  },
+  {
+    "Policy name": "MaxDirSyncDuration",
+    "Default value": "60",
+    "Description": "The maximum time, in seconds, that a DC will spend on a single search when using the LDAP_SERVER_DIRSYNC_OID or LDAP_SERVER_DIRSYNC_EX_OID controls. When this limit is reached, the DC returns a timeLimitExceeded / ERROR_INVALID_PARAMETER error."
+  }
+]

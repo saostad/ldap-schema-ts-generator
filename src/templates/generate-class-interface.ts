@@ -15,7 +15,6 @@ type GenerateClassInterfaceFnInput = {
 *  - https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/06f3acb8-8cff-49e9-94ad-6737fa0a9503
 *  - top class is an exception, it's subClassOf field is itself and should be ignored
 */
-
 export function generateClassInterface({
   data,
 }: GenerateClassInterfaceFnInput): string {

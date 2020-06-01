@@ -3715,47 +3715,47 @@
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_PAGED_RESULT_OID_STRING - Description: Splits the results of an LDAP search across multiple   result sets.",
+    "Purpose": "AD Extended Control: LDAP_PAGED_RESULT_OID_STRING - Description: Splits the results of an LDAP search across multiple result sets.",
     "OID": "1.2.840.113556.1.4.319",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_CROSSDOM_MOVE_TARGET_OID - Description: Used with an LDAP Modify DN operation to move an object   from one domain to another   domain.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_CROSSDOM_MOVE_TARGET_OID - Description: Used with an LDAP Modify DN operation to move an object from one domain to another domain.",
     "OID": "1.2.840.113556.1.4.521",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_DIRSYNC_OID - Description: Used with an LDAP search operation to retrieve the   changes made to objects since a previous LDAP_SERVER_DIRSYNC_OID search was   performed.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_DIRSYNC_OID - Description: Used with an LDAP search operation to retrieve the changes made to objects since a previous LDAP_SERVER_DIRSYNC_OID search was performed.",
     "OID": "1.2.840.113556.1.4.841",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_DOMAIN_SCOPE_OID - Description: Instructs the DC not to generate LDAP continuation   references in response to a search operation.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_DOMAIN_SCOPE_OID - Description: Instructs the DC not to generate LDAP continuation references in response to a search operation.",
     "OID": "1.2.840.113556.1.4.1339",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_EXTENDED_DN_OID - Description: Used to request than an LDAP search operation return DNs   in an extended format containing the values of the objectGUID   and objectSid   attributes.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_EXTENDED_DN_OID - Description: Used to request than an LDAP search operation return DNs in an extended format containing the values of the objectGUID and objectSid attributes.",
     "OID": "1.2.840.113556.1.4.529",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_GET_STATS_OID - Description: Used with an LDAP search request to instruct the DC to   return statistical data related to how the search was performed.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_GET_STATS_OID - Description: Used with an LDAP search request to instruct the DC to return statistical data related to how the search was performed.",
     "OID": "1.2.840.113556.1.4.970",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_LAZY_COMMIT_OID - Description: Instructs the DC that it MAY sacrifice durability   guarantees on updates to improve   performance.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_LAZY_COMMIT_OID - Description: Instructs the DC that it MAY sacrifice durability guarantees on updates to improve performance.",
     "OID": "1.2.840.113556.1.4.619",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_PERMISSIVE_MODIFY_OID - Description: Instructs the DC that an LDAP modify must succeed even   if it attempts to add a value already present on the attribute or remove a   value not present on the attribute.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_PERMISSIVE_MODIFY_OID - Description: Instructs the DC that an LDAP modify must succeed even if it attempts to add a value already present on the attribute or remove a value not present on the attribute.",
     "OID": "1.2.840.113556.1.4.1413",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_NOTIFICATION_OID - Description: Used with an LDAP search operation to register the   client to be notified when changes are made to an object in the directory.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_NOTIFICATION_OID - Description: Used with an LDAP search operation to register the client to be notified when changes are made to an object in the directory.",
     "OID": "1.2.840.113556.1.4.528",
     "Source": "Active Directory"
   },
@@ -3765,12 +3765,12 @@
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SD_FLAGS_OID - Description: Instructs the DC which portions of a Windows   security descriptor to retrieve during an LDAP search operation.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SD_FLAGS_OID - Description: Instructs the DC which portions of a Windows security descriptor to retrieve during an LDAP search operation.",
     "OID": "1.2.840.113556.1.4.801",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SEARCH_OPTIONS_OID - Description: Used to pass flags to the DC to control search   behaviors; specifically, to prevent LDAP continuation references from being   generated and to search all NC replicas that   are subordinate to the search base, even if the search base is not   instantiated on the DC.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SEARCH_OPTIONS_OID - Description: Used to pass flags to the DC to control search behaviors; specifically, to prevent LDAP continuation references from being generated and to search all NC replicas that are subordinate to the search base, even if the search base is not instantiated on the DC.",
     "OID": "1.2.840.113556.1.4.1340",
     "Source": "Active Directory"
   },
@@ -3780,17 +3780,17 @@
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SHOW_DELETED_OID - Description: Used with an LDAP operation to specify that tombstones   and deleted-objects   are visible to the operation.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SHOW_DELETED_OID - Description: Used with an LDAP operation to specify that tombstones and deleted-objects are visible to the operation.",
     "OID": "1.2.840.113556.1.4.417",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_TREE_DELETE_OID - Description: Used with an LDAP delete operation to cause the server   to recursively delete the entire subtree of objects located under the object   specified in the search request (including the specified object).",
+    "Purpose": "AD Extended Control: LDAP_SERVER_TREE_DELETE_OID - Description: Used with an LDAP delete operation to cause the server to recursively delete the entire subtree of objects located under the object specified in the search request (including the specified object).",
     "OID": "1.2.840.113556.1.4.805",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_VERIFY_NAME_OID - Description: Permits the client to specify which GC   the DC is to use when processing an add or modify request to verify the   existence of any objects pointed to by DN attribute values.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_VERIFY_NAME_OID - Description: Permits the client to specify which GC the DC is to use when processing an add or modify request to verify the existence of any objects pointed to by DN attribute values.",
     "OID": "1.2.840.113556.1.4.1338",
     "Source": "Active Directory"
   },
@@ -3805,112 +3805,112 @@
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_ASQ_OID - Description: Used to specify that an LDAP search operation must not   be performed against the object specified as the base in the search, but   rather against the set of objects named by a specified attribute of   Object(DS-DN) syntax on the base object.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_ASQ_OID - Description: Used to specify that an LDAP search operation must not be performed against the object specified as the base in the search, but rather against the set of objects named by a specified attribute of Object(DS-DN) syntax on the base object.",
     "OID": "1.2.840.113556.1.4.1504",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_QUOTA_CONTROL_OID - Description: Used with an LDAP search operation to retrieve the   quota of a user.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_QUOTA_CONTROL_OID - Description: Used with an LDAP search operation to retrieve the quota of a user.",
     "OID": "1.2.840.113556.1.4.1852",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_RANGE_OPTION_OID - Description: Indicates that the server is capable of range   retrieval (see section 3.1.1.3.1.3.3).",
+    "Purpose": "AD Extended Control: LDAP_SERVER_RANGE_OPTION_OID - Description: Indicates that the server is capable of range retrieval (see section 3.1.1.3.1.3.3).",
     "OID": "1.2.840.113556.1.4.802",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SHUTDOWN_NOTIFY_OID - Description: Used with an LDAP search operation to cause the client   to be notified when the DC is shutting down.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SHUTDOWN_NOTIFY_OID - Description: Used with an LDAP search operation to cause the client to be notified when the DC is shutting down.",
     "OID": "1.2.840.113556.1.4.1907",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_FORCE_UPDATE_OID - Description: When attached to an LDAP update operation, causes the   DC to perform the update even if that update would not affect the state of   the DC.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_FORCE_UPDATE_OID - Description: When attached to an LDAP update operation, causes the DC to perform the update even if that update would not affect the state of the DC.",
     "OID": "1.2.840.113556.1.4.1974",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_RANGE_RETRIEVAL_NOERR_OID - Description: Instructs the DC that, when performing a search using   range retrieval (see section 3.1.1.3.1.3.3) on an attribute whose values are forward   link values or back link values   and the value of low is greater than or equal to the number of values in the   attribute, no error is to be returned.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_RANGE_RETRIEVAL_NOERR_OID - Description: Instructs the DC that, when performing a search using range retrieval (see section 3.1.1.3.1.3.3) on an attribute whose values are forward link values or back link values and the value of low is greater than or equal to the number of values in the attribute, no error is to be returned.",
     "OID": "1.2.840.113556.1.4.1948",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_RODC_DCPROMO_OID - Description: This control is used as part of the process of   promoting a computer to be an RODC.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_RODC_DCPROMO_OID - Description: This control is used as part of the process of promoting a computer to be an RODC.",
     "OID": "1.2.840.113556.1.4.1341",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_DN_INPUT_OID - Description: This control is used to specify the DN of an object   during an LDAP operation. Currently this control is used only while   retrieving the constructed attribute   msDS-IsUserCachableAtRodc   (see section 3.1.1.3.4.1.24).",
+    "Purpose": "AD Extended Control: LDAP_SERVER_DN_INPUT_OID - Description: This control is used to specify the DN of an object during an LDAP operation. Currently this control is used only while retrieving the constructed attribute msDS-IsUserCachableAtRodc (see section 3.1.1.3.4.1.24).",
     "OID": "1.2.840.113556.1.4.2026",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SHOW_DEACTIVATED_LINK_OID - Description: Used with an LDAP search operation to specify that link   attributes that refer to deleted-objects are visible to the search   operation. If used in conjunction with LDAP_SERVER_SHOW_DELETED_OID or   LDAP_SERVER_SHOW_RECYCLED_OID, link attributes that are stored on   deleted-objects are also visible to the search operation. This applies both   to the search filter and the set   of attributes returned by the search operation.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SHOW_DEACTIVATED_LINK_OID - Description: Used with an LDAP search operation to specify that link attributes that refer to deleted-objects are visible to the search operation. If used in conjunction with LDAP_SERVER_SHOW_DELETED_OID or LDAP_SERVER_SHOW_RECYCLED_OID, link attributes that are stored on deleted-objects are also visible to the search operation. This applies both to the search filter and the set of attributes returned by the search operation.",
     "OID": "1.2.840.113556.1.4.2065",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SHOW_RECYCLED_OID - Description: Used with an LDAP operation to specify that   tombstones, deleted-objects, and recycled-objects   are visible to the operation.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SHOW_RECYCLED_OID - Description: Used with an LDAP operation to specify that tombstones, deleted-objects, and recycled-objects are visible to the operation.",
     "OID": "1.2.840.113556.1.4.2064",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_POLICY_HINTS_DEPRECATED_OID - Description: The LDAP_SERVER_POLICY_HINTS_DEPRECATED_OID control   has the exact semantics and behaviors as LDAP_SERVER_POLICY_HINTS_OID   (section 3.1.1.3.4.1.27);   this control MAY be used by clients when the server does not support   LDAP_SERVER_POLICY_HINTS_OID. Clients SHOULD use   LDAP_SERVER_POLICY_HINTS_OID when it is supported by the server.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_POLICY_HINTS_DEPRECATED_OID - Description: The LDAP_SERVER_POLICY_HINTS_DEPRECATED_OID control has the exact semantics and behaviors as LDAP_SERVER_POLICY_HINTS_OID (section 3.1.1.3.4.1.27); this control MAY be used by clients when the server does not support LDAP_SERVER_POLICY_HINTS_OID. Clients SHOULD use LDAP_SERVER_POLICY_HINTS_OID when it is supported by the server.",
     "OID": "1.2.840.113556.1.4.2066",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_DIRSYNC_EX_OID - Description: Used with an LDAP search operation to retrieve the   changes made to objects since a previous LDAP_SERVER_DIRSYNC_EX_OID search   was performed.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_DIRSYNC_EX_OID - Description: Used with an LDAP search operation to retrieve the changes made to objects since a previous LDAP_SERVER_DIRSYNC_EX_OID search was performed.",
     "OID": "1.2.840.113556.1.4.2090",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_UPDATE_STATS_OID - Description: The LDAP_SERVER_UPDATE_STATS_OID control indicates   that the requester requires statistics from the DC.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_UPDATE_STATS_OID - Description: The LDAP_SERVER_UPDATE_STATS_OID control indicates that the requester requires statistics from the DC.",
     "OID": "1.2.840.113556.1.4.2205",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_TREE_DELETE_EX_OID - Description: Used with an LDAP delete operation to cause the server   to recursively delete the entire subtree of objects, up to a specified number   of objects, located under the object specified in the search request   (including the specified object).",
+    "Purpose": "AD Extended Control: LDAP_SERVER_TREE_DELETE_EX_OID - Description: Used with an LDAP delete operation to cause the server to recursively delete the entire subtree of objects, up to a specified number of objects, located under the object specified in the search request (including the specified object).",
     "OID": "1.2.840.113556.1.4.2204",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SEARCH_HINTS_OID - Description: Provides hints to the DC during LDAP search   operations.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SEARCH_HINTS_OID - Description: Provides hints to the DC during LDAP search operations.",
     "OID": "1.2.840.113556.1.4.2206",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_EXPECTED_ENTRY_COUNT_OID - Description: Monitors the result of an LDAP search operation and   potentially modifies the return code.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_EXPECTED_ENTRY_COUNT_OID - Description: Monitors the result of an LDAP search operation and potentially modifies the return code.",
     "OID": "1.2.840.113556.1.4.2211",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_POLICY_HINTS_OID - Description: Used with an LDAP operation to enforce password   history policies during password set.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_POLICY_HINTS_OID - Description: Used with an LDAP operation to enforce password history policies during password set.",
     "OID": "1.2.840.113556.1.4.2239",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SET_OWNER_OID - Description: Used with an LDAP add operation to set the owner of   the object to a SID other than   that of the requester.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SET_OWNER_OID - Description: Used with an LDAP add operation to set the owner of the object to a SID other than that of the requester.",
     "OID": "1.2.840.113556.1.4.2255",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_BYPASS_QUOTA_OID - Description: Used with an LDAP add operation to specify that quota   limits do not apply for the add operation.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_BYPASS_QUOTA_OID - Description: Used with an LDAP add operation to specify that quota limits do not apply for the add operation.",
     "OID": "1.2.840.113556.1.4.2256",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_LINK_TTL_OID - Description: Used to request that an LDAP search operation return link   values in the TTL-DN form.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_LINK_TTL_OID - Description: Used to request that an LDAP search operation return link values in the TTL-DN form.",
     "OID": "1.2.840.113556.1.4.2309",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_SET_CORRELATION_ID_OID - Description: Allows the caller to provide an identifier that a DC   can use for implementation-defined troubleshooting.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_SET_CORRELATION_ID_OID - Description: Allows the caller to provide an identifier that a DC can use for implementation-defined troubleshooting.",
     "OID": "1.2.840.113556.1.4.2330",
     "Source": "Active Directory"
   },
   {
-    "Purpose": "AD Extended Control: LDAP_SERVER_THREAD_TRACE_OVERRIDE_OID - Description: Allows the caller to provide a request to the DC to   perform additional implementation-defined troubleshooting.",
+    "Purpose": "AD Extended Control: LDAP_SERVER_THREAD_TRACE_OVERRIDE_OID - Description: Allows the caller to provide a request to the DC to perform additional implementation-defined troubleshooting.",
     "OID": "1.2.840.113556.1.4.2354",
     "Source": "Active Directory"
   },
