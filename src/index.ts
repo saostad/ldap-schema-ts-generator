@@ -12,6 +12,7 @@ import { mapClassAttributesIncludeInherited } from "./helpers/map-class-attribut
 import { generateGraphqlTypeFiles } from "./helpers/generate-graphql-type-files";
 import { generateStructuralClassesFile } from "./templates/generate-structural-classes-file";
 import { generateAttributesMeta } from "./templates/generate-attributes-meta-file";
+import { generateCountryIsoCodesFile } from "./templates/generate-country-iso-codes-file";
 
 export {
   generateInterfaceFiles,
@@ -24,4 +25,5 @@ export {
   generateGraphqlTypeFiles,
   generateStructuralClassesFile,
   generateAttributesMeta,
+  generateCountryIsoCodesFile,
 };

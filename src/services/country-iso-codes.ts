@@ -6,16 +6,16 @@ interface GetCountryIsoCodesFnInput {
   useCache: boolean;
 }
 
-interface CountryIsoCode {
+export type CountryIsoCode = {
   /** Text e.g. "Aland Islands" */
-  name: string;
-  /** 2 letters text e.g. "AX" */
-  alpha2: string;
-  /** 3 letters e.g. "ALA" */
+  co: string;
+  /** two letters text e.g. "AX" */
+  c: string;
+  /** three letters e.g. "ALA" */
   alpha3: string;
   /** e.g. 248 */
-  number: number;
-}
+  countryCode: number;
+};
 
 /**@returns ISO 3166 defined internationally recognized codes of letters and/or numbers that we can use when we refer to countries and their subdivisions. [source](https://www.iso.org/iso-3166-country-codes.html) */
 export async function getCountryIsoCodes({

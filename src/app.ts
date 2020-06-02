@@ -23,6 +23,8 @@ import {
   getStructuralSchemaClasses,
   generateStructuralClassesFile,
   generateAttributesMeta,
+  generateCountryIsoCodesFile,
+  getCountryIsoCodes,
 } from "./index";
 import {
   StructuralClasses,
@@ -62,6 +64,9 @@ export async function main() {
 
   const classes = await getStructuralSchemaClasses({ schemaDn, options });
   await generateStructuralClassesFile({ classes });
+
+  const countryCodes = await getCountryIsoCodes({ useCache: true });
+  await generateCountryIsoCodesFile({ countryCodes });
 
   const objectAttributes = await getSchemaAttributes({ schemaDn, options });
   const objectClasses = await getSchemaClasses({ schemaDn, options });

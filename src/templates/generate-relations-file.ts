@@ -7,8 +7,8 @@ import { writeToFile } from "../helpers/write-to-file";
 type GenerateRelationsFileFnInput = {
   relations: Relation[];
   options?: {
-    /** output directory of file.
-     *  - Note: at this point file name hard coded to 'SchemaExtensions.ts' to prevent conflict with other generated files
+    /** output directory of file. default directory named "json"
+     *  - Note: at this point file name hard coded to "SchemaRelations.json" to prevent conflict with other generated files
      */
     outDir?: string;
     /** default true */
@@ -16,7 +16,7 @@ type GenerateRelationsFileFnInput = {
   };
 };
 
-/** generate typescript enum for defined relations between attributes by process linkIds fields */
+/** generate json file for defined relations between attributes by process linkIds fields */
 export async function generateRelationsFile({
   relations,
   options,
