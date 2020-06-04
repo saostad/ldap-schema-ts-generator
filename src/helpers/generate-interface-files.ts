@@ -16,7 +16,7 @@ type GenerateInterfaceFilesFnInput = {
     /** use prettier to format generated files. default true */
     usePrettier?: boolean;
     /** create index file for output folder. default true */
-    indexFile: boolean;
+    indexFile?: boolean;
   };
 };
 
@@ -34,12 +34,12 @@ export async function generateInterfaceFiles({
   }
 
   let usePrettier = true;
-  if (options && options.usePrettier) {
+  if (typeof options?.usePrettier === "boolean") {
     usePrettier = options.usePrettier;
   }
 
   let indexFile = true;
-  if (options && options.indexFile) {
+  if (typeof options?.indexFile === "boolean") {
     indexFile = options.indexFile;
   }
 
