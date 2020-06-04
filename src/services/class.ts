@@ -111,7 +111,7 @@ export async function getSchemaClasses({
       scope: "one",
     },
   });
-  client.unbind();
+  await client.unbind();
   return objectClasses;
 }
 

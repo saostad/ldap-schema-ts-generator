@@ -72,7 +72,7 @@ export async function getSchemaAttributes({
     },
   });
 
-  client.unbind();
+  await client.unbind();
 
   return objectAttributes;
 }
