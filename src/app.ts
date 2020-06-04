@@ -55,108 +55,117 @@ export async function main() {
     logger,
   };
   const client = new Client(options);
+  try {
+    const schemaDn = await getSchemaNamingContext({
+      client,
+      options: { logger },
+    });
+    console.log(`File: app.ts,`, `Line: 51 => `, schemaDn);
 
-  const schemaDn = await getSchemaNamingContext({
-    client,
-    options: { logger },
-  });
-  console.log(`File: app.ts,`, `Line: 51 => `, schemaDn);
+    const rootDn = await getRootNamingContext({
+      client,
+      options: { logger },
+    });
+    console.log(`File: app.ts,`, `Line: 61 => `, rootDn);
 
-  const rootDn = await getRootNamingContext({
-    client,
-    options: { logger },
-  });
-  console.log(`File: app.ts,`, `Line: 61 => `, rootDn);
+    const configurationsDn = await getConfigurationNamingContext({
+      client,
+      options: { logger },
+    });
+    console.log(`File: app.ts,`, `Line: 68 => `, configurationsDn);
 
-  const configurationsDn = await getConfigurationNamingContext({
-    client,
-    options: { logger },
-  });
-  console.log(`File: app.ts,`, `Line: 68 => `, configurationsDn);
+    const linkIds = await getLinkIds({ options: { logger }, client });
+    const relations = getRelations(linkIds);
+    await generateRelationsFile({ relations });
 
-  const linkIds = await getLinkIds({ options: { logger }, client });
-  const relations = getRelations(linkIds);
-  await generateRelationsFile({ relations });
+    const controls = await getSchemaControls({ client, options: { logger } });
+    await generateControlsFile({ controls });
 
-  const controls = await getSchemaControls({ client, options: { logger } });
-  await generateControlsFile({ controls });
+    const extensions = await getSchemaExtensions({
+      client,
+      options: { logger },
+    });
+    await generateExtensionsFile({ extensions });
 
-  const extensions = await getSchemaExtensions({ client, options: { logger } });
-  await generateExtensionsFile({ extensions });
+    const capabilities = await getSchemaCapabilities({
+      client,
+      options: { logger },
+    });
+    await generateCapabilitiesFile({ capabilities });
 
-  const capabilities = await getSchemaCapabilities({
-    client,
-    options: { logger },
-  });
-  await generateCapabilitiesFile({ capabilities });
+    const policies = await getSchemaPolicies({ client, options: { logger } });
+    await generatePoliciesFile({ policies });
 
-  const policies = await getSchemaPolicies({ client, options: { logger } });
-  await generatePoliciesFile({ policies });
+    const classes = await getStructuralSchemaClasses({
+      client,
+      options: { logger },
+    });
+    await generateStructuralClassesFile({ classes });
 
-  const classes = await getStructuralSchemaClasses({
-    client,
-    options: { logger },
-  });
-  await generateStructuralClassesFile({ classes });
+    const countryCodes = await getCountryIsoCodes({ useCache: true });
+    await generateCountryIsoCodesFile({ countryCodes });
 
-  const countryCodes = await getCountryIsoCodes({ useCache: true });
-  await generateCountryIsoCodesFile({ countryCodes });
+    const objectAttributes = await getSchemaAttributes({
+      client,
+      options: { logger },
+    });
+    const objectClasses = await getSchemaClasses({
+      client,
+      options: { logger },
+    });
 
-  const objectAttributes = await getSchemaAttributes({
-    client,
-    options: { logger },
-  });
-  const objectClasses = await getSchemaClasses({ client, options: { logger } });
+    await generateAttributesMeta({
+      attributes: objectAttributes,
+      options: {
+        generateJsonFile: true,
+        generateTsFile: true,
+      },
+    });
 
-  await generateAttributesMeta({
-    attributes: objectAttributes,
-    options: {
-      generateJsonFile: true,
-      generateTsFile: true,
-    },
-  });
+    await generateInterfaceFiles({ objectAttributes, objectClasses });
 
-  await generateInterfaceFiles({ objectAttributes, objectClasses });
+    // test without generic type
+    await generateGraphqlTypeFiles({
+      objectClasses,
+      objectAttributes,
+      options: {
+        generateClientSideDocuments: true,
+        generateEnumTypeMaps: false,
+        justThisClasses: ["user"],
+      },
+    });
 
-  // test without generic type
-  await generateGraphqlTypeFiles({
-    objectClasses,
-    objectAttributes,
-    options: {
-      generateClientSideDocuments: true,
-      generateEnumTypeMaps: false,
-      justThisClasses: ["user"],
-    },
-  });
+    // test without generic type but limited classes
+    // await generateGraphqlTypeFiles({
+    //   objectClasses,
+    //   objectAttributes,
+    //   options: {
+    //     justThisClasses: ["user"],
+    //     generateClientSideDocuments: true,
+    //   },
+    // });
 
-  // test without generic type but limited classes
-  await generateGraphqlTypeFiles({
-    objectClasses,
-    objectAttributes,
-    options: {
-      justThisClasses: ["user"],
-      generateClientSideDocuments: true,
-    },
-  });
+    // // test with type
+    // await generateGraphqlTypeFiles<StructuralClasses>({
+    //   objectClasses,
+    //   objectAttributes,
+    //   options: {
+    //     justThisClasses: ["user"],
+    //     generateClientSideDocuments: true,
+    //   },
+    // });
 
-  // test with type
-  await generateGraphqlTypeFiles<StructuralClasses>({
-    objectClasses,
-    objectAttributes,
-    options: {
-      justThisClasses: ["user"],
-      generateClientSideDocuments: true,
-    },
-  });
-
-  // test with enum type
-  await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
-    objectClasses,
-    objectAttributes,
-    options: {
-      generateClientSideDocuments: true,
-      // justThisClasses: ["user", "group", "computer", "contact", "container"],
-    },
-  });
+    // // test with enum type
+    // await generateGraphqlTypeFiles<keyof typeof StructuralClassesEnum>({
+    //   objectClasses,
+    //   objectAttributes,
+    //   options: {
+    //     generateClientSideDocuments: true,
+    //     // justThisClasses: ["user", "group", "computer", "contact", "container"],
+    //   },
+    // });
+  } finally {
+    client.unbind();
+  }
 }
 main();
