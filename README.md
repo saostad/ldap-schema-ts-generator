@@ -2,6 +2,41 @@
 
 It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.
 
+### How to use
+
+```
+npm i ldap-schema-ts-generator
+```
+
+```ts
+import { Client, IClientConfig } from "ldap-ts-client";
+import {
+  getSchemaAttributes,
+  getSchemaClasses,
+  generateInterfaceFiles,
+} from "ldap-schema-ts-generator";
+
+const options = {
+  user: "**********",
+  pass: "************",
+  ldapServerUrl: "ldap://domain.com",
+  baseDn: "DC=domain,DC=com",
+};
+const client = new Client(options);
+
+const objectAttributes = await getSchemaAttributes({ client });
+
+const objectClasses = await getSchemaClasses({ client });
+
+await generateInterfaceFiles({ objectAttributes, objectClasses });
+}
+
+```
+
+### API
+
+use [api website](https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html) for more details
+
 ### Functionalities
 
 - generate typescript interfaces for each object class
@@ -16,58 +51,6 @@ It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP s
   - policies
   - structural classes
 
-### How to use
-
-```
-npm i ldap-schema-ts-generator
-```
-
-```ts
-import {
-  getSchemaAttributes,
-  getSchemaClasses,
-  generateInterfaceFiles,
-} from "ldap-schema-ts-generator";
-
-const options = {
-  user: "**********",
-  pass: "************",
-  ldapServerUrl: "ldap://domain.com",
-};
-
-const schemaDn = await getSchemaNamingContext({ options });
-
-const objectAttributes = await getSchemaAttributes({ schemaDn, options });
-
-const objectClasses = await getSchemaClasses({ schemaDn, options });
-
-await generateInterfaceFiles({ objectAttributes, objectClasses });
-}
-
-```
-
-### Options:
-
-```ts
-options?: {
-    /** default generated folder of root directory of you project */
-    outputFolder?: string;
-    /** use prettier to format generated files. default true */
-    usePrettier?: boolean;
-    /** create index file for output folder. default true */
-    indexFile: boolean;
-  };
-
-```
-
-### API
-
-use [api website](https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html) for more details
-
-### Result
-
-creates typescript interface for each LDAP class that exist in schema
-
 ### Sample Generated File:
 
 ```ts Account.ts
@@ -78,7 +61,6 @@ import { MsExchBaseClass } from "./MsExchBaseClass";
  *  - child of class: top
  *  - dn: CN=Container,CN=Schema,CN=Configuration,DC=ki,DC=local
  */
-
 export interface Container extends Top, MsExchBaseClass {
   /**  - attributeSyntax: 2.5.5.12
    *   - attributeID: 2.5.4.3

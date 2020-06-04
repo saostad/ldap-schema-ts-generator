@@ -1,7 +1,9 @@
-import { Client, IClientConfig } from "ldap-ts-client";
+import type { Client } from "ldap-ts-client";
+import type { Logger } from "fast-node-logger";
 
 interface GetSupportedSaslMechanismsFnInput {
-  options: Omit<IClientConfig, "baseDN">;
+  options?: { logger?: Logger };
+  client: Client;
 }
 
 /** get schema supported SASL Mechanisms from RootDSE.
@@ -13,21 +15,17 @@ interface GetSupportedSaslMechanismsFnInput {
  */
 export async function getSupportedSaslMechanisms({
   options,
+  client,
 }: GetSupportedSaslMechanismsFnInput): Promise<string[]> {
-  options.logger?.trace("getSupportedSaslMechanisms()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getSupportedSaslMechanisms()");
 
   const data = await client.queryAttributes({
+    base: "",
     attributes: ["supportedSASLMechanisms"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].supportedSASLMechanisms as string[];
 }

@@ -73,13 +73,13 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_services_link_id_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_services_link_id_.html#getschemaattributesfninput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_services_link_id_.html#relation" class="tsd-kind-icon">Relation</a></li>
 							</ul>
 						</section>
@@ -95,13 +95,34 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+					<a name="getschemaattributesfninput" class="tsd-anchor"></a>
+					<h3>Get<wbr>Schema<wbr>Attributes<wbr>FnInput</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/link-id.ts#L19">services/link-id.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="relation" class="tsd-anchor"></a>
 					<h3>Relation</h3>
 					<div class="tsd-signature tsd-kind-icon">Relation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/ce4e29a/src/services/link-id.ts#L77">services/link-id.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/link-id.ts#L79">services/link-id.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -173,13 +194,13 @@
 					<a name="getlinkids" class="tsd-anchor"></a>
 					<h3>get<wbr>Link<wbr>Ids</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Link<wbr>Ids<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>schemaDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Link<wbr>Ids<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-signature-type">SchemaLinkAttribute</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/ce4e29a/src/services/link-id.ts#L37">services/link-id.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/link-id.ts#L39">services/link-id.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -193,15 +214,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>schemaDn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
-											<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h5>
-											<ul class="tsd-parameters">
-											</ul>
+											<h5>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span></h5>
 										</li>
 										<li class="tsd-parameter">
-											<h5>schema<wbr>Dn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span></h5>
 										</li>
 									</ul>
 								</li>
@@ -220,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/ce4e29a/src/services/link-id.ts#L99">services/link-id.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/link-id.ts#L101">services/link-id.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -254,11 +273,11 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../interfaces/_services_link_id_.getschemaattributesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_services_link_id_.schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_services_link_id_.html#getschemaattributesfninput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Attributes<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="_services_link_id_.html#relation" class="tsd-kind-icon">Relation</a>

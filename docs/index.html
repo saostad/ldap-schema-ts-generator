@@ -68,6 +68,35 @@
 					<h1>Typescript typedef and meta-data generator for LDAP Schema</h1>
 				</a>
 				<p>It can be useful to interact from schema-aware/type-safe LDAP Client with LDAP servers like active directory.</p>
+				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
+					<h3>How to use</h3>
+				</a>
+				<pre><code><span class="hljs-built_in">npm</span> i ldap-schema-ts-generator</code></pre><pre><code class="language-ts"><span class="hljs-keyword">import</span> { Client, IClientConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">"ldap-ts-client"</span>;
+<span class="hljs-keyword">import</span> {
+  getSchemaAttributes,
+  getSchemaClasses,
+  generateInterfaceFiles,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">"ldap-schema-ts-generator"</span>;
+
+<span class="hljs-keyword">const</span> options = {
+  user: <span class="hljs-string">"**********"</span>,
+  pass: <span class="hljs-string">"************"</span>,
+  ldapServerUrl: <span class="hljs-string">"ldap://domain.com"</span>,
+  baseDn: <span class="hljs-string">"DC=domain,DC=com"</span>,
+};
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Client(options);
+
+<span class="hljs-keyword">const</span> objectAttributes = <span class="hljs-keyword">await</span> getSchemaAttributes({ client });
+
+<span class="hljs-keyword">const</span> objectClasses = <span class="hljs-keyword">await</span> getSchemaClasses({ client });
+
+<span class="hljs-keyword">await</span> generateInterfaceFiles({ objectAttributes, objectClasses });
+}
+</code></pre>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h3>API</h3>
+				</a>
+				<p>use <a href="https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html">api website</a> for more details</p>
 				<a href="#functionalities" id="functionalities" style="color: inherit; text-decoration: none;">
 					<h3>Functionalities</h3>
 				</a>
@@ -88,50 +117,6 @@
 						</ul>
 					</li>
 				</ul>
-				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
-					<h3>How to use</h3>
-				</a>
-				<pre><code><span class="hljs-built_in">npm</span> i ldap-schema-ts-generator</code></pre><pre><code class="language-ts"><span class="hljs-keyword">import</span> {
-  getSchemaAttributes,
-  getSchemaClasses,
-  generateInterfaceFiles,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">"ldap-schema-ts-generator"</span>;
-
-<span class="hljs-keyword">const</span> options = {
-  user: <span class="hljs-string">"**********"</span>,
-  pass: <span class="hljs-string">"************"</span>,
-  ldapServerUrl: <span class="hljs-string">"ldap://domain.com"</span>,
-};
-
-<span class="hljs-keyword">const</span> schemaDn = <span class="hljs-keyword">await</span> getSchemaNamingContext({ options });
-
-<span class="hljs-keyword">const</span> objectAttributes = <span class="hljs-keyword">await</span> getSchemaAttributes({ schemaDn, options });
-
-<span class="hljs-keyword">const</span> objectClasses = <span class="hljs-keyword">await</span> getSchemaClasses({ schemaDn, options });
-
-<span class="hljs-keyword">await</span> generateInterfaceFiles({ objectAttributes, objectClasses });
-}
-</code></pre>
-				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
-					<h3>Options:</h3>
-				</a>
-				<pre><code class="language-ts">options?: {
-    <span class="hljs-comment">/** default generated folder of root directory of you project */</span>
-    outputFolder?: <span class="hljs-built_in">string</span>;
-    <span class="hljs-comment">/** use prettier to format generated files. default true */</span>
-    usePrettier?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-comment">/** create index file for output folder. default true */</span>
-    indexFile: <span class="hljs-built_in">boolean</span>;
-  };
-</code></pre>
-				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-					<h3>API</h3>
-				</a>
-				<p>use <a href="https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html">api website</a> for more details</p>
-				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
-					<h3>Result</h3>
-				</a>
-				<p>creates typescript interface for each LDAP class that exist in schema</p>
 				<a href="#sample-generated-file" id="sample-generated-file" style="color: inherit; text-decoration: none;">
 					<h3>Sample Generated File:</h3>
 				</a>
@@ -142,7 +127,6 @@
  *  - child of class: top
  *  - dn: CN=Container,CN=Schema,CN=Configuration,DC=ki,DC=local
  */</span>
-
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> Container <span class="hljs-keyword">extends</span> Top, MsExchBaseClass {
   <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.12
    *   - attributeID: 2.5.4.3

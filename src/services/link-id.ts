@@ -1,4 +1,4 @@
-import { Client, IClientConfig } from "ldap-ts-client";
+import type { Client } from "ldap-ts-client";
 import type {
   SearchEntryObject,
   CN,
@@ -13,11 +13,13 @@ import type {
 } from "../typings/general/types";
 import { isOdd } from "../helpers/utils";
 import { writeLog } from "fast-node-logger";
+import type { Logger } from "fast-node-logger";
+import { getSchemaNamingContext } from "./naming-context";
 
-interface GetSchemaAttributesFnInput {
-  schemaDn: string;
-  options: Omit<IClientConfig, "baseDN">;
-}
+type GetSchemaAttributesFnInput = {
+  client: Client;
+  options?: { logger: Logger };
+};
 export interface SchemaLinkAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
   cn: CN;
@@ -35,17 +37,18 @@ export interface SchemaLinkAttribute
  * - LinkID is a Number specified in AttributeSchema for Microsoft Active Directory which indicated a Linked Attribute
  */
 export async function getLinkIds({
-  schemaDn,
+  client,
   options,
 }: GetSchemaAttributesFnInput): Promise<SchemaLinkAttribute[]> {
-  options.logger?.trace("getLinkIds()");
-  const client = new Client({
-    ...options,
-    baseDN: schemaDn,
-    logger: options.logger,
+  options?.logger?.trace("getLinkIds()");
+
+  const schemaDn = await getSchemaNamingContext({
+    client,
+    options: { logger: options?.logger },
   });
 
   const objectAttributes = await client.queryAttributes<SchemaLinkAttribute>({
+    base: schemaDn,
     attributes: [
       "cn",
       "attributeID",
@@ -64,7 +67,6 @@ export async function getLinkIds({
       scope: "one",
     },
   });
-  client.unbind();
 
   const linkIds = (objectAttributes as unknown) as SchemaLinkAttribute[];
 

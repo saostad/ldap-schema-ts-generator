@@ -71,14 +71,9 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_services_policy_.getschemapoliciesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnInput</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_services_policy_.html#getschemapoliciesfninput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnInput</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_services_policy_.html#getschemapoliciesfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnOutput</a></li>
 							</ul>
 						</section>
@@ -94,12 +89,33 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+					<a name="getschemapoliciesfninput" class="tsd-anchor"></a>
+					<h3>Get<wbr>Schema<wbr>Policies<wbr>FnInput</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnInput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">?: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/policy.ts#L4">services/policy.ts:4</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">?: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
 					<a name="getschemapoliciesfnoutput" class="tsd-anchor"></a>
 					<h3>Get<wbr>Schema<wbr>Policies<wbr>FnOutput</h3>
 					<div class="tsd-signature tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnOutput<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/ce4e29a/src/services/policy.ts#L7">services/policy.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/policy.ts#L9">services/policy.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -110,13 +126,13 @@
 					<a name="getschemapolicies" class="tsd-anchor"></a>
 					<h3>get<wbr>Schema<wbr>Policies</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Schema<wbr>Policies<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_services_policy_.html#getschemapoliciesfnoutput" class="tsd-signature-type">GetSchemaPoliciesFnOutput</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Schema<wbr>Policies<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">?: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_services_policy_.html#getschemapoliciesfnoutput" class="tsd-signature-type">GetSchemaPoliciesFnOutput</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/ce4e29a/src/services/policy.ts#L12">services/policy.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/saostad/ldap-schema-ts-generator/blob/5251671/src/services/policy.ts#L14">services/policy.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -130,12 +146,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">?: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
-											<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h5>
-											<ul class="tsd-parameters">
-											</ul>
+											<h5>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>logger<span class="tsd-signature-symbol">?: </span><a href="_typings_general_types_.html#logger" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> }</span></h5>
 										</li>
 									</ul>
 								</li>
@@ -159,8 +176,8 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../interfaces/_services_policy_.getschemapoliciesfninput.html" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnInput</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_services_policy_.html#getschemapoliciesfninput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnInput</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_services_policy_.html#getschemapoliciesfnoutput" class="tsd-kind-icon">Get<wbr>Schema<wbr>Policies<wbr>FnOutput</a>

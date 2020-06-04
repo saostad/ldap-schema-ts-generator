@@ -1,7 +1,9 @@
-import { Client, IClientConfig } from "ldap-ts-client";
+import type { Client } from "ldap-ts-client";
+import type { Logger } from "fast-node-logger";
 
 interface GetSupportedLdapVersionsFnInput {
-  options: Omit<IClientConfig, "baseDN">;
+  options?: { logger?: Logger };
+  client: Client;
 }
 
 /** get supported LDAP versions from RootDSE
@@ -9,21 +11,17 @@ interface GetSupportedLdapVersionsFnInput {
  */
 export async function getSupportedLdapVersions({
   options,
+  client,
 }: GetSupportedLdapVersionsFnInput): Promise<string[]> {
-  options.logger?.trace("getSupportedLdapVersions()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getSupportedLdapVersions()");
 
   const data = await client.queryAttributes({
+    base: "",
     attributes: ["supportedLDAPVersion"],
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].supportedLDAPVersion as string[];
 }

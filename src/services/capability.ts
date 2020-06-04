@@ -1,8 +1,10 @@
-import { Client, IClientConfig } from "ldap-ts-client";
+import type { Client } from "ldap-ts-client";
+import type { Logger } from "fast-node-logger";
 
-interface GetSchemaCapabilitiesFnInput {
-  options: Omit<IClientConfig, "baseDN">;
-}
+type GetSchemaCapabilitiesFnInput = {
+  options?: { logger?: Logger };
+  client: Client;
+};
 
 type GetSchemaCapabilitiesFnOutput = Promise<string[]>;
 
@@ -10,26 +12,19 @@ type GetSchemaCapabilitiesFnOutput = Promise<string[]>;
  * - A multiple-valued attribute that contains the capabilities supported by this directory server.
  */
 export async function getSchemaCapabilities({
+  client,
   options,
 }: GetSchemaCapabilitiesFnInput): GetSchemaCapabilitiesFnOutput {
-  options.logger?.trace("getSchemaCapabilities()");
-  const client = new Client({
-    user: options.user,
-    pass: options.pass,
-    ldapServerUrl: options.ldapServerUrl,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getSchemaCapabilities()");
 
   const data = await client.queryAttributes({
+    base: "",
     attributes: ["supportedCapabilities"],
     options: {
       filter: "&(objectClass=*)",
       scope: "base",
     },
   });
-
-  client.unbind();
 
   return data[0].supportedCapabilities as string[];
 }

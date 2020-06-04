@@ -1,4 +1,4 @@
-import { Client, IClientConfig } from "ldap-ts-client";
+import type { Client } from "ldap-ts-client";
 import type {
   SearchEntryObject,
   CN,
@@ -13,11 +13,13 @@ import type {
   SystemOnly,
   SystemFlags,
   ObjectCategory,
+  Logger,
 } from "../typings/general/types";
+import { getSchemaNamingContext } from "./naming-context";
 
 type GetSchemaAttributesFnInput = {
-  schemaDn: string;
-  options: Omit<IClientConfig, "baseDN">;
+  client: Client;
+  options?: { logger?: Logger };
 };
 export interface SchemaAttribute
   extends Pick<SearchEntryObject, "dn" | "controls"> {
@@ -37,19 +39,18 @@ export interface SchemaAttribute
 
 /** get defined an attribute objects in the schema. */
 export async function getSchemaAttributes({
-  schemaDn,
+  client,
   options,
 }: GetSchemaAttributesFnInput): Promise<Partial<SchemaAttribute>[]> {
-  options.logger?.trace("getSchemaAttributes()");
-  const client = new Client({
-    user: options.user,
-    pass: options.pass,
-    ldapServerUrl: options.ldapServerUrl,
-    baseDN: schemaDn,
-    logger: options.logger,
+  options?.logger?.trace("getSchemaAttributes()");
+
+  const schemaDn = await getSchemaNamingContext({
+    client,
+    options: { logger: options?.logger },
   });
 
   const objectAttributes = await client.queryAttributes<SchemaAttribute>({
+    base: schemaDn,
     attributes: [
       "cn",
       "attributeID",
@@ -71,8 +72,6 @@ export async function getSchemaAttributes({
       scope: "one",
     },
   });
-
-  await client.unbind();
 
   return objectAttributes;
 }

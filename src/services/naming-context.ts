@@ -1,30 +1,28 @@
-import { Client, IClientConfig } from "ldap-ts-client";
+import type { Client } from "ldap-ts-client";
+import type { Logger } from "fast-node-logger";
 
-interface GetNamingContextsFnInput {
-  options: Omit<IClientConfig, "baseDN">;
-}
+type GetNamingContextsFnInput = {
+  client: Client;
+  options?: { logger?: Logger };
+};
 
 /** get base DNs from RootDSE
  * - A multiple-valued attribute that contains the distinguished names for all naming contexts stored on this directory server. By default, a Windows 2000 domain controller contains at least three naming contexts: Schema, Configuration, and one for the domain of which the server is a member.
  */
 export async function getNamingContexts({
+  client,
   options,
 }: GetNamingContextsFnInput): Promise<string[]> {
-  options.logger?.trace("getNamingContexts()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getNamingContexts()");
 
   const data = await client.queryAttributes({
     attributes: ["namingContexts"],
+    base: "",
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].namingContexts as string[];
 }
 
@@ -33,22 +31,18 @@ export async function getNamingContexts({
  */
 export async function getDefaultNamingContext({
   options,
+  client,
 }: GetNamingContextsFnInput): Promise<string> {
-  options.logger?.trace("getDefaultNamingContext()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getDefaultNamingContext()");
 
   const data = await client.queryAttributes({
     attributes: ["defaultNamingContext"],
+    base: "",
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].defaultNamingContext as string;
 }
 
@@ -57,22 +51,17 @@ export async function getDefaultNamingContext({
  */
 export async function getSchemaNamingContext({
   options,
+  client,
 }: GetNamingContextsFnInput): Promise<string> {
-  options.logger?.trace("getSchemaNamingContext()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
-
+  options?.logger?.trace("getSchemaNamingContext()");
   const data = await client.queryAttributes({
     attributes: ["schemaNamingContext"],
+    base: "",
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].schemaNamingContext as string;
 }
 
@@ -81,22 +70,18 @@ export async function getSchemaNamingContext({
  */
 export async function getRootNamingContext({
   options,
+  client,
 }: GetNamingContextsFnInput): Promise<string> {
-  options.logger?.trace("getSchemaNamingContext()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getSchemaNamingContext()");
 
   const data = await client.queryAttributes({
     attributes: ["rootDomainNamingContext"],
+    base: "",
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].rootDomainNamingContext as string;
 }
 
@@ -105,21 +90,17 @@ export async function getRootNamingContext({
  */
 export async function getConfigurationNamingContext({
   options,
+  client,
 }: GetNamingContextsFnInput): Promise<string> {
-  options.logger?.trace("getSchemaNamingContext()");
-  const client = new Client({
-    ...options,
-    baseDN: "",
-    logger: options.logger,
-  });
+  options?.logger?.trace("getSchemaNamingContext()");
 
   const data = await client.queryAttributes({
     attributes: ["configurationNamingContext"],
+    base: "",
     options: {
       filter: "(&(objectClass=*))",
       scope: "base",
     },
   });
-  client.unbind();
   return data[0].configurationNamingContext as string;
 }

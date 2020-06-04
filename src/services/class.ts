@@ -1,5 +1,5 @@
-import { Client, IClientConfig } from "ldap-ts-client";
-import {
+import type { Client } from "ldap-ts-client";
+import type {
   SearchEntryObject,
   ObjectClass,
   CN,
@@ -26,8 +26,10 @@ import {
   MustContain,
   MayContain,
   PossSuperiors,
+  Logger,
 } from "../typings/general/types";
 import { QueryGenerator } from "ldap-query-generator";
+import { getSchemaNamingContext } from "./naming-context";
 
 export interface SchemaClass
   extends Pick<SearchEntryObject, "dn" | "controls"> {
@@ -59,24 +61,23 @@ export interface SchemaClass
 }
 
 type GetSchemaClassesFnInput = {
-  schemaDn: string;
-  options: Omit<IClientConfig, "baseDN">;
+  client: Client;
+  options?: { logger?: Logger };
 };
 /** get defined classSchema Objects in schema */
 export async function getSchemaClasses({
-  schemaDn,
+  client,
   options,
 }: GetSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
-  options.logger?.trace("getSchemaClasses()");
-  const client = new Client({
-    user: options.user,
-    pass: options.pass,
-    ldapServerUrl: options.ldapServerUrl,
-    baseDN: schemaDn,
-    logger: options.logger,
+  options?.logger?.trace("getSchemaClasses()");
+
+  const schemaDn = await getSchemaNamingContext({
+    client,
+    options: { logger: options?.logger },
   });
 
   const objectClasses = await client.queryAttributes<SchemaClass>({
+    base: schemaDn,
     attributes: [
       "objectClass",
       "cn",
@@ -111,29 +112,27 @@ export async function getSchemaClasses({
       scope: "one",
     },
   });
-  await client.unbind();
   return objectClasses;
 }
 
 type GetStructuralSchemaClassesFnInput = {
-  schemaDn: string;
-  options: Omit<IClientConfig, "baseDN">;
+  client: Client;
+  options?: { logger?: Logger };
 };
 /** get defined classSchema Objects in schema where objectClassCategory=1 */
 export async function getStructuralSchemaClasses({
-  schemaDn,
+  client,
   options,
 }: GetStructuralSchemaClassesFnInput): Promise<Partial<SchemaClass>[]> {
-  options.logger?.trace("getSchemaClasses()");
-  const client = new Client({
-    user: options.user,
-    pass: options.pass,
-    ldapServerUrl: options.ldapServerUrl,
-    baseDN: schemaDn,
-    logger: options.logger,
+  options?.logger?.trace("getSchemaClasses()");
+
+  const schemaDn = await getSchemaNamingContext({
+    client,
+    options: { logger: options?.logger },
   });
 
   const objectClasses = await client.queryAttributes<SchemaClass>({
+    base: schemaDn,
     attributes: [
       "objectClass",
       "cn",
@@ -168,31 +167,28 @@ export async function getStructuralSchemaClasses({
       scope: "one",
     },
   });
-  client.unbind();
   return objectClasses;
 }
 
 type GetSchemaClassByLdapNameFnInput = {
-  schemaDn: string;
+  client: Client;
   ldapName: string;
-  options: Omit<IClientConfig, "baseDN">;
+  options?: { logger?: Logger };
 };
 export async function getSchemaClassByLdapName({
   options,
-  schemaDn,
+  client,
   ldapName,
 }: GetSchemaClassByLdapNameFnInput): Promise<Partial<SchemaClass>[]> {
-  options.logger?.trace("getSchemaClassByLdapName()");
-  const client = new Client({
-    user: options.user,
-    pass: options.pass,
-    ldapServerUrl: options.ldapServerUrl,
-    baseDN: schemaDn,
-    logger: options.logger,
+  options?.logger?.trace("getSchemaClassByLdapName()");
+
+  const schemaDn = await getSchemaNamingContext({
+    client,
+    options: { logger: options?.logger },
   });
 
   const qGen = new QueryGenerator<SchemaClass>({
-    logger: options.logger,
+    logger: options?.logger,
   });
 
   const { query } = qGen
@@ -231,6 +227,7 @@ export async function getSchemaClassByLdapName({
     });
 
   const objectClass = await client.queryAttributes<SchemaClass>({
+    base: schemaDn,
     attributes: query.attributes,
     options: {
       sizeLimit: 200,
@@ -239,6 +236,5 @@ export async function getSchemaClassByLdapName({
       scope: "one",
     },
   });
-  client.unbind();
   return objectClass;
 }
