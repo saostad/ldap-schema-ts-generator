@@ -1,5 +1,11 @@
 [
   {
+    "co": "United States of America",
+    "c": "US",
+    "alpha3": "USA",
+    "countryCode": 840
+  },
+  {
     "co": "Afghanistan",
     "c": "AF",
     "alpha3": "AFG",
@@ -1402,12 +1408,6 @@
     "c": "GB",
     "alpha3": "GBR",
     "countryCode": 826
-  },
-  {
-    "co": "United States of America",
-    "c": "US",
-    "alpha3": "USA",
-    "countryCode": 840
   },
   {
     "co": "US Minor Outlying Islands",
