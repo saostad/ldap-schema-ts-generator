@@ -51,7 +51,6 @@ export async function main() {
     user: process.env.AD_USER ?? "",
     pass: process.env.AD_Pass ?? "",
     ldapServerUrl: process.env.AD_URI ?? "",
-    baseDN: process.env.BASE_DN ?? "",
     logger,
   };
   const client = new Client(options);
