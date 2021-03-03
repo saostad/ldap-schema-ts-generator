@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for ldap-schema-ts-generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,11 +50,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>ldap-schema-ts-generator</h1>
 		</div>
 	</div>
@@ -71,27 +65,30 @@
 				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
 					<h3>How to use</h3>
 				</a>
-				<pre><code><span class="hljs-built_in">npm</span> i ldap-schema-ts-generator</code></pre><pre><code class="language-ts"><span class="hljs-keyword">import</span> { Client, IClientConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">"ldap-ts-client"</span>;
-<span class="hljs-keyword">import</span> {
-  getSchemaAttributes,
-  getSchemaClasses,
-  generateInterfaceFiles,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">"ldap-schema-ts-generator"</span>;
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span><span style="color: #000000"> </span><span style="color: #001080">ldap</span><span style="color: #000000">-</span><span style="color: #001080">schema</span><span style="color: #000000">-</span><span style="color: #001080">ts</span><span style="color: #000000">-</span><span style="color: #001080">generator</span>
+</code></pre>
+				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000">, </span><span style="color: #001080">IClientConfig</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ldap-ts-client&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">getSchemaAttributes</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">getSchemaClasses</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">generateInterfaceFiles</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ldap-schema-ts-generator&quot;</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">const</span> options = {
-  user: <span class="hljs-string">"**********"</span>,
-  pass: <span class="hljs-string">"************"</span>,
-  ldapServerUrl: <span class="hljs-string">"ldap://domain.com"</span>,
-  baseDn: <span class="hljs-string">"DC=domain,DC=com"</span>,
-};
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Client(options);
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">options</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">user:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;**********&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">pass:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;************&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">ldapServerUrl:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ldap://domain.com&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">baseDn:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;DC=domain,DC=com&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Client</span><span style="color: #000000">(</span><span style="color: #001080">options</span><span style="color: #000000">);</span>
 
-<span class="hljs-keyword">const</span> objectAttributes = <span class="hljs-keyword">await</span> getSchemaAttributes({ client });
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">objectAttributes</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">getSchemaAttributes</span><span style="color: #000000">({ </span><span style="color: #001080">client</span><span style="color: #000000"> });</span>
 
-<span class="hljs-keyword">const</span> objectClasses = <span class="hljs-keyword">await</span> getSchemaClasses({ client });
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">objectClasses</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">getSchemaClasses</span><span style="color: #000000">({ </span><span style="color: #001080">client</span><span style="color: #000000"> });</span>
 
-<span class="hljs-keyword">await</span> generateInterfaceFiles({ objectAttributes, objectClasses });
-}
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">generateInterfaceFiles</span><span style="color: #000000">({ </span><span style="color: #001080">objectAttributes</span><span style="color: #000000">, </span><span style="color: #001080">objectClasses</span><span style="color: #000000"> });</span>
+<span style="color: #000000">}</span>
+
 </code></pre>
 				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
 					<h3>API</h3>
@@ -120,62 +117,63 @@
 				<a href="#sample-generated-file" id="sample-generated-file" style="color: inherit; text-decoration: none;">
 					<h3>Sample Generated File:</h3>
 				</a>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Top } <span class="hljs-keyword">from</span> <span class="hljs-string">"./Top"</span>;
-<span class="hljs-keyword">import</span> { MsExchBaseClass } <span class="hljs-keyword">from</span> <span class="hljs-string">"./MsExchBaseClass"</span>;
+				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Top</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;./Top&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">MsExchBaseClass</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;./MsExchBaseClass&quot;</span><span style="color: #000000">;</span>
 
-<span class="hljs-comment">/**  - object class: container
- *  - child of class: top
- *  - dn: CN=Container,CN=Schema,CN=Configuration,DC=ki,DC=local
- */</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> Container <span class="hljs-keyword">extends</span> Top, MsExchBaseClass {
-  <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 2.5.4.3
-   *   - adminDisplayName: Common-Name
-   *   - adminDescription: Common-Name
-   *   - dn: CN=Common-Name,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */</span>
-  readonly cn: <span class="hljs-built_in">string</span>;
+<span style="color: #008000">/**  - object class: container</span>
+<span style="color: #008000"> *  - child of class: top</span>
+<span style="color: #008000"> *  - dn: CN=Container,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000"> */</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">Container</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Top</span><span style="color: #000000">, </span><span style="color: #267F99">MsExchBaseClass</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #008000">/**  - attributeSyntax: 2.5.5.12</span>
+<span style="color: #008000">   *   - attributeID: 2.5.4.3</span>
+<span style="color: #008000">   *   - adminDisplayName: Common-Name</span>
+<span style="color: #008000">   *   - adminDescription: Common-Name</span>
+<span style="color: #008000">   *   - dn: CN=Common-Name,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">readonly</span><span style="color: #000000"> </span><span style="color: #001080">cn</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
 
-  <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.12
-   *   - attributeID: 1.2.840.113556.1.2.508
-   *   - adminDisplayName: ms-Exch-X500-RDN
-   *   - adminDescription: ms-Exch-X500-RDN
-   *   - dn: CN=ms-Exch-X500-RDN,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */</span>
-  x500RDN?: <span class="hljs-built_in">string</span>;
+<span style="color: #000000">  </span><span style="color: #008000">/**  - attributeSyntax: 2.5.5.12</span>
+<span style="color: #008000">   *   - attributeID: 1.2.840.113556.1.2.508</span>
+<span style="color: #008000">   *   - adminDisplayName: ms-Exch-X500-RDN</span>
+<span style="color: #008000">   *   - adminDescription: ms-Exch-X500-RDN</span>
+<span style="color: #008000">   *   - dn: CN=ms-Exch-X500-RDN,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #001080">x500RDN</span><span style="color: #000000">?: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
 
-  <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.4
-   *   - attributeID: 1.2.840.113556.1.4.7000.102.65
-   *   - adminDisplayName: ms-Exch-Template-RDNs
-   *   - adminDescription: ms-Exch-Template-RDNs
-   *   - dn: CN=ms-Exch-Template-RDNs,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */</span>
-  msExchTemplateRDNs?: <span class="hljs-built_in">string</span>[];
+<span style="color: #000000">  </span><span style="color: #008000">/**  - attributeSyntax: 2.5.5.4</span>
+<span style="color: #008000">   *   - attributeID: 1.2.840.113556.1.4.7000.102.65</span>
+<span style="color: #008000">   *   - adminDisplayName: ms-Exch-Template-RDNs</span>
+<span style="color: #008000">   *   - adminDescription: ms-Exch-Template-RDNs</span>
+<span style="color: #008000">   *   - dn: CN=ms-Exch-Template-RDNs,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #001080">msExchTemplateRDNs</span><span style="color: #000000">?: </span><span style="color: #267F99">string</span><span style="color: #000000">[];</span>
 
-  <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.1
-   *   - attributeID: 1.2.840.113556.1.4.7000.102.50004
-   *   - adminDisplayName: ms-Exch-Policy-List
-   *   - adminDescription: ms-Exch-Policy-List
-   *   - dn: CN=ms-Exch-Policy-List,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */</span>
-  msExchPolicyList?: object[];
+<span style="color: #000000">  </span><span style="color: #008000">/**  - attributeSyntax: 2.5.5.1</span>
+<span style="color: #008000">   *   - attributeID: 1.2.840.113556.1.4.7000.102.50004</span>
+<span style="color: #008000">   *   - adminDisplayName: ms-Exch-Policy-List</span>
+<span style="color: #008000">   *   - adminDescription: ms-Exch-Policy-List</span>
+<span style="color: #008000">   *   - dn: CN=ms-Exch-Policy-List,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #001080">msExchPolicyList</span><span style="color: #000000">?: </span><span style="color: #267F99">object</span><span style="color: #000000">[];</span>
 
-  <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.9
-   *   - attributeID: 1.2.840.113556.1.2.296
-   *   - adminDisplayName: ms-Exch-Container-Info
-   *   - adminDescription: ms-Exch-Container-Info
-   *   - dn: CN=ms-Exch-Container-Info,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */</span>
-  containerInfo?: <span class="hljs-built_in">number</span>;
+<span style="color: #000000">  </span><span style="color: #008000">/**  - attributeSyntax: 2.5.5.9</span>
+<span style="color: #008000">   *   - attributeID: 1.2.840.113556.1.2.296</span>
+<span style="color: #008000">   *   - adminDisplayName: ms-Exch-Container-Info</span>
+<span style="color: #008000">   *   - adminDescription: ms-Exch-Container-Info</span>
+<span style="color: #008000">   *   - dn: CN=ms-Exch-Container-Info,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #001080">containerInfo</span><span style="color: #000000">?: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
 
-  <span class="hljs-comment">/**  - attributeSyntax: 2.5.5.1
-   *   - attributeID: 1.2.840.113556.1.4.1840
-   *   - adminDisplayName: ms-DS-Object-Reference
-   *   - adminDescription: A link to the object that uses the data stored in the object that contains this attribute.
-   *   - dn: CN=ms-DS-Object-Reference,CN=Schema,CN=Configuration,DC=ki,DC=local
-   */</span>
-  <span class="hljs-string">"msDS-ObjectReference"</span>?: object[];
-}</code></pre>
+<span style="color: #000000">  </span><span style="color: #008000">/**  - attributeSyntax: 2.5.5.1</span>
+<span style="color: #008000">   *   - attributeID: 1.2.840.113556.1.4.1840</span>
+<span style="color: #008000">   *   - adminDisplayName: ms-DS-Object-Reference</span>
+<span style="color: #008000">   *   - adminDescription: A link to the object that uses the data stored in the object that contains this attribute.</span>
+<span style="color: #008000">   *   - dn: CN=ms-DS-Object-Reference,CN=Schema,CN=Configuration,DC=ki,DC=local</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;msDS-ObjectReference&quot;</span><span style="color: #000000">?: </span><span style="color: #267F99">object</span><span style="color: #000000">[];</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<a href="#todo" id="todo" style="color: inherit; text-decoration: none;">
 					<h3>TODO:</h3>
 				</a>
@@ -239,133 +237,124 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_generated_structuralclasses_.html">&quot;generated/<wbr>Structural<wbr>Classes&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_graphql_type_files_.html">&quot;helpers/generate-<wbr>graphql-<wbr>type-<wbr>files&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_generate_interface_files_.html">&quot;helpers/generate-<wbr>interface-<wbr>files&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_map_class_attributes_.html">&quot;helpers/map-<wbr>class-<wbr>attributes&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_map_class_attributes_include_inherited_.html">&quot;helpers/map-<wbr>class-<wbr>attributes-<wbr>include-<wbr>inherited&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_type_map_.html">&quot;helpers/type-<wbr>map&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_utils_.html">&quot;helpers/utils&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_variables_.html">&quot;helpers/variables&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_write_to_file_.html">&quot;helpers/write-<wbr>to-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_helpers_write_ts_file_.html">&quot;helpers/write-<wbr>ts-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_attribute_.html">&quot;services/attribute&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_capability_.html">&quot;services/capability&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_class_.html">&quot;services/class&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_control_.html">&quot;services/control&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_country_iso_codes_.html">&quot;services/country-<wbr>iso-<wbr>codes&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_extension_.html">&quot;services/extension&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_index_.html">&quot;services/index&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_ldap_oid_.html">&quot;services/ldap-<wbr>oid&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_ldap_policy_.html">&quot;services/ldap-<wbr>policy&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_ldap_version_.html">&quot;services/ldap-<wbr>version&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_link_id_.html">&quot;services/link-<wbr>id&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_naming_context_.html">&quot;services/naming-<wbr>context&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_policy_.html">&quot;services/policy&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_root_dse_.html">&quot;services/root-<wbr>dse&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_services_sasl_mechanism_.html">&quot;services/sasl-<wbr>mechanism&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_attributes_meta_file_.html">&quot;templates/generate-<wbr>attributes-<wbr>meta-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_capabilities_file_.html">&quot;templates/generate-<wbr>capabilities-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_class_interface_.html">&quot;templates/generate-<wbr>class-<wbr>interface&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_controls_file_.html">&quot;templates/generate-<wbr>controls-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_country_iso_codes_file_.html">&quot;templates/generate-<wbr>country-<wbr>iso-<wbr>codes-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_extensions_file_.html">&quot;templates/generate-<wbr>extensions-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_graphql_client_side_documents_.html">&quot;templates/generate-<wbr>graphql-<wbr>client-<wbr>side-<wbr>documents&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_graphql_enum_type_map_.html">&quot;templates/generate-<wbr>graphql-<wbr>enum-<wbr>type-<wbr>map&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_graphql_resolvers_.html">&quot;templates/generate-<wbr>graphql-<wbr>resolvers&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_graphql_type_.html">&quot;templates/generate-<wbr>graphql-<wbr>type&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_policies_file_.html">&quot;templates/generate-<wbr>policies-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_relations_file_.html">&quot;templates/generate-<wbr>relations-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_templates_generate_structural_classes_file_.html">&quot;templates/generate-<wbr>structural-<wbr>classes-<wbr>file&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_typings_general_types_.html">&quot;typings/general/types&quot;</a>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/types.html">Types</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/schemaattribute.html" class="tsd-kind-icon">Schema<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/schemaclass.html" class="tsd-kind-icon">Schema<wbr>Class</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/schemalinkattribute.html" class="tsd-kind-icon">Schema<wbr>Link<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#countryisocode" class="tsd-kind-icon">Country<wbr>Iso<wbr>Code</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#relation" class="tsd-kind-icon">Relation</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generateattributesmeta" class="tsd-kind-icon">generate<wbr>Attributes<wbr>Meta</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generatecapabilitiesfile" class="tsd-kind-icon">generate<wbr>Capabilities<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generatecontrolsfile" class="tsd-kind-icon">generate<wbr>Controls<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generatecountryisocodesfile" class="tsd-kind-icon">generate<wbr>Country<wbr>Iso<wbr>Codes<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generateextensionsfile" class="tsd-kind-icon">generate<wbr>Extensions<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="modules.html#generategraphqltypefiles" class="tsd-kind-icon">generate<wbr>Graphql<wbr>Type<wbr>Files</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generateinterfacefiles" class="tsd-kind-icon">generate<wbr>Interface<wbr>Files</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generatepoliciesfile" class="tsd-kind-icon">generate<wbr>Policies<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generaterelationsfile" class="tsd-kind-icon">generate<wbr>Relations<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#generatestructuralclassesfile" class="tsd-kind-icon">generate<wbr>Structural<wbr>Classes<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getconfigurationnamingcontext" class="tsd-kind-icon">get<wbr>Configuration<wbr>Naming<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getcountryisocodes" class="tsd-kind-icon">get<wbr>Country<wbr>Iso<wbr>Codes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getdefaultnamingcontext" class="tsd-kind-icon">get<wbr>Default<wbr>Naming<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getlinkids" class="tsd-kind-icon">get<wbr>Link<wbr>Ids</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getnamingcontexts" class="tsd-kind-icon">get<wbr>Naming<wbr>Contexts</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getrelations" class="tsd-kind-icon">get<wbr>Relations</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getrootdse" class="tsd-kind-icon">get<wbr>RootDSE</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getrootnamingcontext" class="tsd-kind-icon">get<wbr>Root<wbr>Naming<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemaattributes" class="tsd-kind-icon">get<wbr>Schema<wbr>Attributes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemacapabilities" class="tsd-kind-icon">get<wbr>Schema<wbr>Capabilities</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemaclassbyldapname" class="tsd-kind-icon">get<wbr>Schema<wbr>Class<wbr>ByLdap<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemaclasses" class="tsd-kind-icon">get<wbr>Schema<wbr>Classes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemacontrols" class="tsd-kind-icon">get<wbr>Schema<wbr>Controls</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemaextensions" class="tsd-kind-icon">get<wbr>Schema<wbr>Extensions</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemanamingcontext" class="tsd-kind-icon">get<wbr>Schema<wbr>Naming<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getschemapolicies" class="tsd-kind-icon">get<wbr>Schema<wbr>Policies</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getstructuralschemaclasses" class="tsd-kind-icon">get<wbr>Structural<wbr>Schema<wbr>Classes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getsubschemasubentry" class="tsd-kind-icon">get<wbr>Sub<wbr>Schema<wbr>Sub<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getsupportedldapversions" class="tsd-kind-icon">get<wbr>Supported<wbr>Ldap<wbr>Versions</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getsupportedsaslmechanisms" class="tsd-kind-icon">get<wbr>Supported<wbr>Sasl<wbr>Mechanisms</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#mapclassattributesincludeinherited" class="tsd-kind-icon">map<wbr>Class<wbr>Attributes<wbr>Include<wbr>Inherited</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -376,18 +365,7 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 		</div>
 	</div>
@@ -397,6 +375,5 @@
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
