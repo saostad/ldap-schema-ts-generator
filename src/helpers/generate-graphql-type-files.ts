@@ -62,7 +62,7 @@ type GenerateGraphqlTypeFilesFnInput<T extends string> = {
  * @template StructuralClasses A generic parameter that controls possible values of justThisClasses array in options
  */
 export async function generateGraphqlTypeFiles<
-  StructuralClasses extends string = any
+  StructuralClasses extends string = any,
 >({
   objectClasses,
   objectAttributes,
@@ -104,6 +104,8 @@ export async function generateGraphqlTypeFiles<
   if (typeof options?.generateClientSideDocuments === "boolean") {
     generateClientSideDocuments = options.generateClientSideDocuments;
   }
+
+  // if outDir path not exist create it
 
   const promises: Promise<void>[] = [];
 

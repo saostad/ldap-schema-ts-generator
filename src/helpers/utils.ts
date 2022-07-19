@@ -72,7 +72,7 @@ export async function dirPathExist(targetPath: string): Promise<boolean> {
   if (pathExist) {
     return true;
   } else {
-    await promisify(fs.mkdir)(targetDir);
+    await promisify(fs.mkdir)(targetDir, { recursive: true });
     return true;
   }
 }
