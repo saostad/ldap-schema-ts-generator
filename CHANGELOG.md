@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.0.10](https://github.com/saostad/ldap-schema-ts-generator/compare/v4.0.9...v4.0.10)
+
+> 19 July 2022
+
+- fix: create output folders recursively instead of just fail [`c006380`](https://github.com/saostad/ldap-schema-ts-generator/commit/c0063808fc31e55f8a51c0657c52846d30073506)
+- doc: change log [`f7bc0d7`](https://github.com/saostad/ldap-schema-ts-generator/commit/f7bc0d7f561af335b76e2ab3044306ca12123c76)
+
 #### [v4.0.9](https://github.com/saostad/ldap-schema-ts-generator/compare/v4.0.8...v4.0.9)
 
 > 11 July 2022
