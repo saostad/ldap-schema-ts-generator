@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.0.11](https://github.com/saostad/ldap-schema-ts-generator/compare/v4.0.10...v4.0.11)
+
+> 20 July 2022
+
+- pkg: updated [`c616b62`](https://github.com/saostad/ldap-schema-ts-generator/commit/c616b62857d29edb1b04ff063b43024f2588c9df)
+- doc: change log [`6bb80ba`](https://github.com/saostad/ldap-schema-ts-generator/commit/6bb80ba8c24f8e79a200bc0bf3a7cfeb8449786e)
+
 #### [v4.0.10](https://github.com/saostad/ldap-schema-ts-generator/compare/v4.0.9...v4.0.10)
 
 > 19 July 2022
