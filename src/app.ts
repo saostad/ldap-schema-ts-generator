@@ -44,7 +44,6 @@ import {
 export async function main() {
   const logger = await createLogger({
     level: "trace",
-    prettyPrint: { colorize: true },
   });
 
   const options: IClientConfig = {
