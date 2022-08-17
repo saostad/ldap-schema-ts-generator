@@ -35,7 +35,7 @@ await generateInterfaceFiles({ objectAttributes, objectClasses });
 
 ### API
 
-use [api website](https://saostad.github.io/ldap-schema-ts-generator/modules/_index_.html) for more details
+use [api website](https://saostad.github.io/ldap-schema-ts-generator/) for more details
 
 ### Functionalities
 
